@@ -116,3 +116,74 @@ footer{text-align:center;padding:24px;color:var(--muted);font-size:.85rem;border
  .card{grid-template-columns:1fr}.card>svg{max-width:220px;margin:0 auto}
  .thread{padding-left:34px}.knot{left:-30px}.knot.big{left:-34px}.thread::before{left:10px}}
 @media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}}
+/* ---------- v5 : avant / après ---------- */
+.basics-sec{padding:80px 20px 10px;text-align:center}
+.thread.basics{max-width:860px}
+.ba{grid-column:1/-1;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch;margin-top:8px}
+.vs{align-self:center;color:var(--accent);font-size:1.5rem}
+.pan{position:relative;border-radius:12px;padding:12px;margin:0}
+.pan.before{background:#ece7df}.pan.after{background:#fbeee6;border:1.5px solid #e9c3aa}
+.pan svg{width:100%;height:auto;display:block;overflow:hidden;border-radius:8px}
+.pan figcaption{font-size:.86rem;margin-top:6px;color:var(--ink);text-align:left}
+.tag{position:absolute;top:8px;left:10px;z-index:2;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:6px;background:var(--muted);color:#fff}
+.after .tag{background:var(--accent)}
+.pan.before svg{filter:saturate(.6)}
+.phead{fill:var(--ink)}.pbody{stroke:var(--ink);stroke-width:3;fill:none;stroke-linecap:round}
+svg .thin{stroke-width:1.5}svg .dash{stroke-dasharray:4 5}.shelf line{stroke:var(--paper);stroke-width:2}
+.lbl{font:700 10px system-ui,sans-serif;fill:var(--muted)}.lbl.mid{text-anchor:middle;font-size:9px}
+.horse{fill:#8a5a3b}.night{fill:#2b2926}.day{fill:#fff6dc}.glow{fill:#ffcf6b;opacity:.15}.light-f{fill:#e8dcc4}
+.pan use,.pan g,.pan rect,.pan circle,.pan path,.pan line,.pan ellipse,.pan text{transform-box:fill-box}
+.spin.fast{animation-duration:1s}.spin.slow2{animation-duration:6s}
+/* personnages */
+use.lean{transform-origin:50% 100%}
+.strain{animation:strain .25s ease-in-out infinite alternate}@keyframes strain{to{transform:translateX(2px)}}
+.sweat{font-size:12px;animation:led 1s infinite}
+.walk-slow{animation:wslow 6s linear infinite}@keyframes wslow{from{transform:translateX(-10px)}to{transform:translateX(40px)}}
+.walk{animation:wfast 3s linear infinite}@keyframes wfast{from{transform:translateX(-20px)}to{transform:translateX(90px)}}
+.roll{animation:rollx 3s linear infinite}@keyframes rollx{from{transform:translateX(-20px) rotate(0)}to{transform:translateX(90px) rotate(500deg)}}
+.dust circle{fill:#bdb3a4;animation:steam 1s infinite}
+/* levier */
+.b-lever{transform-origin:116px 80px;transform-box:view-box!important;animation:blev 2.4s ease-in-out infinite}
+@keyframes blev{0%,15%{transform:rotate(0)}50%,70%{transform:rotate(-10deg)}100%{transform:rotate(0)}}
+.push-down{animation:pd 2.4s ease-in-out infinite}@keyframes pd{0%,15%,100%{transform:translateY(0)}50%,70%{transform:translateY(5px)}}
+/* poulie / vis */
+.haul-slow{animation:hslow 4s ease-in-out infinite alternate}@keyframes hslow{to{transform:translateY(-14px)}}
+.haul{animation:hfast 2s ease-in-out infinite alternate}@keyframes hfast{from{transform:translateY(20px)}to{transform:translateY(-6px)}}
+.slip{animation:slip 2s ease-in-out infinite}@keyframes slip{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+/* engrenage */
+.water{stroke:#5a8fb8;stroke-dasharray:6 4;animation:chain .8s linear infinite}@keyframes chain{to{stroke-dashoffset:-10}}
+/* vapeur */
+.beam{transform-origin:100px 30px;transform-box:view-box!important;animation:beam 1.6s ease-in-out infinite alternate}@keyframes beam{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+.pump{animation:pumpv 1.6s ease-in-out infinite alternate}@keyframes pumpv{from{transform:translateY(-8px)}to{transform:translateY(8px)}}
+.water-drop{fill:#5a8fb8;animation:steam 1.6s infinite reverse}
+/* moteur */
+.drive{animation:wfast 2s linear infinite}.speed{animation:led .4s infinite}
+/* électricité */
+.flicker{animation:flick .18s infinite alternate}@keyframes flick{to{transform:scale(.92) translateY(1px);opacity:.8}}
+.dim{opacity:.5}
+.ex-switch{animation:sw 3s infinite}@keyframes sw{0%,20%{transform:translateY(0)}25%,95%{transform:translateY(12px)}}
+.ex-el{offset-path:path("M42 56 H130 V30 H100");animation:elw 3s linear infinite;opacity:0}
+@keyframes elw{0%,25%{offset-distance:0%;opacity:0}26%{opacity:1}55%{offset-distance:100%;opacity:1}56%,100%{opacity:0;offset-distance:100%}}
+.bulb{animation:bulb 3s infinite}@keyframes bulb{0%,54%{fill:none}57%,95%{fill:#ffd36b}100%{fill:none}}
+/* radio */
+.gallop{animation:gal 5s linear infinite}@keyframes gal{0%{transform:translate(-30px,0)}25%{transform:translate(5px,-3px)}50%{transform:translate(40px,0)}75%{transform:translate(75px,-3px)}100%{transform:translate(110px,0)}}
+/* lettre */
+.letter{animation:letter 6s linear infinite}@keyframes letter{from{transform:translate(0,40px)}to{transform:translate(166px,40px)}}
+.letter{offset-path:none}
+.days::after{content:""}
+.cal text{animation:none}
+.msg-fly{animation:fly 1.6s ease-in infinite}@keyframes fly{0%{transform:translate(26px,40px);opacity:1}40%{transform:translate(150px,40px);opacity:1}41%,100%{opacity:0;transform:translate(150px,40px)}}
+.pop2{animation:pop2 1.6s infinite}@keyframes pop2{0%,40%{opacity:0}45%,100%{opacity:1}}
+/* archives */
+.search{animation:srch 4s ease-in-out infinite alternate}@keyframes srch{from{transform:translateX(-14px)}to{transform:translateX(14px)}}
+.packet3{fill:var(--accent);offset-path:path("M32 50 H160 H32");animation:pk 1.8s linear infinite}
+@keyframes pk{to{offset-distance:100%}}
+/* robot */
+.rep{animation:repm .7s ease-in-out infinite alternate}.rep.d1{animation-delay:.2s}.rep.d2{animation-delay:.4s}
+@keyframes repm{to{transform:translateY(3px)}}
+.rep{transform-origin:50% 100%}
+.belt{animation:belt 3s linear infinite}@keyframes belt{to{transform:translateX(60px)}}
+.ex-arm{transform-origin:50% 100%;animation:arm1 4s ease-in-out infinite}@keyframes arm1{0%,10%{transform:rotate(0)}45%,65%{transform:rotate(18deg)}100%{transform:rotate(0)}}
+.ex-fore{transform-origin:0% 50%;animation:arm2 4s ease-in-out infinite}@keyframes arm2{0%,10%{transform:rotate(0)}45%,65%{transform:rotate(10deg)}100%{transform:rotate(0)}}
+@media(max-width:720px){.ba{grid-template-columns:1fr}.vs{transform:rotate(90deg);justify-self:center}.basics-sec{padding-top:60px}}
+.pan .gin{transform-box:view-box;transform-origin:100px 66px;animation:gin 6s linear infinite}@keyframes gin{from{transform:scaleX(1)}50%{transform:scaleX(-1)}to{transform:scaleX(1)}}

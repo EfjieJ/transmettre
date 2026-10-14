@@ -191,3 +191,11 @@
     td.dataset.open = 0; td.querySelectorAll('.peeled,.show').forEach(x => x.classList.remove('peeled', 'show')); help.textContent = steps[0];
   });
 })();
+// Compteur de semaines pour la lettre (avant le cellulaire)
+(() => {
+  const d = document.querySelector('.cal .days'); if (!d) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w = 1; d.textContent = 'semaine 1';
+  if (!reduce) setInterval(() => { w = w % 6 + 1; d.textContent = 'semaine ' + w; }, 1000);
+  else d.textContent = 'des semaines';
+})();
