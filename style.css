@@ -187,3 +187,53 @@ use.lean{transform-origin:50% 100%}
 .ex-fore{transform-origin:0% 50%;animation:arm2 4s ease-in-out infinite}@keyframes arm2{0%,10%{transform:rotate(0)}45%,65%{transform:rotate(10deg)}100%{transform:rotate(0)}}
 @media(max-width:720px){.ba{grid-template-columns:1fr}.vs{transform:rotate(90deg);justify-self:center}.basics-sec{padding-top:60px}}
 .pan .gin{transform-box:view-box;transform-origin:100px 66px;animation:gin 6s linear infinite}@keyframes gin{from{transform:scaleX(1)}50%{transform:scaleX(-1)}to{transform:scaleX(1)}}
+/* ---------- v6 : jeux de construction ---------- */
+.build-sec,.lever-sec{padding:90px 20px;text-align:center}
+.build-sec{background:var(--soft)}
+.build,.lever-game{max-width:1000px;margin:0 auto;background:#fff;border-radius:20px;padding:22px;box-shadow:0 6px 30px rgba(0,0,0,.07)}
+.parts{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:16px}
+.part{font:inherit;font-size:.8rem;font-weight:700;width:96px;padding:8px 6px;border-radius:12px;border:2px solid #d9cfc0;background:var(--paper);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;display:flex;flex-direction:column;align-items:center;gap:2px;transition:transform .15s,opacity .3s}
+.part svg{width:58px;height:58px}
+.part:hover{transform:translateY(-3px)}.part.sel{border-color:var(--accent);box-shadow:0 0 0 3px #f4d3c0}
+.part.used{opacity:.25;pointer-events:none}.part.lifted{opacity:.4}
+.part.dragging{position:fixed;z-index:80;pointer-events:none;transform:scale(1.1) rotate(-4deg);box-shadow:0 12px 26px rgba(0,0,0,.25)}
+.part.shake{animation:shake .4s}
+.bp-wrap{border-radius:14px;overflow:hidden;border:2px solid var(--soft)}
+.bp,.lv{width:100%;height:auto;display:block;touch-action:manipulation}
+.ghost{fill:#ffffff;fill-opacity:.35;stroke:#4f7a9a;stroke-width:2.5;stroke-dasharray:7 6;cursor:pointer;transition:fill-opacity .2s}
+.ghost.over{fill:#c4521c;fill-opacity:.25;stroke:var(--accent)}
+.ghost.filled{opacity:0;pointer-events:none}
+.labels text{font:700 15px system-ui,sans-serif;fill:#2f526c;text-anchor:middle;pointer-events:none}
+.build[data-parts="5"] .labels{display:none}
+.real{opacity:0;pointer-events:none}.real.on{opacity:1}
+.real.snap{animation:snap .35s cubic-bezier(.3,1.8,.6,1)}
+@keyframes snap{0%{opacity:0;transform:translateY(-14px)}100%{opacity:1;transform:none}}
+.real{transform-box:fill-box;transform-origin:center}
+.st.drop{animation:drop .45s ease-in both;transform-box:fill-box}@keyframes drop{from{transform:translateY(-120px);opacity:0}to{transform:none;opacity:1}}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.compare div{background:var(--paper);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px}
+.compare div:last-child{background:#eaf5ec;border:2px solid #2e7d32}
+.trips{font-size:1.4rem;letter-spacing:2px}.compare small{color:var(--muted)}
+.kg{font:800 15px system-ui,sans-serif;fill:#fff;text-anchor:middle;paint-order:stroke;stroke:#3d3832;stroke-width:3}
+.fulcrum{cursor:ew-resize;touch-action:none}.fulcrum:focus{outline:none}.fulcrum:focus path{stroke:var(--accent);stroke-width:3}
+.ruler text{font:700 12px system-ui,sans-serif;fill:#5b4a3a;text-anchor:middle}
+#lv-range{width:100%;max-width:640px;margin:16px auto 6px;display:block;accent-color:var(--accent)}
+.lv-read p{margin:4px 0}.calc{font-size:1.05rem}
+.meter{position:relative;height:14px;max-width:420px;margin:10px auto;border-radius:8px;background:var(--soft);overflow:hidden}
+.meter div{height:100%;transition:width .2s}.meter .ok{background:#2e7d32}.meter .no{background:#b33}
+.meter .limit{position:absolute;left:20%;top:0;bottom:0;width:3px;background:var(--ink)}
+.fine{font-size:.82rem;color:var(--muted);margin-top:10px}
+/* panneaux avant/après plus réalistes */
+.pan svg{background:linear-gradient(#d8e8f1,#f4ecdf 75%,#a88a63 75%)}
+.pan.before svg{filter:saturate(.75) sepia(.12)}
+.pan svg>.line:first-child{stroke:#7d6444}
+.pan .fill{fill:url(#wood)}
+.pan ellipse.fill,.pan .strain ellipse,.pan .roll circle.fill,.pan circle.fill.accent{fill:url(#stone)}
+.pan .ring{stroke:url(#iron);stroke-width:4}
+.pan .bar{stroke:url(#wood);stroke-width:7}
+.pan .line{stroke:#5a3f28}
+.pan rect.fill.accent,.pan path.fill.accent{fill:url(#binG)}
+.pan .night{fill:#231f1b}.pan .day{fill:#fff3d0}.pan .horse{fill:#7b4a2c}
+.pan rect.fill{filter:url(#soft)}
+@media(max-width:720px){.part{width:30%;max-width:96px}.part svg{width:44px;height:44px}.compare{grid-template-columns:1fr}.build,.lever-game{padding:12px}}
+.compare[hidden]{display:none}

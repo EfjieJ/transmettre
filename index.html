@@ -8,7 +8,30 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="p"><circle cx="0" cy="-36" r="5" class="phead"/><path d="M0 -31 V-14 M0 -14 L-6 0 M0 -14 L6 0 M0 -26 L9 -19" class="pbody"/></g></defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9824a"/><stop offset=".5" stop-color="#9a6635"/><stop offset="1" stop-color="#6e4520"/></linearGradient>
+  <pattern id="wood" width="40" height="12" patternUnits="userSpaceOnUse"><rect width="40" height="12" fill="url(#gWood)"/><path d="M0 3 q10 -2 20 0 t20 0 M0 8 q12 2 22 0 t18 0" stroke="#5a3717" stroke-opacity=".35" stroke-width=".8" fill="none"/><ellipse cx="30" cy="6" rx="2.5" ry="1.2" fill="#5a3717" fill-opacity=".35"/></pattern>
+  <radialGradient id="stone" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#cfc8bc"/><stop offset=".55" stop-color="#9a9286"/><stop offset="1" stop-color="#5f5951"/></radialGradient>
+  <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3e7ea"/><stop offset=".45" stop-color="#a4adb4"/><stop offset="1" stop-color="#5d666d"/></linearGradient>
+  <linearGradient id="iron" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6b7178"/><stop offset="1" stop-color="#2f3337"/></linearGradient>
+  <linearGradient id="binG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d0643a"/><stop offset="1" stop-color="#8e3612"/></linearGradient>
+  <pattern id="rope" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#c9a66b"/><rect width="3" height="6" fill="#a8844b"/></pattern>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe3ef"/><stop offset="1" stop-color="#f6efe2"/></linearGradient>
+  <pattern id="dirt" width="24" height="12" patternUnits="userSpaceOnUse"><rect width="24" height="12" fill="#a88a63"/><circle cx="4" cy="3" r="1.2" fill="#7d6444"/><circle cx="15" cy="8" r="1.6" fill="#8f7452"/><circle cx="20" cy="2" r=".9" fill="#c4a982"/></pattern>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e2b48c"/><stop offset="1" stop-color="#b9845c"/></linearGradient>
+  <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4f7a9a"/><stop offset="1" stop-color="#2f526c"/></linearGradient>
+  <linearGradient id="pants" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b4a3a"/><stop offset="1" stop-color="#3a2e24"/></linearGradient>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="1.5" stdDeviation="1.2" flood-opacity=".35"/></filter>
+  <g id="p"><ellipse cx="0" cy="0.5" rx="8" ry="1.6" fill="#000" opacity=".18"/>
+    <path d="M-2 -15 L-5 -1 M2 -15 L5 -1" stroke="url(#pants)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-7 -1 h5 M3 -1 h5" stroke="#2a211a" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M-5 -30 q5 -3 10 0 l1 15 h-12z" fill="url(#shirt)"/>
+    <path d="M3 -28 L10 -21" stroke="url(#skin)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-1.5 -33 v3" stroke="#c4906a" stroke-width="3"/>
+    <circle cx="0" cy="-37" r="4.6" fill="url(#skin)"/><path d="M-4.6 -38 q1 -5 5 -4.6 q4 .4 4.2 3.6 q-3 -2 -9.2 1z" fill="#3b2a1e"/>
+  </g>
+</defs></svg>
+
 <button id="mute" class="mute" aria-pressed="false" title="Couper le son">🔔 Son</button>
 
 <header class="hero">
@@ -16,11 +39,93 @@
   <p class="kicker">Retour au tout début de l'histoire</p>
   <h1>Toute technologie commence<br><span>par une main.</span></h1>
   <p class="lead">Une chose appuie sur une autre, qui appuie sur une autre, jusqu'au résultat.<br>Avant de lire, essayez.</p>
-  <a href="#jeu" class="btn">Jouer ✋</a>
+  <a href="#construire" class="btn">Construire ✋</a>
   <div class="trio small"><span>Transmettre</span><i>→</i><span>Recevoir</span><i>→</i><span>Retransmettre</span></div>
 </header>
 
+<section id="construire" class="build-sec">
+  <p class="kicker">Jeu 1 · Construire</p>
+  <h2>Construisez une brouette qui roule</h2>
+  <p class="intro">Six pierres à déplacer jusqu'au mur. Sur le dos, c'est une à la fois. Assemblez la brouette pièce par pièce, chargez-la, poussez.</p>
+  <p class="how">Glissez chaque pièce sur sa place dans le plan (ou touchez une pièce, puis touchez sa place). Si c'est la bonne place, elle s'enclenche.</p>
+  <div class="build" id="build">
+    <div class="parts" id="parts" aria-label="Pièces">
+      <button class="part" data-part="roue"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="url(#iron)" stroke-width="5"/><circle cx="30" cy="30" r="20" fill="none" stroke="url(#wood)" stroke-width="4"/><g stroke="#7a4f26" stroke-width="3"><line x1="30" y1="10" x2="30" y2="50"/><line x1="10" y1="30" x2="50" y2="30"/><line x1="16" y1="16" x2="44" y2="44"/><line x1="44" y1="16" x2="16" y2="44"/></g><circle cx="30" cy="30" r="5" fill="url(#metal)"/></svg>Roue</button>
+      <button class="part" data-part="essieu"><svg viewBox="0 0 60 60"><rect x="6" y="26" width="48" height="8" rx="4" fill="url(#metal)"/><circle cx="8" cy="30" r="5" fill="url(#iron)"/><circle cx="52" cy="30" r="5" fill="url(#iron)"/></svg>Essieu</button>
+      <button class="part" data-part="brancards"><svg viewBox="0 0 60 60"><path d="M4 44 L56 20" stroke="url(#wood)" stroke-width="7" stroke-linecap="round"/><path d="M4 44 L14 39" stroke="#3a2e24" stroke-width="8" stroke-linecap="round"/></svg>Brancards</button>
+      <button class="part" data-part="pieds"><svg viewBox="0 0 60 60"><path d="M22 10 L18 52 M38 10 L42 52" stroke="url(#wood)" stroke-width="6" stroke-linecap="round"/><path d="M14 52 h10 M36 52 h10" stroke="url(#iron)" stroke-width="3"/></svg>Pieds</button>
+      <button class="part" data-part="caisse"><svg viewBox="0 0 60 60"><path d="M4 16 H56 L46 46 H14 Z" fill="url(#binG)"/><path d="M4 16 H56" stroke="#5e2408" stroke-width="3"/><path d="M10 22 H50" stroke="#fff" stroke-opacity=".25" stroke-width="2"/></svg>Caisse</button>
+    </div>
+
+    <div class="bp-wrap">
+    <svg viewBox="0 0 600 300" class="bp" id="bp" aria-label="Plan de la brouette">
+      <rect width="600" height="300" fill="url(#sky)"/>
+      <rect y="262" width="600" height="38" fill="url(#dirt)"/>
+      <line x1="0" y1="262" x2="600" y2="262" stroke="#7d6444" stroke-width="2"/>
+      <!-- mur d'arrivée -->
+      <g class="wall"><rect x="560" y="200" width="40" height="62" fill="#b9a68a"/><g stroke="#8e7c62" stroke-width="1.5"><line x1="560" y1="220" x2="600" y2="220"/><line x1="560" y1="241" x2="600" y2="241"/><line x1="580" y1="200" x2="580" y2="220"/><line x1="570" y1="220" x2="570" y2="241"/><line x1="590" y1="241" x2="590" y2="262"/></g></g>
+      <!-- personne -->
+      <g id="pusher" class="pusher" transform="translate(24 262)"><use href="#p" transform="scale(2.2)"/></g>
+      <g id="barrow" transform="translate(-20 73.4) scale(.72)">
+        <!-- emplacements fantômes -->
+        <g class="ghosts">
+          <path class="ghost" data-zone="caisse" d="M215 118 H455 L420 196 H250 Z"/>
+          <path class="ghost" data-zone="brancards" d="M88 180 L470 214 L470 228 L84 194 Z"/>
+          <path class="ghost" data-zone="pieds" d="M205 200 h20 l-4 62 h-14z M270 204 h20 l-2 58 h-14z"/>
+          <circle class="ghost" data-zone="roue" cx="470" cy="226" r="36"/>
+          <rect class="ghost" data-zone="essieu" x="458" y="219" width="24" height="14" rx="5"/>
+          <g class="labels"><text x="335" y="160">caisse</text><text x="150" y="176">brancards</text><text x="228" y="250">pieds</text><text x="470" y="282">roue</text><text x="500" y="214">essieu</text></g>
+        </g>
+        <!-- pièces réelles -->
+        <g class="real" data-real="pieds" filter="url(#soft)"><path d="M215 202 L211 260 M280 206 L284 260" stroke="url(#wood)" stroke-width="10" stroke-linecap="round"/><path d="M203 261 h16 M276 261 h16" stroke="url(#iron)" stroke-width="4"/></g>
+        <g class="real" data-real="brancards" filter="url(#soft)"><path d="M92 187 L466 220" stroke="url(#wood)" stroke-width="12" stroke-linecap="round"/><path d="M92 187 L122 190" stroke="#3a2e24" stroke-width="14" stroke-linecap="round"/><path d="M180 196 L440 218" stroke="#5a3717" stroke-opacity=".3" stroke-width="1"/></g>
+        <g class="real" data-real="caisse" filter="url(#soft)"><path d="M215 118 H455 L420 196 H250 Z" fill="url(#binG)"/><path d="M215 118 H455" stroke="#5e2408" stroke-width="5" stroke-linecap="round"/><path d="M230 132 H440" stroke="#fff" stroke-opacity=".22" stroke-width="3"/><g fill="#5e2408"><circle cx="262" cy="185" r="2.5"/><circle cx="408" cy="185" r="2.5"/></g></g>
+        <g id="stones" class="stones"></g>
+        <g class="real" data-real="roue" id="wheel" filter="url(#soft)"><g id="wheelRot"><circle cx="470" cy="226" r="33" fill="none" stroke="url(#iron)" stroke-width="6"/><circle cx="470" cy="226" r="28" fill="none" stroke="url(#wood)" stroke-width="6"/><g stroke="#7a4f26" stroke-width="4" stroke-linecap="round"><line x1="470" y1="198" x2="470" y2="254"/><line x1="442" y1="226" x2="498" y2="226"/><line x1="450" y1="206" x2="490" y2="246"/><line x1="490" y1="206" x2="450" y2="246"/></g></g></g>
+        <g class="real" data-real="essieu"><rect x="460" y="221" width="20" height="10" rx="5" fill="url(#metal)" stroke="#3a3f44"/><circle cx="470" cy="226" r="5" fill="url(#iron)"/></g>
+      </g>
+      <g id="fallen"></g>
+    </svg>
+    </div>
+    <p class="explain" id="b-explain" aria-live="polite">Pièce par pièce : chacune a un rôle.</p>
+    <div class="controls">
+      <button class="btn" id="b-load">🪨 Charger les pierres</button>
+      <button class="btn" id="b-push">➜ Pousser</button>
+      <button class="btn ghost" id="b-reset">Recommencer</button>
+    </div>
+    <p class="msg" id="b-msg" role="status" aria-live="polite"></p>
+    <div class="compare" id="b-compare" hidden>
+      <div><b>Sur le dos</b><span class="trips back">🪨 🪨 🪨 🪨 🪨 🪨</span><small>6 voyages, une pierre à la fois</small></div>
+      <div><b>Avec votre brouette</b><span class="trips">🛞</span><small>1 voyage, les 6 pierres d'un coup</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="levier-jeu" class="lever-sec">
+  <p class="kicker">Jeu 2 · Le levier</p>
+  <h2>Soulevez 60 kg avec la force d'un enfant</h2>
+  <p class="intro">La pierre pèse 60 kg. Vous pouvez appuyer avec 20 kg de force, pas plus. Déplacez l'appui sous la barre de 2 m, puis appuyez.</p>
+  <div class="lever-game">
+    <svg viewBox="0 0 600 240" class="lv" id="lv">
+      <rect width="600" height="240" fill="url(#sky)"/><rect y="200" width="600" height="40" fill="url(#dirt)"/>
+      <g id="lv-bar"><rect x="50" y="146" width="500" height="10" rx="4" fill="url(#wood)"/><ellipse cx="80" cy="120" rx="34" ry="26" fill="url(#stone)" filter="url(#soft)"/><text x="80" y="125" class="kg">60 kg</text><g id="lv-hand"><path d="M550 108 v34" stroke="url(#skin)" stroke-width="10" stroke-linecap="round"/><path d="M545 136 l5 9 5 -9" fill="#c4521c"/></g></g>
+      <g id="lv-fulcrum" class="fulcrum" tabindex="0" role="slider" aria-label="Position de l'appui"><path d="M-20 200 L0 156 L20 200 Z" fill="url(#stone)" stroke="#5f5951"/></g>
+      <g class="ruler"><text x="80" y="228">0 m</text><text x="315" y="228">1 m</text><text x="550" y="228">2 m</text></g>
+    </svg>
+    <input type="range" id="lv-range" min="10" max="190" step="5" value="100" aria-label="Distance de l'appui depuis la pierre, en centimètres">
+    <div class="lv-read">
+      <p>Appui à <b id="lv-d1">1,00 m</b> de la pierre, <b id="lv-d2">1,00 m</b> de votre main.</p>
+      <p class="calc" id="lv-calc">60 kg × 1,00 m ÷ 1,00 m = <b>60 kg</b> à appuyer</p>
+      <div class="meter"><div id="lv-meter"></div><span class="limit" title="votre force : 20 kg"></span></div>
+    </div>
+    <div class="controls"><button class="btn" id="lv-go">✋ Appuyer</button></div>
+    <p class="msg" id="lv-msg" aria-live="polite"></p>
+    <p class="fine">Règle du levier : poids × sa distance à l'appui = force × sa distance à l'appui. (On oublie le poids de la barre, pour simplifier.)</p>
+  </div>
+</section>
+
 <section id="jeu" class="game-sec">
+  <p class="kicker">Jeu 3 · La chaîne</p>
   <h2>Hissez le drapeau</h2>
   <p class="intro">Cinq pièces, cinq cases. Placez-les dans le bon ordre, puis appuyez.</p>
   <p class="how">Glissez une pièce dans une case, ou touchez-la pour la poser dans la prochaine case libre. Touchez une pièce posée pour la retirer.</p>
@@ -173,5 +278,6 @@
 </section>
 <footer>Transmettre · on change les accords sans lâcher le fil</footer>
 <script src="script.js"></script>
+<script src="build.js"></script>
 </body>
 </html>
