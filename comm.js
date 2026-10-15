@@ -45,28 +45,92 @@
     $('tel').dataset.state = oral ? 'oral' : 'ecrit'; telBusy = false;
   }));
 
-  /* ----- morse ----- */
+  /* ----- télégraphe : 4 niveaux ----- */
   const MORSE = { '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E', '..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J', '-.-': 'K', '.-..': 'L', '--': 'M', '-.': 'N', '---': 'O', '.--.': 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T', '..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X', '-.--': 'Y', '--..': 'Z' };
-  const key = $('m-key'); let t0 = 0, cur = '', text = '', timer = null, down = false, won = false;
-  const render = () => { $('m-code').textContent = cur.replace(/\./g, '·').replace(/-/g, '—') || '\u00a0'; $('m-text').textContent = text || '…'; };
-  function press() { if (down) return; down = true; t0 = performance.now(); clearTimeout(timer); key.classList.add('down'); TS.holdStart(); }
+  const CODE = Object.fromEntries(Object.entries(MORSE).map(([k, v]) => [v, k]));
+  const pretty = c => c.replace(/\./g, '·').replace(/-/g, '—');
+  const mg = $('morse'), mmsg = $('m-msg'), task = $('m-task');
+  const msay = (t, c = '') => { mmsg.innerHTML = t; mmsg.className = 'msg ' + c; };
+  const TASKS = [
+    '<b>Niveau 1 · Monter la ligne.</b> Avant d\'envoyer, il faut un <b>émetteur</b> (celui qui envoie), un <b>canal</b> (le chemin) et un <b>récepteur</b> (celui qui reçoit). Placez les bonnes pièces.',
+    '<b>Niveau 2 · Envoyer « SOS ».</b> Touche courte = point (·), touche longue = trait (—). S = ···   O = ———. Faites une pause entre les lettres.',
+    '<b>Niveau 3 · Envoyer « OUI ».</b> O = ———   U = ··—   I = ··. Plus de lettres, même bouton.',
+    '<b>Niveau 4 · Vous êtes le récepteur.</b> Un message arrive par la ligne, avec des grésillements (le <b>bruit</b>). Les grésillements sont très courts et gris : ignorez-les. Écrivez le mot reçu.'
+  ];
+  const TARGET = [null, 'SOS', 'OUI', null];
+  let lvl = 0, line = { em: null, ca: null, re: null }, mSel = null;
+  const LV = TS.levels($('m-lv'), ['Monter la ligne', 'SOS', 'OUI', 'Décoder'], i => setLevel(i));
+  function setLevel(i) {
+    lvl = i; task.innerHTML = TASKS[i]; mg.dataset.lvl = i; msay(''); $('m-bits').hidden = true; cur = ''; text = ''; render(); clearTimeout(timer);
+    $('m-build').hidden = i !== 0; $('m-send').hidden = !(i === 1 || i === 2); $('m-rx').hidden = i !== 3;
+    if (i === 0) { line = { em: null, ca: null, re: null }; drawLine(); }
+  }
+  /* niveau 1 : ligne */
+  const PART = { cle: ['🔑 Clé morse', 'em'], fil: ['〰️ Fil de cuivre', 'ca'], ficelle: ['🧵 Ficelle', null], sonnerie: ['🔔 Sonnerie', 're'] };
+  const WHY = { em: 'L\'<b>émetteur</b> transforme votre geste en signal : appuyer ferme le circuit, le courant part.', ca: 'Le <b>canal</b> transporte le signal. Le cuivre laisse passer le courant, sur des kilomètres.', re: 'Le <b>récepteur</b> transforme le signal en quelque chose qu\'on perçoit : ici, un son.' };
+  function drawLine() { mg.querySelectorAll('.mslot').forEach(sl => { const p = line[sl.dataset.slot]; sl.querySelector('span').textContent = p ? PART[p][0] : '?'; sl.classList.toggle('filled', !!p); }); mg.querySelectorAll('.mpart').forEach(b => b.classList.toggle('used', Object.values(line).includes(b.dataset.p))); }
+  function putPart(p, slotEl) {
+    if (!slotEl) return; const slot = slotEl.dataset.slot;
+    if (PART[p][1] === slot) { line[slot] = p; drawLine(); TS.good(); TS.flash(slotEl, 'good'); TS.bubble(slotEl, WHY[slot], 'good');
+      if (line.em && line.ca && line.re) { msay('Ligne montée! Émetteur → canal → récepteur. Passez au niveau 2 pour envoyer un message.', 'ok'); LV.done(0); setTimeout(() => LV.go(1), 1600); } }
+    else { TS.bad(); TS.flash(slotEl, 'bad'); TS.bubble(slotEl, p === 'ficelle' ? 'Une ficelle ne conduit pas l\'électricité : le signal n\'arriverait jamais. Il faut un <b>conducteur</b>, comme le cuivre.' : `Pas ici : la ${PART[p][0].slice(3)} n'est pas ${slot === 'em' ? 'celle qui envoie' : slot === 'ca' ? 'le chemin' : 'celle qui reçoit'}.`, 'bad'); }
+  }
+  const slotAt = (x, y) => [...mg.querySelectorAll('.mslot')].find(s => { const r = s.getBoundingClientRect(); return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom; });
+  mg.querySelectorAll('.mpart').forEach(b => TS.pickable(b, { onDrop: (x, y) => putPart(b.dataset.p, slotAt(x, y)), onSelect: () => { mg.querySelectorAll('.mpart').forEach(x => x.classList.remove('sel')); mSel = mSel === b.dataset.p ? null : b.dataset.p; if (mSel) { b.classList.add('sel'); msay('Touchez maintenant la case où elle va.'); } } }));
+  mg.querySelectorAll('.mslot').forEach(sl => sl.addEventListener('click', () => { if (mSel) { const p = mSel; mSel = null; mg.querySelectorAll('.mpart').forEach(x => x.classList.remove('sel')); putPart(p, sl); } }));
+  /* niveaux 2–3 : envoyer */
+  const key = $('m-key'); let t0 = 0, cur = '', text = '', timer = null, down = false, firstDot = true, firstDash = true;
+  const render = () => { $('m-code').textContent = pretty(cur) || '\u00a0'; $('m-text').textContent = text || '…'; };
+  function press() { if (down || !(lvl === 1 || lvl === 2)) return; down = true; t0 = performance.now(); clearTimeout(timer); key.classList.add('down'); TS.holdStart(); }
   function release() {
     if (!down) return; down = false; key.classList.remove('down'); TS.holdStop();
-    cur += (performance.now() - t0) < 230 ? '.' : '-'; render();
-    timer = setTimeout(() => { text += MORSE[cur] || '?'; cur = ''; render(); check(); }, 900);
+    const dot = (performance.now() - t0) < 230; cur += dot ? '.' : '-'; render();
+    if (dot && firstDot) { firstDot = false; TS.bubble(key, 'Point : une impulsion courte. Le courant passe un instant, la sonnerie fait « bip ».'); }
+    if (!dot && firstDash) { firstDash = false; TS.bubble(key, 'Trait : une impulsion longue, environ trois fois un point.'); }
+    timer = setTimeout(letterDone, 900);
   }
-  function check() {
-    if (text.endsWith('SOS') && !won) {
-      won = true; $('m-msg').className = 'msg ok'; $('m-msg').textContent = 'Message reçu : SOS! Trois lettres, envoyées avec un seul bouton : allumé ou éteint.'; TS.win(); TS.confetti(key);
-      const rows = $('bitrows'); rows.innerHTML = ''; 'SOS'.split('').forEach(ch => { const b = ch.charCodeAt(0).toString(2).padStart(8, '0');
-        rows.insertAdjacentHTML('beforeend', `<div><b>${ch}</b>${b.split('').map(x => `<i class="bit-${x}">${x}</i>`).join('')}</div>`); });
-      $('m-bits').hidden = false; $('morse').dataset.state = 'win';
-    } else if (text.length >= 3 && !won) { $('m-msg').className = 'msg no'; $('m-msg').textContent = `Reçu « ${text} ». Pour S : trois touches courtes. Pour O : trois longues.`; }
+  function letterDone() {
+    const tgt = TARGET[lvl], want = tgt[text.length], got = MORSE[cur] || '?';
+    if (got === want) { text += got; TS.good(); TS.flash($('m-text'), 'good'); TS.bubble($('m-code'), `${got} = ${pretty(cur)} ✔ La pause a dit « lettre suivante ».`, 'good'); }
+    else { TS.bad(); TS.flash(key, 'bad'); TS.bubble($('m-code'), `Vous avez envoyé ${pretty(cur)} (${got === '?' ? 'aucune lettre' : got}). Pour ${want} : ${pretty(CODE[want])}. Réessayez cette lettre.`, 'bad'); }
+    cur = ''; render();
+    if (text === tgt) win();
+  }
+  function showBits(word) { const rows = $('bitrows'); rows.innerHTML = ''; word.split('').forEach(ch => { const b = ch.charCodeAt(0).toString(2).padStart(8, '0'); rows.insertAdjacentHTML('beforeend', `<div><b>${ch}</b>${b.split('').map(x => `<i class="bit-${x}">${x}</i>`).join('')}</div>`); }); $('m-bits').hidden = false; }
+  function win() {
+    TS.win(); TS.confetti(key); LV.done(lvl); mg.dataset.state = 'win' + lvl;
+    if (lvl === 1) { msay('SOS reçu! Trois lettres avec un seul bouton : allumé ou éteint.', 'ok'); window.Path.learn('onoff'); showBits('SOS'); setTimeout(() => LV.go(2), 2600); }
+    else { msay('OUI reçu! Regardez : chaque lettre devient 8 bits, des 1 et des 0. C\'est ce que stocke une puce.', 'ok'); showBits('OUI'); window.Path.learn('bit'); setTimeout(() => LV.go(3), 2600); }
   }
   key.addEventListener('pointerdown', e => { e.preventDefault(); key.setPointerCapture(e.pointerId); press(); });
   key.addEventListener('pointerup', release); key.addEventListener('pointercancel', release);
   key.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (!e.repeat) press(); } });
   key.addEventListener('keyup', e => { if (e.key === ' ' || e.key === 'Enter') release(); });
   key.addEventListener('contextmenu', e => e.preventDefault());
-  $('m-clear').addEventListener('click', () => { cur = ''; text = ''; won = false; clearTimeout(timer); render(); $('m-msg').textContent = ''; $('m-bits').hidden = true; $('morse').dataset.state = ''; });
+  $('m-clear').addEventListener('click', () => { cur = ''; text = ''; clearTimeout(timer); render(); msay(''); });
+  /* niveau 4 : recevoir avec du bruit */
+  const RX = 'ALLO', lamp = $('rx-lamp'); let rxBusy = false;
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  async function play(noise, u) {
+    if (rxBusy) return; rxBusy = true; $('rx-code').textContent = '\u00a0'; let shown = '', n = 0;
+    for (const ch of RX) {
+      for (const sym of CODE[ch]) {
+        lamp.className = 'rx-lamp on'; TS.tone(650, (sym === '.' ? u : 3 * u) / 1000, .1, 'sine'); await wait(sym === '.' ? u : 3 * u); lamp.className = 'rx-lamp';
+        shown += sym === '.' ? '·' : '—'; $('rx-code').textContent = shown;
+        await wait(u);
+        if (noise && (n++ % 3 === 1)) { lamp.className = 'rx-lamp noise'; TS.tone(140, .04, .08, 'sawtooth'); await wait(40); lamp.className = 'rx-lamp'; await wait(u / 2); }
+      }
+      shown += '   '; await wait(3 * u);
+    }
+    rxBusy = false;
+  }
+  $('rx-play').addEventListener('click', () => play(true, 160));
+  $('rx-slow').addEventListener('click', () => { play(false, 320); TS.bubble($('rx-slow'), 'Moins de bruit, plus lent : le récepteur comprend mieux. C\'est pour ça que les lignes sont protégées et qu\'on répète les messages importants.'); });
+  $('rx-check').addEventListener('click', () => {
+    const v = $('rx-in').value.trim().toUpperCase().replace('Ô', 'O');
+    if (v === RX) { TS.win(); TS.confetti($('rx-lamp')); LV.done(3); mg.dataset.state = 'win3'; msay('Bien reçu : ALLO! Vous avez trié le signal du bruit. Répondez, et c\'est la <b>rétroaction</b> : l\'émetteur sait que c\'est arrivé.', 'ok'); window.Path.learn('bit', 'Le récepteur doit séparer le vrai signal (points et traits) du bruit (grésillements). Un bit bien net se lit sans erreur.'); }
+    else { TS.bad(); TS.flash($('rx-in'), 'bad'); TS.bubble($('rx-in'), v.length !== 4 ? 'Le mot a 4 lettres. Les trois espaces marquent la fin d\'une lettre.' : 'Pas tout à fait. Les grésillements gris ne comptent pas. Essayez « Plus lent, sans bruit ».', 'bad'); }
+  });
+  $('rx-in').addEventListener('keydown', e => { if (e.key === 'Enter') $('rx-check').click(); });
+  setLevel(0);
 })();
