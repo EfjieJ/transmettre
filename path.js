@@ -57,6 +57,6 @@
   };
   paint(); window.__path = got.slice();
   // n'afficher la barre que dans les chapitres 2 et 3
-  const zone = () => { const a = document.getElementById('communiquer'), z = document.querySelector('.end'); if (!a || !z) return; const y = scrollY + innerHeight / 2; bar.classList.toggle('visible', y > a.offsetTop && y < z.offsetTop + 200); };
+  const zone = () => { const a = document.getElementById('communiquer'), z = document.getElementById('corps-de-lumiere') || document.querySelector('.end'); if (!a || !z) return; const y = scrollY + innerHeight / 2; bar.classList.toggle('visible', y > a.offsetTop && y < z.offsetTop - 80); };
   addEventListener('scroll', zone, { passive: true }); zone();
 })();
