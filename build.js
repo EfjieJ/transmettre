@@ -59,7 +59,7 @@
   function refresh() {
     bp.querySelectorAll('.real').forEach(g => g.classList.toggle('on', placed.has(g.dataset.real)));
     ghosts().forEach(g => g.classList.toggle('filled', placed.has(g.dataset.zone)));
-    document.querySelectorAll('.part').forEach(p => p.classList.toggle('used', placed.has(p.dataset.part)));
+    document.querySelectorAll('#parts .part').forEach(p => p.classList.toggle('used', placed.has(p.dataset.part)));
     build.dataset.parts = placed.size;
   }
   function tryPlace(part, zone) {
@@ -81,7 +81,7 @@
   }
   // Glisser-déposer + toucher
   let drag = null;
-  document.querySelectorAll('.part').forEach(p => {
+  document.querySelectorAll('#parts .part').forEach(p => {
     p.addEventListener('pointerdown', e => {
       if (busy || placed.has(p.dataset.part) || e.button > 0) return;
       const r = p.getBoundingClientRect();
@@ -99,7 +99,7 @@
       const d = drag; if (!d || d.p !== p) return; drag = null;
       ghosts().forEach(g => g.classList.remove('over'));
       if (!d.moved) { // simple toucher : on sélectionne la pièce
-        document.querySelectorAll('.part').forEach(x => x.classList.remove('sel'));
+        document.querySelectorAll('#parts .part').forEach(x => x.classList.remove('sel'));
         selected = selected === p.dataset.part ? null : p.dataset.part;
         if (selected) { p.classList.add('sel'); say('Maintenant, touchez sa place sur le plan.'); }
         return;
@@ -112,7 +112,7 @@
   });
   bp.addEventListener('click', e => {
     if (!selected || busy) return; const z = zoneAt(e.clientX, e.clientY, selected); if (!z) return;
-    const part = selected; selected = null; document.querySelectorAll('.part').forEach(x => x.classList.remove('sel')); tryPlace(part, z);
+    const part = selected; selected = null; document.querySelectorAll('#parts .part').forEach(x => x.classList.remove('sel')); tryPlace(part, z);
   });
   // Pierres
   const STONE_POS = [[265, 112], [305, 106], [345, 110], [385, 106], [420, 112], [325, 92]];

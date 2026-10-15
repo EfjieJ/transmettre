@@ -40,6 +40,8 @@
   <h1>Toute technologie commence<br><span>par une main.</span></h1>
   <p class="lead">Une chose appuie sur une autre, qui appuie sur une autre, jusqu'au résultat.<br>Avant de lire, essayez.</p>
   <a href="#construire" class="btn">Construire ✋</a>
+  <nav class="toc"><a href="#construire">1 · Construire</a><a href="#communiquer">2 · Transmettre l'information</a><a href="#puce">3 · Comprendre une puce</a></nav>
+  <p class="goal-line">Le but du voyage : comprendre ce qu'il y a dans une puce et un circuit imprimé.</p>
   <div class="trio small"><span>Transmettre</span><i>→</i><span>Recevoir</span><i>→</i><span>Retransmettre</span></div>
 </header>
 
@@ -270,6 +272,161 @@
   </div>
 </section>
 
+<section id="communiquer" class="comm-sec">
+  <p class="kicker">Chapitre 2 · Transmettre l'information</p>
+  <h2>Comment un message voyage</h2>
+  <p class="intro">Depuis toujours, c'est le même modèle. Quelqu'un <b>émet</b>, un <b>message</b> passe par un <b>canal</b>, quelqu'un <b>reçoit</b>. En route, du <b>bruit</b> l'abîme. La <b>rétroaction</b>, c'est la réponse qui revient. Touchez une époque pour voir ce qui change.</p>
+
+  <div class="model" id="model">
+    <svg viewBox="0 0 640 210" aria-hidden="true">
+      <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#c4521c"/></marker></defs>
+      <path d="M150 80 H260 M380 80 H490" stroke="#c4521c" stroke-width="4" marker-end="url(#arr)"/>
+      <path d="M560 125 C560 185 80 185 80 125" stroke="#4f7a9a" stroke-width="3" stroke-dasharray="7 6" fill="none" marker-end="url(#arr)" class="feedback"/>
+      <circle r="7" fill="#c4521c" class="m-dot"/>
+      <g class="noise"><path d="M300 10 q10 -8 20 0 q10 -8 20 0 q8 10 0 16 h-40 q-8 -6 0 -16z" fill="#8a8178"/><path d="M318 30 l-6 14 M326 30 l4 16 M334 30 l-3 12" stroke="#8a8178" stroke-width="2"/></g>
+    </svg>
+    <div class="m-box b1"><small>Émetteur</small><b id="m-em">Le forgeron</b></div>
+    <div class="m-box b2"><small>Message · Canal</small><b id="m-ca">un geste, sous les yeux</b></div>
+    <div class="m-box b3"><small>Récepteur</small><b id="m-re">l'apprenti, à côté</b></div>
+    <div class="m-noise"><small>Bruit</small><span id="m-no">il regarde mal, il oublie</span></div>
+    <div class="m-fb"><small>Rétroaction</small><span id="m-fb">l'apprenti refait, le maître corrige</span></div>
+  </div>
+  <div class="bars" id="bars">
+    <div><span>Portée</span><i><b id="bar-p"></b></i></div>
+    <div><span>Vitesse</span><i><b id="bar-v"></b></i></div>
+    <div><span>Fidélité</span><i><b id="bar-f"></b></i></div>
+  </div>
+  <p class="era-note" id="era-note"></p>
+  <ol class="eras" id="eras"></ol>
+
+  <div class="minigames">
+    <div class="mg" id="tel">
+      <h3>Jeu 4 · Le téléphone arabe</h3>
+      <p>Un message passe par 6 personnes. De bouche à oreille, ou recopié à la main?</p>
+      <p class="tel-src">« <span id="tel-orig">Le forgeron montre la roue à son apprenti</span> »</p>
+      <div class="controls"><button class="btn" data-mode="oral">🗣️ De bouche à oreille</button><button class="btn ghost" data-mode="ecrit">✍️ Recopié par écrit</button></div>
+      <ol class="tel-chain" id="tel-chain"></ol>
+      <p class="msg" id="tel-msg" aria-live="polite"></p>
+    </div>
+    <div class="mg" id="morse">
+      <h3>Jeu 5 · Envoyez « SOS » en morse</h3>
+      <p>Touche courte = point (·), touche longue = trait (—). S = · · ·  O = — — —. Une pause entre les lettres.</p>
+      <button class="morse-key" id="m-key" aria-label="Manipulateur morse : appuyez court ou long"><span></span>Appuyez ici</button>
+      <p class="m-code" id="m-code" aria-live="polite">&nbsp;</p>
+      <p class="m-text">Reçu : <b id="m-text">…</b></p>
+      <div class="controls"><button class="btn ghost" id="m-clear">Effacer</button></div>
+      <p class="msg" id="m-msg" aria-live="polite"></p>
+      <div class="bits" id="m-bits" hidden>
+        <p><b>Morse : court ou long. Ordinateur : 0 ou 1.</b> Un <b>bit</b>, c'est une seule question : allumé ou éteint? Voici vos trois lettres comme une puce les stocke (code ASCII, 8 bits par lettre) :</p>
+        <div class="bitrows" id="bitrows"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="puce" class="chip-sec">
+  <p class="kicker">Chapitre 3 · Du levier à la puce</p>
+  <h2>Comprendre une puce et un circuit imprimé</h2>
+  <p class="intro">Tout ce site mène ici. Une puce, c'est des milliards de <b>petits interrupteurs</b>. Chacun est un levier où une petite poussée en commande une grande. Et on les <b>imprime</b>, comme Gutenberg imprimait des pages.</p>
+
+  <div class="trio-sw">
+    <figure class="sw" data-sw="levier">
+      <svg viewBox="0 0 200 130"><rect y="110" width="200" height="20" fill="url(#dirt)"/><path d="M92 110 l8-14 8 14z" fill="url(#stone)"/><g class="sw-move l"><rect x="20" y="92" width="160" height="7" rx="3" fill="url(#wood)"/><ellipse cx="160" cy="80" rx="20" ry="14" fill="url(#stone)"/></g><path d="M30 60 v26" stroke="#c4521c" stroke-width="4" class="sw-push"/></svg>
+      <figcaption><b>Le levier</b> Une petite poussée d'un côté soulève un gros poids de l'autre.</figcaption>
+    </figure>
+    <figure class="sw" data-sw="relais">
+      <svg viewBox="0 0 200 130"><rect width="200" height="130" fill="#f3ede3"/><rect x="20" y="70" width="40" height="34" rx="4" fill="url(#metal)"/><path d="M24 76 h32 M24 82 h32 M24 88 h32 M24 94 h32" stroke="#b87333" stroke-width="3"/><g class="sw-move r"><rect x="64" y="58" width="80" height="6" fill="url(#iron)"/></g><path d="M150 61 h30 v-40 h-140 v10" stroke="#5a3f28" stroke-width="3" fill="none"/><circle cx="40" cy="38" r="10" class="bulb2" stroke="#5d666d" stroke-width="2"/></svg>
+      <figcaption><b>Le relais (1835)</b> Un petit courant fait un aimant. L'aimant tire une lame de métal, qui ferme un gros circuit.</figcaption>
+    </figure>
+    <figure class="sw" data-sw="transistor">
+      <svg viewBox="0 0 200 130"><rect width="200" height="130" fill="#e9eef1"/><rect x="40" y="70" width="120" height="40" fill="#8e9aa3"/><rect x="40" y="62" width="40" height="10" fill="#b87333"/><rect x="120" y="62" width="40" height="10" fill="#b87333"/><rect x="86" y="44" width="28" height="22" fill="#c4521c"/><rect x="80" y="70" width="40" height="6" class="channel"/><circle r="3" fill="#ffd36b" class="tr-e"/><text x="60" y="58" class="t-l">entrée</text><text x="100" y="38" class="t-l">grille</text><text x="140" y="58" class="t-l">sortie</text></svg>
+      <figcaption><b>Le transistor (1947)</b> Pas de pièce qui bouge : une petite tension sur la <i>grille</i> ouvre un passage, et le grand courant passe.</figcaption>
+    </figure>
+  </div>
+  <div class="controls"><button class="btn" id="sw-press">✋ Appuyer (petite poussée)</button></div>
+  <p class="fine center">Même idée trois fois : <b>un petit qui commande un grand</b>. Le transistor fait ça des milliards de fois par seconde, sans s'user.</p>
+
+  <!-- ===== CIRCUIT IMPRIMÉ ===== -->
+  <div class="pcb-game" id="pcbg">
+    <h3>Jeu 6 · Fabriquez un circuit imprimé</h3>
+    <p class="how"><b>Circuit imprimé</b> : une plaque où des chemins de cuivre (les <b>pistes</b>) remplacent les fils. 1) Posez les 4 pièces sur les 4 emplacements. 2) Tracez les pistes : touchez une pastille de cuivre, puis une autre. 3) Fermez l'interrupteur.</p>
+    <div class="pcb-parts" id="pcb-parts">
+      <button class="part" data-c="pile"><svg viewBox="0 0 60 40"><rect x="6" y="10" width="44" height="20" rx="3" fill="#2b2926"/><rect x="6" y="10" width="14" height="20" fill="#c4a03a"/><rect x="50" y="15" width="5" height="10" fill="url(#metal)"/><text x="30" y="25" fill="#fff" font-size="10" text-anchor="middle">+ −</text></svg>Pile</button>
+      <button class="part" data-c="res"><svg viewBox="0 0 60 40"><path d="M2 20 h12 M46 20 h12" stroke="url(#metal)" stroke-width="3"/><rect x="14" y="12" width="32" height="16" rx="7" fill="#d8c39a"/><g stroke-width="3"><path d="M21 12 v16" stroke="#7a4f26"/><path d="M27 12 v16" stroke="#222"/><path d="M33 12 v16" stroke="#c4521c"/><path d="M40 12 v16" stroke="#c9a227"/></g></svg>Résistance</button>
+      <button class="part" data-c="led"><svg viewBox="0 0 60 40"><path d="M22 34 v-14 a8 8 0 0 1 16 0 v14z" fill="#e05545" opacity=".85"/><path d="M26 34 v4 M34 34 v6" stroke="url(#metal)" stroke-width="2"/></svg>LED</button>
+      <button class="part" data-c="sw"><svg viewBox="0 0 60 40"><rect x="10" y="16" width="40" height="14" rx="3" fill="#3a3f44"/><rect x="18" y="8" width="12" height="10" rx="2" fill="#e3e7ea"/></svg>Interrupteur</button>
+    </div>
+    <div class="pcb-wrap">
+      <svg viewBox="0 0 600 340" class="pcb" id="pcb" aria-label="Plaque de circuit imprimé">
+        <defs><pattern id="fr4" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#1f6b3f"/><path d="M0 10 L10 0" stroke="#25784a" stroke-width="1"/></pattern>
+        <radialGradient id="ledglow"><stop offset="0" stop-color="#ffb3a6"/><stop offset="1" stop-color="#ff3b2b" stop-opacity="0"/></radialGradient></defs>
+        <rect x="10" y="10" width="580" height="320" rx="14" fill="url(#fr4)" stroke="#164d2d" stroke-width="4"/>
+        <circle cx="34" cy="34" r="8" fill="#e8e1d0"/><circle cx="566" cy="34" r="8" fill="#e8e1d0"/><circle cx="34" cy="306" r="8" fill="#e8e1d0"/><circle cx="566" cy="306" r="8" fill="#e8e1d0"/>
+        <text x="300" y="322" class="silk">TRANSMETTRE · v1</text>
+        <g id="traces"></g>
+        <g id="fps"></g>
+        <g id="pads"></g>
+      </svg>
+    </div>
+    <div class="controls"><button class="btn" id="pcb-sw">⏻ Fermer l'interrupteur</button><button class="btn ghost" id="pcb-undo">Effacer les pistes</button><button class="btn ghost" id="pcb-reset">Recommencer</button></div>
+    <p class="msg" id="pcb-msg" aria-live="polite">Posez d'abord les pièces.</p>
+    <p class="fine">À savoir : une <b>LED</b> (petite lampe) a un sens : son côté long (+) vers le + de la pile. Touchez une LED posée pour la retourner. Une <b>résistance</b> freine le courant pour que la LED ne grille pas. Deux pistes ne peuvent pas se croiser : elles se toucheraient.</p>
+  </div>
+
+  <!-- ===== PORTES LOGIQUES ===== -->
+  <div class="gate-game" id="gates">
+    <h3>Jeu 7 · Faites calculer 1 + 1 à des interrupteurs</h3>
+    <p class="how">Avec des transistors, on fabrique des <b>portes logiques</b> : de petits montages qui répondent oui (1) ou non (0). Il en faut deux pour additionner deux bits. Choisissez la bonne porte pour chaque case, puis testez.</p>
+    <div class="gate-kinds">
+      <div class="gk"><svg viewBox="0 0 140 70"><path d="M10 35 h20 M30 35 l10 -10 M45 35 h20 M65 35 l10 -10 M80 35 h20" stroke="#5a3f28" stroke-width="3" fill="none"/><circle cx="115" cy="35" r="11" class="gk-l and" stroke="#5d666d" stroke-width="2"/></svg><b>ET</b> deux interrupteurs à la suite : la lampe s'allume seulement si A <i>et</i> B sont fermés.</div>
+      <div class="gk"><svg viewBox="0 0 140 70"><path d="M10 35 h15 v-15 h15 l10 -8 M55 20 h15 v15 M25 35 v15 h15 l10 -8 M55 50 h15 v-15 M70 35 h30" stroke="#5a3f28" stroke-width="3" fill="none"/><circle cx="115" cy="35" r="11" class="gk-l or" stroke="#5d666d" stroke-width="2"/></svg><b>OU</b> deux chemins côte à côte : la lampe s'allume si A <i>ou</i> B (ou les deux).</div>
+      <div class="gk"><svg viewBox="0 0 140 70"><text x="70" y="40" text-anchor="middle" font-size="13" fill="#5a3f28">un seul des deux</text></svg><b>OU-exclusif</b> s'allume si A ou B, <i>mais pas les deux</i>. (Fait d'environ 6 à 12 transistors.)</div>
+    </div>
+    <div class="adder">
+      <div class="inputs"><button class="bit" id="gA" aria-pressed="false">A = <b>0</b></button><button class="bit" id="gB" aria-pressed="false">B = <b>0</b></button></div>
+      <div class="gslots">
+        <div class="gslot" data-slot="carry"><small>Retenue (le chiffre des « deux »)</small><span class="g-in">?</span><i class="led-out" id="o-carry"></i></div>
+        <div class="gslot" data-slot="sum"><small>Somme (le chiffre des « un »)</small><span class="g-in">?</span><i class="led-out" id="o-sum"></i></div>
+      </div>
+      <div class="gtray" id="gtray"><button class="gate" data-g="ET">ET</button><button class="gate" data-g="OU">OU</button><button class="gate" data-g="XOR">OU-exclusif</button></div>
+      <p class="result" id="g-res">A + B = <b>?</b></p>
+      <div class="controls"><button class="btn" id="g-test">✔ Tester les 4 cas</button></div>
+      <table class="truth" id="truth"><tr><th>A</th><th>B</th><th>Retenue</th><th>Somme</th><th>En binaire</th></tr></table>
+      <p class="msg" id="g-msg" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <!-- ===== IMPRESSION + ZOOM ===== -->
+  <div class="litho">
+    <h3>Une puce s'imprime, comme une page de Gutenberg</h3>
+    <div class="litho-row">
+      <svg viewBox="0 0 320 200" id="litho-svg" aria-hidden="true">
+        <rect width="320" height="200" fill="#1d1b18"/>
+        <g class="lamp"><rect x="130" y="6" width="60" height="20" rx="4" fill="url(#metal)"/></g>
+        <g class="beam-l"><path d="M140 26 L110 120 H210 L180 26z" fill="#9b7bff" opacity=".35"/></g>
+        <rect x="100" y="70" width="120" height="10" fill="#d9dde0"/><g fill="#1d1b18"><rect x="108" y="70" width="10" height="10"/><rect x="128" y="70" width="22" height="10"/><rect x="160" y="70" width="8" height="10"/><rect x="178" y="70" width="30" height="10"/></g>
+        <text x="236" y="79" class="t-l light">masque</text>
+        <circle cx="160" cy="160" r="40" fill="url(#metal)"/><g class="dies" id="dies"></g>
+        <text x="236" y="164" class="t-l light">tranche de silicium</text>
+      </svg>
+      <div>
+        <p><b>Photolithographie</b> : imprimer avec de la lumière. On éclaire un <b>masque</b> (un pochoir du circuit) sur une tranche de silicium recouverte d'un vernis sensible. Là où la lumière passe, le vernis change ; on grave, et le dessin reste. Le même masque est copié des centaines de fois sur la tranche.</p>
+        <p>Les <b>circuits imprimés</b> se font pareil, mais sur du cuivre : on imprime le dessin des pistes, puis on dissout le cuivre en trop.</p>
+        <div class="controls left"><button class="btn" id="litho-go">💡 Insoler (éclairer)</button></div>
+        <p class="fine">Gutenberg, vers 1450 : une forme, des milliers de pages identiques. La puce : un masque, des milliards de transistors identiques.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="zoom" id="zoom">
+    <h3>Reculez : de votre addition à la puce</h3>
+    <div class="zoom-stage"><svg viewBox="0 0 400 240" id="zoom-svg" aria-hidden="true"></svg></div>
+    <p class="zoom-cap" id="zoom-cap"></p>
+    <input type="range" id="zoom-r" min="0" max="4" step="1" value="0" aria-label="Niveau de zoom">
+    <div class="zoom-ticks"><span>2 portes</span><span>additionneur</span><span>processeur</span><span>puce</span><span>cellulaire</span></div>
+  </div>
+</section>
+
 <section class="end">
   <h2>À vous de tenir le fil.</h2>
   <div class="trio"><span>Recevoir</span><i>→</i><span>Comprendre</span><i>→</i><span>Retransmettre</span></div>
@@ -277,7 +434,10 @@
   <a href="#jeu" class="btn">Rejouer</a>
 </section>
 <footer>Transmettre · on change les accords sans lâcher le fil</footer>
+<script src="sound.js"></script>
 <script src="script.js"></script>
 <script src="build.js"></script>
+<script src="comm.js"></script>
+<script src="chip.js"></script>
 </body>
 </html>
