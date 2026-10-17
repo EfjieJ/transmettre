@@ -21,7 +21,7 @@ window.TALK_D = {
 "Un seul petit point touche le sol : presque pas de frottement.",
 "Le sol porte le poids, la main n'a plus qu'à guider."
 ],
-"fact": "Les Égyptiens déplaçaient de gros blocs en mouillant le sable devant les traîneaux : une peinture du tombeau de Djéhoutihotep (vers 1900 av. J.-C.) montre un homme qui verse de l'eau."
+"fact": "Une peinture du tombeau de Djéhoutihotep, en Égypte (il y a environ 3 900 ans), montre un homme qui verse de l'eau devant un traîneau qui tire une statue géante. Selon des physiciens de l'Université d'Amsterdam (2014), du sable mouillé juste assez réduit le frottement d'environ la moitié. D'autres chercheurs y voient plutôt un geste rituel."
 },
 "Le levier": {
 "b": [
@@ -33,7 +33,7 @@ window.TALK_D = {
 "Avec la barre, je la lève tout seul! Sans toi, j'aurais jamais su."
 ],
 "beats": [
-"Problème : la pierre pèse plus que trois personnes peuvent pousser.",
+"Problème : la pierre est trop lourde, même pour trois personnes.",
 "Essai : on pousse tous ensemble. Elle bouge à peine.",
 "Invention : une barre posée sur un appui.",
 "Résultat : une seule personne la soulève."
@@ -67,7 +67,7 @@ window.TALK_D = {
 "La roue roule au lieu de frotter.",
 "La charge avance avec peu d'effort."
 ],
-"fact": "La plus vieille roue en bois connue, trouvée près de Ljubljana en Slovénie, a environ 5 000 ans."
+"fact": "La plus vieille roue en bois connue, avec son essieu, a été trouvée en 2002 dans les marais de Ljubljana, en Slovénie. Elle a environ 5 150 à 5 200 ans."
 },
 "La poulie": {
 "b": [
@@ -76,7 +76,7 @@ window.TALK_D = {
 ],
 "a": [
 "Accroche la corde sur la roue, pis tire vers le bas. Ton poids va travailler pour toi.",
-"Le seau monte presque tout seul! Je te dois une fière chandelle."
+"Le seau monte bien plus facilement! Je te dois une fière chandelle."
 ],
 "beats": [
 "Problème : remonter l'eau du puits à bout de bras.",
@@ -113,7 +113,7 @@ window.TALK_D = {
 "La roue porte presque tout le poids.",
 "On pousse, et la terre avance."
 ],
-"fact": "La brouette à une roue est attestée en Chine il y a environ 1 800 ans; en Europe, elle apparaît vers le XIIe siècle."
+"fact": "En Chine, des brouettes à une roue sont représentées il y a environ 1 800 à 2 000 ans (dynastie Han). En Europe, elles apparaissent vers la fin du XIIe siècle."
 },
 "L'engrenage": {
 "b": [
@@ -136,7 +136,7 @@ window.TALK_D = {
 "Les dents poussent les dents de la roue suivante.",
 "La meule tourne et écrase le grain."
 ],
-"fact": "Le mécanisme d'Anticythère, retrouvé dans une épave grecque, utilise plus de 30 roues dentées pour calculer la position des astres. Il a plus de 2 000 ans."
+"fact": "Le mécanisme d'Anticythère, retrouvé dans une épave grecque en 1901, compte au moins 30 roues dentées conservées. Il servait à calculer la position du Soleil et de la Lune. Il a plus de 2 000 ans."
 },
 "La vis sans fin": {
 "b": [
@@ -182,7 +182,7 @@ window.TALK_D = {
 "La vapeur pousse le piston.",
 "Le piston fait tourner une roue."
 ],
-"fact": "Le mot « watt » vient de James Watt, qui a beaucoup amélioré la machine à vapeur vers 1770. C'est lui qui a popularisé le « cheval-vapeur »."
+"fact": "James Watt a fait breveter en 1769 un condenseur séparé qui rendait la machine à vapeur beaucoup plus efficace. C'est lui qui a inventé l'unité « cheval-vapeur », et l'unité « watt » porte son nom."
 },
 "Le moteur à combustion": {
 "b": [
@@ -205,7 +205,7 @@ window.TALK_D = {
 "Le piston fait tourner le vilebrequin.",
 "Les roues tournent."
 ],
-"fact": "La première automobile à essence vendue est celle de Carl Benz, brevetée en 1886. Elle roulait à environ 16 km/h."
+"fact": "Le brevet déposé par Carl Benz le 29 janvier 1886 est considéré comme l'acte de naissance de l'automobile à essence. Son premier modèle roulait à environ 16 km/h; les ventes ont commencé vers 1888."
 },
 "L'électricité": {
 "b": [
@@ -228,7 +228,7 @@ window.TALK_D = {
 "Le courant pousse les électrons dans le fil.",
 "Le filament chauffe et brille."
 ],
-"fact": "Au Québec, plus de 90 % de l'électricité vient de l'hydroélectricité : l'eau des rivières fait tourner des turbines."
+"fact": "En 2024, plus de 99 % de l'électricité produite par Hydro-Québec venait de centrales hydroélectriques : l'eau des rivières fait tourner des turbines."
 },
 "La radio": {
 "b": [
@@ -237,7 +237,7 @@ window.TALK_D = {
 ],
 "a": [
 "Je t'apprends le code et l'antenne. Ce que l'opérateur m'a appris, je te l'apprends.",
-"Allô la France? Ici le Canada! Wow, merci!"
+"Allô l'Angleterre? Ici Terre-Neuve! Wow, merci!"
 ],
 "beats": [
 "Problème : une nouvelle voyage à la vitesse d'un cheval.",
@@ -251,7 +251,7 @@ window.TALK_D = {
 "Une onde invisible part dans l'air.",
 "L'antenne du récepteur la capte et le haut-parleur rejoue la voix."
 ],
-"fact": "En 1901, Marconi capte à Signal Hill, à Terre-Neuve, un signal radio envoyé d'Angleterre : la lettre « S » en morse."
+"fact": "Le 12 décembre 1901, à Signal Hill (Terre-Neuve), Marconi dit avoir capté un signal envoyé de Poldhu, en Angleterre : la lettre « S » en morse. Certains en ont douté à l'époque, mais d'autres essais ont vite confirmé la radio transatlantique."
 },
 "Le cellulaire": {
 "b": [
@@ -297,7 +297,7 @@ window.TALK_D = {
 "Des milliers de serveurs cherchent en même temps.",
 "La réponse revient par le même chemin."
 ],
-"fact": "Plus de 95 % du trafic internet entre les continents passe par des câbles sous-marins, pas par satellite."
+"fact": "Selon TeleGeography, la grande majorité du trafic internet entre les continents (souvent estimée à plus de 95 %) passe par des câbles sous-marins, pas par satellite."
 },
 "Superintelligence et robotisme": {
 "b": [
@@ -320,7 +320,7 @@ window.TALK_D = {
 "Des moteurs bougent chaque articulation.",
 "La pince prend et dépose."
 ],
-"fact": "Le premier robot industriel, Unimate, a commencé à travailler en 1961 dans une usine General Motors au New Jersey."
+"fact": "Le premier robot industriel, Unimate, a commencé à travailler en 1961 dans une usine General Motors d'Ewing, au New Jersey."
 },
 "Le coin et la hache": {
 "b": [
@@ -366,7 +366,7 @@ window.TALK_D = {
 "La tête frappe le clou.",
 "Toute l'énergie pousse la pointe dans le bois."
 ],
-"fact": "Les plus vieux outils de frappe connus, des pierres trouvées à Lomekwi au Kenya, ont environ 3,3 millions d'années."
+"fact": "Les plus vieux outils de pierre connus, trouvés à Lomekwi au Kenya, ont environ 3,3 millions d'années. On les fabriquait et on s'en servait en frappant pierre contre pierre."
 },
 "Le cric": {
 "b": [
@@ -389,7 +389,7 @@ window.TALK_D = {
 "Beaucoup de tours = un peu de hauteur, mais avec beaucoup de force.",
 "L'auto monte."
 ],
-"fact": "Richard Dudgeon, à New York, a breveté un cric hydraulique portatif en 1851."
+"fact": "Les crics à vis existaient déjà avant. En 1851, à New York, Richard Dudgeon obtient un brevet américain pour un cric hydraulique portatif : on pompe un liquide au lieu de tourner une vis."
 },
 "La rame et le gouvernail": {
 "b": [
@@ -435,7 +435,7 @@ window.TALK_D = {
 "Des engrenages passent le mouvement à la meule.",
 "La meule écrase le grain."
 ],
-"fact": "Les premiers moulins à vent connus, à axe vertical, servaient en Perse (région du Sistan) vers le IXe siècle."
+"fact": "Les plus anciens moulins à vent connus, à axe vertical, se trouvaient au Sistan, en Perse orientale. L'historien al-Masʿudi les décrit au Xe siècle."
 },
 "La bicyclette": {
 "b": [
@@ -450,7 +450,7 @@ window.TALK_D = {
 "Problème : aller loin à pied.",
 "Essai : marcher, encore et encore.",
 "Invention : deux roues, des pédales et une chaîne.",
-"Résultat : le même effort va 3 à 4 fois plus loin."
+"Résultat : avec la même énergie, on va environ 3 à 4 fois plus loin qu'à pied."
 ],
 "chain": [
 "Le pied pousse la pédale.",
@@ -458,7 +458,7 @@ window.TALK_D = {
 "La chaîne fait tourner la roue arrière.",
 "La roue pousse sur le sol et le vélo avance."
 ],
-"fact": "La draisienne de Karl Drais (1817) n'avait pas de pédales : on poussait avec les pieds au sol."
+"fact": "La draisienne de Karl Drais (1817) n'avait pas de pédales : on poussait avec les pieds au sol. Aujourd'hui, à vélo, on dépense environ 3 à 4 fois moins d'énergie par kilomètre qu'à pied."
 },
 "L'ascenseur et le contrepoids": {
 "b": [
@@ -467,7 +467,7 @@ window.TALK_D = {
 ],
 "a": [
 "Un poids de l'autre côté de la poulie. L'ingénieure m'a expliqué, je t'explique.",
-"Je monte sans forcer! Merci de m'avoir partagé ça."
+"Je monte sans forcer! Merci de m'avoir montré ça."
 ],
 "beats": [
 "Problème : monter une charge très haut.",
@@ -481,7 +481,7 @@ window.TALK_D = {
 "Les deux s'équilibrent presque.",
 "Une petite force suffit pour monter la cabine."
 ],
-"fact": "En 1854, à New York, Elisha Otis fait couper le câble de sa plateforme devant la foule : son frein de sécurité l'arrête. Les gratte-ciel deviennent possibles."
+"fact": "En 1854, à New York, Elisha Otis fait couper la corde de sa plateforme devant la foule : son frein de sécurité l'arrête. Ce genre de frein a aidé à rendre possibles les immeubles très hauts."
 },
 "Le boulier et la calculatrice": {
 "b": [
@@ -504,7 +504,7 @@ window.TALK_D = {
 "Des additionneurs (comme dans le jeu 8) font le calcul.",
 "L'écran affiche le résultat."
 ],
-"fact": "En 1642, à 19 ans, Blaise Pascal construit la Pascaline, une machine à engrenages qui additionne, pour aider son père à faire ses comptes."
+"fact": "À partir de 1642, vers 19 ans, Blaise Pascal conçoit la Pascaline, une machine à engrenages qui additionne, pour aider son père à faire ses calculs d'impôts."
 },
 "Le tire-bouchon": {
 "b": [
@@ -596,7 +596,7 @@ window.TALK_D = {
 "Des centaines de dents passent à chaque mouvement.",
 "Le trait de scie s'enfonce dans le bois."
 ],
-"fact": "Des scies en cuivre étaient déjà utilisées en Égypte ancienne, il y a plus de 4 000 ans, pour couper le bois et même la pierre (avec du sable)."
+"fact": "En Égypte ancienne, il y a plus de 4 000 ans, on utilisait déjà des scies en cuivre pour le bois, et même pour la pierre, en ajoutant du sable comme abrasif."
 },
 "La pompe à eau": {
 "b": [

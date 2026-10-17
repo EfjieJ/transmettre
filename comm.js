@@ -2,19 +2,19 @@
 (() => {
   const $ = id => document.getElementById(id), TS = window.TS;
   const ERAS = [
-    ['✋', 'Geste et imitation', 'il y a plus de 2 millions d\'années', 'Le forgeron', 'un geste, sous les yeux', 'l\'apprenti, à côté', 'il regarde mal, il oublie', 'l\'apprenti refait, le maître corrige', 1, 1, 3, 'Le premier canal : les yeux. Portée : quelques mètres.'],
+    ['✋', 'Geste et imitation', 'il y a plus de 2 millions d\'années (outils de pierre : 3,3 millions)', 'Le forgeron', 'un geste, sous les yeux', 'l\'apprenti, à côté', 'il regarde mal, il oublie', 'l\'apprenti refait, le maître corrige', 1, 1, 3, 'Le premier canal : les yeux. Portée : quelques mètres.'],
     ['🗣️', 'Parole et récit oral', 'date inconnue, très ancienne', 'Une conteuse', 'des mots, par l\'air', 'le village', 'on déforme, on oublie des bouts', 'on pose des questions tout de suite', 2, 2, 2, 'Chaque personne qui répète change un peu l\'histoire. Essayez le jeu du téléphone arabe plus bas.'],
-    ['🖐️', 'Dessins sur les parois', 'plus de 40 000 ans', 'Un chasseur', 'une image, sur la roche', 'ceux qui viendront après', 'la roche s\'efface, le sens se perd', 'aucune : l\'auteur est parti', 2, 1, 3, 'Pour la première fois, le message survit à celui qui l\'a fait.'],
+    ['🖐️', 'Dessins sur les parois', 'plus de 40 000 ans (selon les datations)', 'Un chasseur', 'une image, sur la roche', 'ceux qui viendront après', 'la roche s\'efface, le sens se perd', 'aucune : l\'auteur est parti', 2, 1, 3, 'Pour la première fois, le message survit à celui qui l\'a fait.'],
     ['🔺', 'Écriture cunéiforme', 'vers 3200 av. J.-C., Mésopotamie', 'Un scribe', 'des signes, sur l\'argile', 'un marchand, plus tard', 'les fautes de copie', 'une réponse, des semaines après', 3, 1, 4, 'On note des quantités de grain, puis des lois, puis des histoires. Le message devient fidèle.'],
     ['🔤', 'L\'alphabet', 'vers 1800 av. J.-C., puis les Phéniciens', 'N\'importe qui', 'une vingtaine de lettres', 'beaucoup plus de lecteurs', 'les mauvaises lectures', 'des lettres échangées', 3, 1, 4, 'Quelques dizaines de signes au lieu de centaines : bien plus de gens peuvent apprendre à lire.'],
     ['📜', 'L\'imprimerie', 'Gutenberg, vers 1450', 'L\'imprimeur', 'une forme en métal, encrée', 'des milliers de lecteurs', 'presque aucun : chaque copie est identique', 'des livres qui répondent à d\'autres livres', 4, 2, 5, 'Une forme, des milliers de pages identiques. Retenez cette idée : les puces sont aussi imprimées.'],
-    ['✉️', 'La poste', 'relais anciens ; timbre en 1840', 'Vous', 'une lettre, de main en main', 'une personne, au loin', 'la perte, le retard', 'la réponse, des jours ou des semaines après', 4, 2, 5, 'Le message voyage tout seul, porté par une chaîne de facteurs.'],
+    ['✉️', 'La poste', 'relais anciens; timbre en 1840', 'Vous', 'une lettre, de main en main', 'une personne, au loin', 'la perte, le retard', 'la réponse, des jours ou des semaines après', 4, 2, 5, 'Le message voyage tout seul, porté par une chaîne de facteurs.'],
     ['⚡', 'Télégraphe et morse', 'années 1830–1840', 'Un télégraphiste', 'des impulsions électriques : court, long', 'une autre ville, presque aussitôt', 'les parasites sur la ligne', 'un accusé de réception', 4, 5, 3, 'Le message n\'est plus qu\'allumé ou éteint, court ou long. C\'est déjà l\'ancêtre des bits.'],
     ['☎️', 'Le téléphone', '1876', 'Votre voix', 'un courant qui imite la voix', 'une personne, en direct', 'le grésillement', 'immédiate : on se répond', 4, 5, 3, 'La voix elle-même voyage dans le fil.'],
     ['📻', 'La radio', 'vers 1895–1901', 'Un studio', 'une onde, dans l\'air', 'des millions d\'auditeurs', 'les interférences', 'presque aucune : on écoute', 5, 5, 3, 'Un seul émetteur, des millions de récepteurs, sans fil.'],
     ['📺', 'La télévision', 'années 1920, partout dans les années 1950', 'Une chaîne', 'des images et du son, par onde', 'des foyers entiers', 'la neige à l\'écran', 'presque aucune', 5, 5, 3, 'L\'image arrive dans la maison.'],
     ['🌐', 'Internet', '1969 (ARPANET), Web en 1991', 'Votre ordinateur', 'des paquets de bits, par câbles', 'n\'importe qui, n\'importe où', 'les paquets perdus… renvoyés', 'immédiate, dans les deux sens', 5, 5, 5, 'Le message est coupé en petits paquets. S\'il en manque un, on le redemande : retransmettre, littéralement.'],
-    ['📱', 'Cellulaire et réseaux sociaux', '1973, téléphone intelligent en 2007', 'Tout le monde', 'texte, photo, vidéo, par onde puis câble', 'des millions, en partage', 'les rumeurs qui se répètent', 'les réponses et partages, en secondes', 5, 5, 4, 'Chacun est à la fois émetteur, récepteur, et retransmetteur.'],
+    ['📱', 'Cellulaire et réseaux sociaux', '1973; téléphones intelligents popularisés vers 2007', 'Tout le monde', 'texte, photo, vidéo, par onde puis câble', 'des millions, en partage', 'les rumeurs qui se répètent', 'les réponses et partages, en secondes', 5, 5, 4, 'Chacun est à la fois émetteur, récepteur, et retransmetteur.'],
     ['🤖', 'L\'intelligence artificielle', 'années 2020', 'Vous, et la machine', 'des questions, des réponses, des traductions', 'vous, à la seconde', 'les erreurs dites avec assurance', 'la conversation elle-même', 5, 5, 3, 'La machine reçoit ce que l\'humanité a écrit, et le retransmet. À vérifier, comme toute source.']
   ];
   const ol = $('eras');
@@ -73,7 +73,7 @@
     if (!slotEl) return; const slot = slotEl.dataset.slot;
     if (PART[p][1] === slot) { line[slot] = p; drawLine(); TS.good(); TS.flash(slotEl, 'good'); TS.bubble(slotEl, WHY[slot], 'good');
       if (line.em && line.ca && line.re) { msay('Ligne montée! Émetteur → canal → récepteur. Passez au niveau 2 pour envoyer un message.', 'ok'); LV.done(0); setTimeout(() => LV.go(1), 1600); } }
-    else { TS.bad(); TS.flash(slotEl, 'bad'); TS.bubble(slotEl, p === 'ficelle' ? 'Une ficelle ne conduit pas l\'électricité : le signal n\'arriverait jamais. Il faut un <b>conducteur</b>, comme le cuivre.' : `Pas ici : la ${PART[p][0].slice(3)} n'est pas ${slot === 'em' ? 'celle qui envoie' : slot === 'ca' ? 'le chemin' : 'celle qui reçoit'}.`, 'bad'); }
+    else { TS.bad(); TS.flash(slotEl, 'bad'); TS.bubble(slotEl, p === 'ficelle' ? 'Une ficelle ne conduit pas l\'électricité : le signal n\'arriverait jamais. Il faut un <b>conducteur</b>, comme le cuivre.' : `Pas ici : ${({ cle: 'la clé morse', fil: 'le fil de cuivre', sonnerie: 'la sonnerie' })[p] || 'cette pièce'} ${slot === 'em' ? 'ne sert pas à envoyer' : slot === 'ca' ? 'n\'est pas le chemin' : 'ne sert pas à recevoir'}.`, 'bad'); }
   }
   const slotAt = (x, y) => [...mg.querySelectorAll('.mslot')].find(s => { const r = s.getBoundingClientRect(); return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom; });
   mg.querySelectorAll('.mpart').forEach(b => TS.pickable(b, { onDrop: (x, y) => putPart(b.dataset.p, slotAt(x, y)), onSelect: () => { mg.querySelectorAll('.mpart').forEach(x => x.classList.remove('sel')); mSel = mSel === b.dataset.p ? null : b.dataset.p; if (mSel) { b.classList.add('sel'); msay('Touchez maintenant la case où elle va.'); } } }));
@@ -100,7 +100,7 @@
   function win() {
     TS.win(); TS.confetti(key); LV.done(lvl); mg.dataset.state = 'win' + lvl;
     if (lvl === 1) { msay('SOS reçu! Trois lettres avec un seul bouton : allumé ou éteint.', 'ok'); window.Path.learn('onoff'); showBits('SOS'); setTimeout(() => LV.go(2), 2600); }
-    else { msay('OUI reçu! Regardez : chaque lettre devient 8 bits, des 1 et des 0. C\'est ce que stocke une puce.', 'ok'); showBits('OUI'); window.Path.learn('bit'); setTimeout(() => LV.go(3), 2600); }
+    else { msay('OUI reçu! Regardez : chaque lettre est rangée dans 8 bits (un octet), des 1 et des 0. C\'est ce que stocke une puce.', 'ok'); showBits('OUI'); window.Path.learn('bit'); setTimeout(() => LV.go(3), 2600); }
   }
   key.addEventListener('pointerdown', e => { e.preventDefault(); key.setPointerCapture(e.pointerId); press(); });
   key.addEventListener('pointerup', release); key.addEventListener('pointercancel', release);

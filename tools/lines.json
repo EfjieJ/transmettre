@@ -1,0 +1,752 @@
+[
+{
+"who": "avant",
+"text": "Ouf… mon dos!",
+"id": "avant-e05fffd8"
+},
+{
+"who": "avant",
+"text": "Encore un voyage? Pas capable!",
+"id": "avant-0b2b39d9"
+},
+{
+"who": "apres",
+"text": "Arrête de la porter. Ce que ma grand-mère m'a montré : fais-la rouler.",
+"id": "apres-f2cf7d91"
+},
+{
+"who": "avant",
+"text": "Elle roule! Merci, j'aurais jamais pensé à ça tout seul.",
+"id": "avant-2fec03a6"
+},
+{
+"who": "avant",
+"text": "Pousse! Elle bouge pas!",
+"id": "avant-8c3a5998"
+},
+{
+"who": "avant",
+"text": "On est trois pis rien!",
+"id": "avant-4ea597ca"
+},
+{
+"who": "apres",
+"text": "Tiens, une barre pis une roche pour appui. Ce que je sais, je te le passe.",
+"id": "apres-97e14cb7"
+},
+{
+"who": "avant",
+"text": "Avec la barre, je la lève tout seul! Sans toi, j'aurais jamais su.",
+"id": "avant-3ae4f6d8"
+},
+{
+"who": "avant",
+"text": "Ça accroche partout!",
+"id": "avant-03a59f8b"
+},
+{
+"who": "avant",
+"text": "Grrr… encore une roche!",
+"id": "avant-3675fe9e"
+},
+{
+"who": "apres",
+"text": "Mon père taillait des roues. Viens, je te montre comment poser l'essieu.",
+"id": "apres-b395af5d"
+},
+{
+"who": "avant",
+"text": "Ça roule tout seul! Je vais montrer ça à mon frère.",
+"id": "avant-c6c86eae"
+},
+{
+"who": "avant",
+"text": "Mes bras brûlent!",
+"id": "avant-494d18bb"
+},
+{
+"who": "avant",
+"text": "Le seau est ben trop creux!",
+"id": "avant-92977422"
+},
+{
+"who": "apres",
+"text": "Accroche la corde sur la roue, pis tire vers le bas. Ton poids va travailler pour toi.",
+"id": "apres-45cfdaad"
+},
+{
+"who": "avant",
+"text": "Le seau monte bien plus facilement! Je te dois une fière chandelle.",
+"id": "avant-05055219"
+},
+{
+"who": "avant",
+"text": "Encore un panier…",
+"id": "avant-67aae589"
+},
+{
+"who": "avant",
+"text": "Mon dos va lâcher!",
+"id": "avant-cd960ac9"
+},
+{
+"who": "apres",
+"text": "Prends ma brouette. Je l'ai bâtie comme mon oncle me l'a appris.",
+"id": "apres-9e611c18"
+},
+{
+"who": "avant",
+"text": "Trois paniers d'un coup! Ton oncle était un génie.",
+"id": "avant-44e0406c"
+},
+{
+"who": "avant",
+"text": "Tourne… tourne… ça finit pu!",
+"id": "avant-dea4f463"
+},
+{
+"who": "avant",
+"text": "On fait ça depuis le matin!",
+"id": "avant-0fedb6e5"
+},
+{
+"who": "apres",
+"text": "Les dents qui se poussent, c'est le meunier qui me l'a appris. À ton tour.",
+"id": "apres-4b4963ec"
+},
+{
+"who": "avant",
+"text": "La rivière travaille à notre place! Je l'oublierai jamais.",
+"id": "avant-ac5b34ae"
+},
+{
+"who": "avant",
+"text": "Lâche pas!",
+"id": "avant-67611be6"
+},
+{
+"who": "avant",
+"text": "Si on lâche, tout retombe!",
+"id": "avant-6fa894bf"
+},
+{
+"who": "apres",
+"text": "Écoute bien : une vis qui pousse une roue dentée, ça ne recule pas.",
+"id": "apres-997e0b7f"
+},
+{
+"who": "avant",
+"text": "Je tourne, pis ça tient tout seul! Merci du truc.",
+"id": "avant-107a7724"
+},
+{
+"who": "avant",
+"text": "Hue! Hue!",
+"id": "avant-4727ab5d"
+},
+{
+"who": "avant",
+"text": "Les chevaux sont brûlés…",
+"id": "avant-ffad9b94"
+},
+{
+"who": "apres",
+"text": "J'ai lu les plans de Watt. Je te les recopie, garde-les précieusement.",
+"id": "apres-86214d50"
+},
+{
+"who": "avant",
+"text": "Le feu pousse à notre place! On va le dire à tout le village.",
+"id": "avant-2e5bfce5"
+},
+{
+"who": "avant",
+"text": "Faut nourrir les chevaux!",
+"id": "avant-7ebe24b1"
+},
+{
+"who": "avant",
+"text": "On arrivera jamais avant la nuit!",
+"id": "avant-015fcb0b"
+},
+{
+"who": "apres",
+"text": "Un piston, une étincelle, de l'essence. Le mécanicien m'a tout expliqué, je te l'explique.",
+"id": "apres-9ce235f9"
+},
+{
+"who": "avant",
+"text": "Vroum! Plus de foin! Sans ton mécanicien, on serait encore à cheval.",
+"id": "avant-51a4d905"
+},
+{
+"who": "avant",
+"text": "On voit rien!",
+"id": "avant-64e7b5bb"
+},
+{
+"who": "avant",
+"text": "Ça fume pis ça tremble.",
+"id": "avant-69b08199"
+},
+{
+"who": "apres",
+"text": "Une boucle de fil, un interrupteur, une ampoule. C'est l'électricien qui m'a transmis ça.",
+"id": "apres-609f682d"
+},
+{
+"who": "avant",
+"text": "Clic! Toute la pièce s'allume! Je vais l'enseigner à mes enfants.",
+"id": "avant-898d8260"
+},
+{
+"who": "avant",
+"text": "Galope, galope!",
+"id": "avant-81b23b2c"
+},
+{
+"who": "avant",
+"text": "La nouvelle va arriver vieille!",
+"id": "avant-21afc877"
+},
+{
+"who": "apres",
+"text": "Je t'apprends le code et l'antenne. Ce que l'opérateur m'a appris, je te l'apprends.",
+"id": "apres-44af7f86"
+},
+{
+"who": "avant",
+"text": "Allô l'Angleterre? Ici Terre-Neuve! Wow, merci!",
+"id": "avant-dee6dc99"
+},
+{
+"who": "avant",
+"text": "Chère cousine…",
+"id": "avant-28211267"
+},
+{
+"who": "avant",
+"text": "La réponse? Dans un mois!",
+"id": "avant-2e0e8339"
+},
+{
+"who": "apres",
+"text": "Regarde : tu tapes, tu envoies. Ma fille m'a montré, je te montre.",
+"id": "apres-a461cee6"
+},
+{
+"who": "avant",
+"text": "Envoyé! Reçu! Je vais montrer ça à grand-maman.",
+"id": "avant-cd7cc26a"
+},
+{
+"who": "avant",
+"text": "Il est où, ce dossier-là?",
+"id": "avant-0cd65385"
+},
+{
+"who": "avant",
+"text": "Tiroir… tiroir… tiroir…",
+"id": "avant-99543538"
+},
+{
+"who": "apres",
+"text": "Tape ta question ici. Les serveurs, c'est des milliers de gens qui les ont bâtis pour toi.",
+"id": "apres-fe12f1ad"
+},
+{
+"who": "avant",
+"text": "Trouvé en une seconde! Merci à tous ceux qui ont bâti ça.",
+"id": "avant-f6a16bd0"
+},
+{
+"who": "avant",
+"text": "Encore la même vis…",
+"id": "avant-ef94f9ff"
+},
+{
+"who": "avant",
+"text": "Mille fois par jour!",
+"id": "avant-46c9a499"
+},
+{
+"who": "apres",
+"text": "Le robot, on l'a programmé ensemble. Ce que l'équipe sait, elle te le passe.",
+"id": "apres-038eab5e"
+},
+{
+"who": "avant",
+"text": "Un café pour vous! Pendant ce temps-là, moi, j'invente.",
+"id": "avant-866122a4"
+},
+{
+"who": "avant",
+"text": "Elle veut pas fendre!",
+"id": "avant-d82a95e0"
+},
+{
+"who": "avant",
+"text": "Mes mains vont lâcher avant la bûche!",
+"id": "avant-9a18e668"
+},
+{
+"who": "apres",
+"text": "Une lame en pointe, c'est mon grand-père qui me l'a appris. Essaie.",
+"id": "apres-0e964cf4"
+},
+{
+"who": "avant",
+"text": "Crac! Ouverte en deux! J'aurais jamais trouvé ça seul.",
+"id": "avant-5f8febb2"
+},
+{
+"who": "avant",
+"text": "Aïe! Mes doigts!",
+"id": "avant-da180577"
+},
+{
+"who": "avant",
+"text": "Le clou rentre pas pantoute!",
+"id": "avant-a5ca1244"
+},
+{
+"who": "apres",
+"text": "Tiens le manche par le bout. Le menuisier me l'a appris, je te le passe.",
+"id": "apres-34d17cc3"
+},
+{
+"who": "avant",
+"text": "Bang! Il est rentré d'un coup. Merci, maître!",
+"id": "avant-2f4077b0"
+},
+{
+"who": "avant",
+"text": "Un, deux, trois… levez!",
+"id": "avant-bf06101e"
+},
+{
+"who": "avant",
+"text": "Elle est ben trop pesante, cette auto-là!",
+"id": "avant-af8c2863"
+},
+{
+"who": "apres",
+"text": "Tourne la manivelle, doucement. Mon père me l'a montré au bord du chemin.",
+"id": "apres-ee9b47da"
+},
+{
+"who": "avant",
+"text": "Elle monte toute seule! Sans toi, je serais encore pogné ici.",
+"id": "avant-342490fd"
+},
+{
+"who": "avant",
+"text": "On tourne en rond!",
+"id": "avant-ba48a55a"
+},
+{
+"who": "avant",
+"text": "Mes mains gèlent dans l'eau!",
+"id": "avant-edaf2ddd"
+},
+{
+"who": "apres",
+"text": "Une rame pour avancer, un gouvernail pour diriger. Mon père pêcheur me l'a appris.",
+"id": "apres-3c40786a"
+},
+{
+"who": "avant",
+"text": "Tout droit jusqu'à l'île! Je vais l'apprendre à ma fille.",
+"id": "avant-19ca49bd"
+},
+{
+"who": "avant",
+"text": "Tourne… tourne…",
+"id": "avant-95f956cf"
+},
+{
+"who": "avant",
+"text": "J'ai plus de bras!",
+"id": "avant-8410d584"
+},
+{
+"who": "apres",
+"text": "Le vent est gratuit. Les meuniers se passent ce secret depuis des siècles.",
+"id": "apres-8b6e5a8a"
+},
+{
+"who": "avant",
+"text": "Ça tourne tout seul! Merci de m'avoir transmis ça.",
+"id": "avant-b79ad31b"
+},
+{
+"who": "avant",
+"text": "Encore dix kilomètres…",
+"id": "avant-d3dd43b8"
+},
+{
+"who": "avant",
+"text": "Mes pieds sont en compote!",
+"id": "avant-9d44f62e"
+},
+{
+"who": "apres",
+"text": "Monte, je te tiens. C'est comme ça que ma mère m'a appris.",
+"id": "apres-259796bd"
+},
+{
+"who": "avant",
+"text": "Je roule tout seul! Je l'oublierai jamais, ce moment-là.",
+"id": "avant-2700b8c9"
+},
+{
+"who": "avant",
+"text": "Dix étages… avec ça?",
+"id": "avant-847d5d0f"
+},
+{
+"who": "avant",
+"text": "Mes jambes tremblent!",
+"id": "avant-43906fb8"
+},
+{
+"who": "apres",
+"text": "Un poids de l'autre côté de la poulie. L'ingénieure m'a expliqué, je t'explique.",
+"id": "apres-933c182b"
+},
+{
+"who": "avant",
+"text": "Je monte sans forcer! Merci de m'avoir montré ça.",
+"id": "avant-f29b8403"
+},
+{
+"who": "avant",
+"text": "Je retiens trois… je perds le fil!",
+"id": "avant-882475cb"
+},
+{
+"who": "avant",
+"text": "Un calcul de même, ça va me prendre la soirée!",
+"id": "avant-114a4b9e"
+},
+{
+"who": "apres",
+"text": "Tape ici. Ce que le boulier a appris aux anciens, la puce le fait vite.",
+"id": "apres-b1178996"
+},
+{
+"who": "avant",
+"text": "1234 fois 56? Déjà! J'aurais jamais su faire ça si vite.",
+"id": "avant-f5c97b08"
+},
+{
+"who": "avant",
+"text": "Il sort pas, ce bouchon-là!",
+"id": "avant-197302b6"
+},
+{
+"who": "avant",
+"text": "Je vais finir par le pousser dedans!",
+"id": "avant-cf757be4"
+},
+{
+"who": "apres",
+"text": "Une spirale pis un levier. Mon oncle m'a passé le truc, je te le passe.",
+"id": "apres-a12bb1fd"
+},
+{
+"who": "avant",
+"text": "Pop! Il est sorti tout d'un coup. Merci du tour!",
+"id": "avant-84faa1b8"
+},
+{
+"who": "avant",
+"text": "Une page… pis encore une page…",
+"id": "avant-a2ee7243"
+},
+{
+"who": "avant",
+"text": "Un livre va me prendre un an à recopier!",
+"id": "avant-2af98bd3"
+},
+{
+"who": "apres",
+"text": "Des lettres de métal, une presse. Gutenberg a appris ça aux imprimeurs; je te l'apprends.",
+"id": "apres-e4707059"
+},
+{
+"who": "avant",
+"text": "Cent pages pareilles! Le savoir va voyager partout.",
+"id": "avant-386f6c0b"
+},
+{
+"who": "avant",
+"text": "On est où, là?",
+"id": "avant-12f25e89"
+},
+{
+"who": "avant",
+"text": "Le soleil est caché… on est perdus!",
+"id": "avant-14d6e8ff"
+},
+{
+"who": "apres",
+"text": "L'aiguille montre toujours le nord. Mon grand-père marin me l'a confiée, je te la confie.",
+"id": "apres-1e4bfa11"
+},
+{
+"who": "avant",
+"text": "Le nord, c'est par là! Sans elle, j'aurais jamais retrouvé le chemin.",
+"id": "avant-f088662e"
+},
+{
+"who": "avant",
+"text": "Avec une roche, ça avance pas!",
+"id": "avant-faa1534c"
+},
+{
+"who": "avant",
+"text": "Ça va prendre la journée pour une planche!",
+"id": "avant-9ac55991"
+},
+{
+"who": "apres",
+"text": "Des dents, pis tu vas et tu viens. Le charpentier me l'a appris, je te le passe.",
+"id": "apres-2a71c363"
+},
+{
+"who": "avant",
+"text": "Une planche en deux minutes! Merci, j'aurais jamais deviné.",
+"id": "avant-a7c83019"
+},
+{
+"who": "avant",
+"text": "Encore un seau au puits…",
+"id": "avant-b7d5e203"
+},
+{
+"who": "avant",
+"text": "Mes épaules vont tomber!",
+"id": "avant-89d56c02"
+},
+{
+"who": "apres",
+"text": "Lève le bras, baisse le bras. Le plombier du village me l'a montré.",
+"id": "apres-68d21a8e"
+},
+{
+"who": "avant",
+"text": "L'eau coule toute seule! Je vais montrer ça à mes voisins.",
+"id": "avant-febb4af2"
+},
+{
+"who": "avant",
+"text": "Je vois flou… c'est un A ou un R?",
+"id": "avant-65ecad1f"
+},
+{
+"who": "avant",
+"text": "Je peux plus lire mes lettres!",
+"id": "avant-bf35e2ef"
+},
+{
+"who": "apres",
+"text": "Essaie mes lentilles. Le lunetier me les a ajustées; je t'apprends à les choisir.",
+"id": "apres-a65b3b63"
+},
+{
+"who": "avant",
+"text": "Je vois clair! Je vais pouvoir lire encore longtemps.",
+"id": "avant-fe4fe2b6"
+},
+{
+"who": "avant",
+"text": "Il m'a encore glissé des mains!",
+"id": "avant-1e6790f9"
+},
+{
+"who": "avant",
+"text": "Un poisson par jour… on va avoir faim!",
+"id": "avant-cc878c4f"
+},
+{
+"who": "apres",
+"text": "Des nœuds, des mailles. Ma mère tissait des filets, je t'apprends ses nœuds.",
+"id": "apres-fd4d3048"
+},
+{
+"who": "avant",
+"text": "Plein de poissons d'un coup! Ce savoir-là, je le garde pis je le donne.",
+"id": "avant-597f950c"
+},
+{
+"who": "avant",
+"text": "J'ai oublié ce que le chef a dit!",
+"id": "avant-06ee316d"
+},
+{
+"who": "avant",
+"text": "Comment je vais retenir tout ça?",
+"id": "avant-a385c288"
+},
+{
+"who": "apres",
+"text": "Chaque son a un signe. Mon maître m'a appris les lettres, je te les apprends.",
+"id": "apres-e53f67cf"
+},
+{
+"who": "avant",
+"text": "J'ai tout noté! Pis dans cent ans, quelqu'un va pouvoir le lire.",
+"id": "avant-4f2a0102"
+},
+{
+"who": "gaston",
+"text": "Allumé, éteint. Comme mon soufflet : ça souffle ou ça souffle pas. Tout part de là!",
+"id": "gaston-d12ad24a"
+},
+{
+"who": "gaston",
+"text": "Un bit, c'est un oui ou un non. Avec assez de oui pis de non, on écrit n'importe quoi.",
+"id": "gaston-3ac63f17"
+},
+{
+"who": "gaston",
+"text": "Ton doigt ferme le circuit. Une boucle fermée, pis le courant passe.",
+"id": "gaston-bd82d56d"
+},
+{
+"who": "gaston",
+"text": "Le transistor, c'est un interrupteur sans doigt : une petite tension ouvre la porte au gros courant.",
+"id": "gaston-01f0da5b"
+},
+{
+"who": "gaston",
+"text": "Des interrupteurs en série ou côte à côte, et voilà une porte logique. Le marteau de l'ordi!",
+"id": "gaston-5c2f58a2"
+},
+{
+"who": "gaston",
+"text": "Des portes qui additionnent! Une puce fait ça des milliards de fois par seconde.",
+"id": "gaston-6782301b"
+},
+{
+"who": "gaston",
+"text": "Des milliards de petits interrupteurs gravés avec de la lumière. Mais au fond, c'est encore allumé-éteint.",
+"id": "gaston-d2780622"
+},
+{
+"who": "gaston",
+"text": "Pas grave! Chez le forgeron, la première épée est toujours croche.",
+"id": "gaston-93ceba9f"
+},
+{
+"who": "gaston",
+"text": "Regarde la bulle : elle te dit quoi changer.",
+"id": "gaston-25079520"
+},
+{
+"who": "gaston",
+"text": "On essaie, on se trompe, on recommence. C'est ça, inventer!",
+"id": "gaston-64a2c96b"
+},
+{
+"who": "gaston",
+"text": "Comme moi au marteau : on frappe, on refroidit, on recommence. Couche après couche.",
+"id": "gaston-fe477851"
+},
+{
+"who": "gaston",
+"text": "Une seule lumière, pis des dizaines de puces pareilles. Gutenberg serait fier!",
+"id": "gaston-0a0798f0"
+},
+{
+"who": "gaston",
+"text": "Tout ça, c'est ce que tu as bâti : allumé-éteint, bits, portes, addition. Juste beaucoup, beaucoup plus petit.",
+"id": "gaston-919ea2b8"
+},
+{
+"who": "jeu",
+"text": "Yé! Ça roule!",
+"id": "jeu-abbacbee"
+},
+{
+"who": "jeu",
+"text": "Regarde-moi aller avec six pierres!",
+"id": "jeu-241c4b97"
+},
+{
+"who": "jeu",
+"text": "La roue porte, moi je pousse!",
+"id": "jeu-e81a1065"
+},
+{
+"who": "jeu",
+"text": "Hmm, il manque une pièce…",
+"id": "jeu-d308f464"
+},
+{
+"who": "jeu",
+"text": "Ça marche pas encore, essaie autre chose!",
+"id": "jeu-0b8cf11d"
+},
+{
+"who": "jeu",
+"text": "Pas de roue? Je vais devoir tout porter!",
+"id": "jeu-e2490a08"
+},
+{
+"who": "jeu",
+"text": "Avec la barre, je la lève tout seul!",
+"id": "jeu-81254698"
+},
+{
+"who": "jeu",
+"text": "Hé, j'ai de la force de géant!",
+"id": "jeu-1a4e0957"
+},
+{
+"who": "jeu",
+"text": "Elle bouge pas! Rapproche l'appui!",
+"id": "jeu-f640d15d"
+},
+{
+"who": "jeu",
+"text": "Trop dur… mon bras est trop court!",
+"id": "jeu-850aa4be"
+},
+{
+"who": "narr",
+"text": "On part d'une tranche de silicium très pure, polie comme un miroir.",
+"id": "narr-55e0a6b7"
+},
+{
+"who": "narr",
+"text": "On étale une mince couche de vernis sensible à la lumière (la « résine »).",
+"id": "narr-d3152cbe"
+},
+{
+"who": "narr",
+"text": "La lumière passe à travers le masque, le pochoir du circuit. Elle touche le vernis seulement où le masque est ouvert.",
+"id": "narr-c9704b83"
+},
+{
+"who": "narr",
+"text": "Un bain enlève le vernis éclairé. Le dessin du circuit apparaît.",
+"id": "narr-18bc4cfb"
+},
+{
+"who": "narr",
+"text": "On attaque le silicium là où il n'y a plus de vernis. Puis on enlève le reste du vernis.",
+"id": "narr-0e05d117"
+},
+{
+"who": "narr",
+"text": "On recommence des dizaines de fois, couche par couche, pour empiler transistors et fils.",
+"id": "narr-b4b4da2d"
+},
+{
+"who": "gaston",
+"text": "Allô! Je vais lire les bulles à voix haute.",
+"id": "gaston-cf8e240d"
+}
+]

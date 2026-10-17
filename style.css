@@ -454,3 +454,6 @@ use.lean{transform-origin:50% 100%}
 .giver{opacity:.9}.gift-ic{font-size:10px}
 .thread.basics>.lvl{content-visibility:auto;contain-intrinsic-size:auto 640px}
 @media (prefers-reduced-motion:reduce){.needle,.saw,.b-pump,.drip,.fish{animation:none}}
+.sources-sec{max-width:860px;margin:0 auto;padding:40px 20px 60px;font-size:.9rem}
+.sources-sec h2{font-size:1.4rem}.src-list{line-height:1.55;padding-left:22px}.src-list li{margin-bottom:6px}
+.sources-sec summary{cursor:pointer;font-weight:700}

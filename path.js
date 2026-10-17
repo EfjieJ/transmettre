@@ -30,12 +30,12 @@
   /* --- le fil : du allumé/éteint à la puce --- */
   const STEPS = [
     ['onoff', 'Allumé / éteint', 'Un message peut se réduire à deux états : allumé ou éteint, court ou long.'],
-    ['bit', 'Bit', 'Un bit, c\'est une seule réponse : 1 (oui, allumé) ou 0 (non, éteint). 8 bits font une lettre.'],
+    ['bit', 'Bit', 'Un bit, c\'est une seule réponse : 1 (oui, allumé) ou 0 (non, éteint). En code ASCII, une lettre se range dans 8 bits (un octet).'],
     ['inter', 'Interrupteur', 'Un interrupteur ouvre ou ferme le chemin du courant : c\'est un bit qu\'on touche du doigt.'],
-    ['trans', 'Transistor', 'Un transistor est un interrupteur sans doigt : un petit courant l\'ouvre ou le ferme.'],
+    ['trans', 'Transistor', 'Un transistor est un interrupteur sans doigt : une petite tension sur sa grille le rend passant ou bloqué.'],
     ['porte', 'Porte logique', 'Quelques transistors bien reliés répondent à une question : « A et B? », « A ou B? », « pas A? ».'],
     ['add', 'Additionneur', 'Avec des portes, on additionne des bits : 1 + 1 = 10 en binaire, c\'est 2.'],
-    ['puce', 'Puce', 'Une puce, c\'est des milliards de ces portes imprimées sur du silicium.']
+    ['puce', 'Puce', 'Une puce, ce sont des milliards de transistors, reliés en portes et imprimés sur du silicium.']
   ];
   let got = []; try { got = JSON.parse(localStorage.getItem('tr-path') || '[]'); } catch (e) {}
   const bar = document.createElement('div'); bar.className = 'pathbar'; bar.id = 'pathbar';

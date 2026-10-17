@@ -52,7 +52,7 @@
 
   /* ---------- Contenu des démonstrations ---------- */
   const D = window.TALK_D || {};
-  const BADS = ['Pas grave! Au forgeron, la première épée est toujours croche.', 'Regarde la bulle : elle te dit quoi changer.', 'On essaie, on se trompe, on recommence. C\'est ça, inventer!'];
+  const BADS = ['Pas grave! Chez le forgeron, la première épée est toujours croche.', 'Regarde la bulle : elle te dit quoi changer.', 'On essaie, on se trompe, on recommence. C\'est ça, inventer!'];
   const GAME_B = { ok: ['Yé! Ça roule!', 'Regarde-moi aller avec six pierres!', 'La roue porte, moi je pousse!'], no: ['Hmm, il manque une pièce…', 'Ça marche pas encore, essaie autre chose!', 'Pas de roue? Je vais devoir tout porter!'] };
   const GAME_L = { ok: ['Avec la barre, je la lève tout seul!', 'Hé, j\'ai de la force de géant!'], no: ['Elle bouge pas! Rapproche l\'appui!', 'Trop dur… mon bras est trop court!'] };
   const LS = [
@@ -125,7 +125,7 @@
     const box = document.createElement('div'); box.className = 'beats litho-steps';
     box.innerHTML = `<div class="beat-dots">${LS.map((s, i) => `<button class="beat" data-i="${i}"><b>${i + 1}</b>${s[0]}</button>`).join('')}</div><p class="beat-cap" aria-live="polite">Touchez une étape pour voir comment on fabrique une puce.</p>`;
     const how = document.createElement('details'); how.className = 'howit';
-    how.innerHTML = `<summary>🔧 Comment ça marche?</summary><ol class="chain"><li>La lampe envoie une lumière ultraviolette.</li><li>Une lentille réduit l'image du masque (environ 4 fois plus petite).</li><li>La lumière change la chimie du vernis là où elle touche.</li><li>Le vernis restant protège; le reste est gravé.</li></ol><p class="fact">💡 <b>Le saviez-vous?</b> Les machines les plus avancées utilisent une lumière « ultraviolet extrême » de 13,5 nanomètres de longueur d'onde. Une seule de ces machines coûte plusieurs centaines de millions de dollars.</p>`;
+    how.innerHTML = `<summary>🔧 Comment ça marche?</summary><ol class="chain"><li>La lampe envoie une lumière ultraviolette.</li><li>Une lentille réduit l'image du masque (environ 4 fois plus petite).</li><li>La lumière change la chimie du vernis là où elle touche.</li><li>Le vernis restant protège; le reste est gravé.</li></ol><p class="fact">💡 <b>Le saviez-vous?</b> Les machines les plus avancées utilisent une lumière « ultraviolet extrême » de 13,5 nanomètres de longueur d'onde. Une seule de ces machines coûte environ 180 millions de dollars américains, et la nouvelle génération bien plus encore.</p>`;
     litho.appendChild(box); litho.appendChild(how);
     box.addEventListener('click', e => { const b = e.target.closest('.beat'); if (!b) return; const i = +b.dataset.i; box.querySelectorAll('.beat').forEach((x, j) => { x.classList.toggle('on', i === j); x.classList.toggle('past', j < i); }); box.querySelector('.beat-cap').textContent = LS[i][1]; if (i === 2) document.getElementById('litho-go').click(); if (i === 5) guide('Comme moi au marteau : on frappe, on refroidit, on recommence. Couche après couche.'); else speak(LS[i][1]); });
     document.getElementById('litho-go').addEventListener('click', () => setTimeout(() => guide('Une seule lumière, pis des dizaines de puces pareilles. Gutenberg serait fier!'), 1800));
@@ -133,14 +133,14 @@
   /* ---------- Zoom : plus d'explications ---------- */
   const zoom = document.getElementById('zoom');
   if (zoom) { const ZX = [
-      'Deux portes logiques : une dizaine de transistors. Chaque transistor est un interrupteur commandé par une tension.',
+      'Deux portes logiques : une vingtaine de transistors au plus. Chaque transistor est un interrupteur commandé par une tension.',
       'L\'additionneur : quelques dizaines de transistors. On en met 64 côte à côte pour additionner de grands nombres.',
       'Le processeur : des additionneurs, de la mémoire et une horloge qui bat des milliards de fois par seconde (gigahertz).',
-      'La puce : plusieurs cœurs, de la mémoire, de la radio, des milliards de transistors sur quelques centimètres carrés.',
+      'La puce : plusieurs cœurs, de la mémoire, de la radio, des milliards de transistors sur environ un centimètre carré.',
       'Le cellulaire : la puce est soudée sur un circuit imprimé, avec l\'écran, la pile et l\'antenne. Tout ce que vous avez construit dans les jeux est là.'];
     const p = document.createElement('p'); p.className = 'zoom-more'; p.setAttribute('aria-live', 'polite'); p.textContent = ZX[0];
     const how = document.createElement('details'); how.className = 'howit';
-    how.innerHTML = `<summary>🔧 Comment ça marche?</summary><ol class="chain"><li>Un transistor = un interrupteur.</li><li>Quelques transistors = une porte (ET, OU, NON).</li><li>Quelques portes = un additionneur.</li><li>Des milliers d'additionneurs + de la mémoire = un processeur.</li><li>Un processeur + le reste = une puce, posée sur un circuit imprimé.</li></ol><p class="fact">💡 <b>Le saviez-vous?</b> Le premier microprocesseur, l'Intel 4004 (1971), avait environ 2 300 transistors. Une puce de cellulaire récente en a plus de 15 milliards.</p>`;
+    how.innerHTML = `<summary>🔧 Comment ça marche?</summary><ol class="chain"><li>Un transistor = un interrupteur.</li><li>Quelques transistors = une porte (ET, OU, NON).</li><li>Quelques portes = un additionneur.</li><li>Des milliers d'additionneurs + de la mémoire = un processeur.</li><li>Un processeur + le reste = une puce, posée sur un circuit imprimé.</li></ol><p class="fact">💡 <b>Le saviez-vous?</b> Le premier microprocesseur, l'Intel 4004 (1971), avait environ 2 300 transistors. Une puce de cellulaire récente en a environ 15 à 20 milliards.</p>`;
     zoom.querySelector('#zoom-cap').after(p); zoom.appendChild(how);
     const r = document.getElementById('zoom-r'); let said = -1;
     r.addEventListener('input', () => { const n = +r.value; p.textContent = ZX[n]; if (n === 4 && said !== 4) guide('Tout ça, c\'est ce que tu as bâti : allumé-éteint, bits, portes, addition. Juste beaucoup, beaucoup plus petit.'); said = n; });

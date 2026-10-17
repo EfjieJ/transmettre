@@ -35,7 +35,7 @@
       $('s1h').addEventListener('click', tog); swCtrl.innerHTML = '<button class="btn" id="s1b">Basculer l\'interrupteur</button>'; $('s1b').addEventListener('click', tog);
     }
     if (i === 1) {
-      swSvg.innerHTML = `<rect width="600" height="260" fill="#f3ede3"/><text x="130" y="22" class="svg-l">petit circuit (1,5 V)</text><text x="460" y="22" class="svg-l">grand circuit (230 V)</text>
+      swSvg.innerHTML = `<rect width="600" height="260" fill="#f3ede3"/><text x="130" y="22" class="svg-l">petit circuit (1,5 V)</text><text x="460" y="22" class="svg-l">grand circuit (120 V, prise de maison)</text>
         <path d="M50 150 V60 H110 M150 60 H230 V150 M230 210 V240 H50 V180" class="wire" id="w2a"/>${PILE(50, 165, .7, '')}<g><circle cx="110" cy="60" r="5" fill="#3a3f44"/><circle cx="150" cy="60" r="5" fill="#3a3f44"/><line x1="110" y1="60" x2="148" y2="40" class="lever" id="b2"/></g>
         <g id="coil"><rect x="205" y="150" width="50" height="60" rx="6" fill="url(#metal)"/><path d="M207 158 h46 M207 166 h46 M207 174 h46 M207 182 h46 M207 190 h46 M207 198 h46" stroke="#b87333" stroke-width="3"/><path d="M190 140 q40 -40 80 0 M180 150 q50 -60 100 0" class="field"/></g>
         <path d="M300 120 V60 H560 V120 M560 170 V240 H400 V140" class="wire big" id="w2b"/>${PILE(560, 145, 1, '')}<circle cx="300" cy="120" r="5" fill="#3a3f44"/><line x1="300" y1="120" x2="400" y2="108" class="lever" id="arm"/><circle cx="400" cy="140" r="5" fill="#3a3f44"/>${LAMP(470, 60, 'l2', 18)}
@@ -45,7 +45,7 @@
       $('b2b').addEventListener('click', () => { on = !on; $('b2b').textContent = on ? '✋ Petit bouton : relâcher' : '✋ Petit bouton : appuyer'; $('b2').setAttribute('x2', on ? 150 : 148); $('b2').setAttribute('y2', on ? 60 : 40); $('w2a').classList.toggle('live', on); $('coil').classList.toggle('mag', on);
         setTimeout(() => { $('arm').setAttribute('y2', on ? 140 : 108); $('w2b').classList.toggle('live', on); $('l2').classList.toggle('on', on); TS.click(); if (on) TS.tone(120, .15, .1, 'square'); }, on ? 250 : 0);
         if (on) TS.bubble($('coil'), 'Le petit courant traverse la <b>bobine</b> (un fil enroulé) : elle devient un <b>aimant</b> et tire la lame de fer, qui ferme le grand circuit.', 'good');
-        if (on && !quizzed) { quizzed = true; setTimeout(() => quiz('Question : le petit circuit et le grand circuit sont-ils reliés par un fil?', ['Oui, par un fil', 'Non, seulement par l\'aimant'], 1, 'Seulement par l\'aimant : le petit commande le grand sans le toucher. Les premiers ordinateurs (années 1940) étaient faits de milliers de relais.', () => swWin(1, 'Un petit courant en commande un grand. Les premiers ordinateurs en avaient des milliers… et ils cliquetaient!')), 600); } });
+        if (on && !quizzed) { quizzed = true; setTimeout(() => quiz('Question : le petit circuit et le grand circuit sont-ils reliés par un fil?', ['Oui, par un fil', 'Non, seulement par l\'aimant'], 1, 'Seulement par l\'aimant : le petit commande le grand sans le toucher. Certains des premiers ordinateurs, comme le Z3 (1941) et le Harvard Mark I (1944), utilisaient des milliers de relais.', () => swWin(1, 'Un petit courant en commande un grand. Certains des premiers ordinateurs en avaient des milliers… et ils cliquetaient!')), 600); } });
     }
     if (i === 2) {
       swSvg.innerHTML = `<rect width="600" height="260" fill="#e9eef1"/><path d="M80 110 V50 H520 V110 M520 150 V220 H330 M270 220 H80 V170" class="wire" id="w3"/>${PILE(80, 140, 1, '')}${LAMP(520, 130, 'l3', 18)}${TR(300, 236, 't3', 'transistor')}<path d="M300 202 V160 H170" class="wire thin" id="g3w"/><text x="170" y="150" class="svg-l">grille</text><text x="300" y="30" class="svg-l">le grand courant passe… si la grille le permet</text>`;
@@ -77,14 +77,14 @@
         if (mode) { $('tA').classList.toggle('open', !!A); $('tB').classList.toggle('open', !!B); $('l5').classList.toggle('on', !!on); }
         $('sA').textContent = 'A = ' + A; $('sB').textContent = 'B = ' + B; $('sA').setAttribute('aria-pressed', !!A); $('sB').setAttribute('aria-pressed', !!B); return on; };
       swCtrl.querySelectorAll('[data-m]').forEach(b => b.addEventListener('click', () => { swState.mode = b.dataset.m; swCtrl.querySelectorAll('[data-m]').forEach(x => x.classList.toggle('on', x === b)); TS.click(); draw();
-        TS.bubble(b, b.dataset.m === 'serie' ? 'À la suite : le courant doit traverser A <b>puis</b> B. Un seul ouvert ne suffit pas.' : 'Côte à côte : deux chemins. Le courant passe par A <b>ou</b> par B.'); }));
+        TS.bubble(b, b.dataset.m === 'serie' ? 'À la suite : le courant doit traverser A <b>puis</b> B. Un seul transistor passant ne suffit pas.' : 'Côte à côte : deux chemins. Le courant passe par A <b>ou</b> par B.'); }));
       $('sA').addEventListener('click', () => { swState.A ^= 1; TS.click(); draw(); }); $('sB').addEventListener('click', () => { swState.B ^= 1; TS.click(); draw(); });
       $('s5t').addEventListener('click', async () => {
         if (!swState.mode) { TS.bad(); TS.bubble($('s5t'), 'Choisissez d\'abord un montage.', 'bad'); return; }
         const tab = $('s5tab'); tab.innerHTML = '<tr><th>A</th><th>B</th><th>Lampe</th><th>Attendu</th></tr>'; let ok = true;
         for (const [a, b] of [[0, 0], [0, 1], [1, 0], [1, 1]]) { swState.A = a; swState.B = b; const on = draw() ? 1 : 0, want = swState.target === 'ET' ? a & b : a | b; if (on !== want) ok = false;
           tab.insertAdjacentHTML('beforeend', `<tr class="${on === want ? 'good' : 'bad'}"><td>${a}</td><td>${b}</td><td>${on ? '💡' : '·'}</td><td>${want ? '💡' : '·'} ${on === want ? '✔' : '✘'}</td></tr>`); TS.blip(a * 2 + b); await wait(380); }
-        if (!ok) { TS.bad(); TS.flash(swSvg, 'bad'); ssay(swState.target === 'ET' ? 'Raté : avec ce montage, un seul transistor ouvert suffit. Pour « ET », le courant doit traverser les deux.' : 'Raté : avec ce montage, il faut les deux. Pour « OU », il faut deux chemins.', 'no'); return; }
+        if (!ok) { TS.bad(); TS.flash(swSvg, 'bad'); ssay(swState.target === 'ET' ? 'Raté : avec ce montage, un seul transistor passant suffit. Pour « ET », le courant doit traverser les deux.' : 'Raté : avec ce montage, il faut les deux. Pour « OU », il faut deux chemins.', 'no'); return; }
         TS.good(); TS.flash(swSvg, 'good');
         if (swState.target === 'ET') { ssay('Bravo : « à la suite » = porte <b>ET</b>. Maintenant, faites la porte <b>OU</b>.', 'ok'); TS.bubble(swSvg, 'Vous venez de fabriquer une <b>porte logique ET</b> avec deux transistors.', 'good'); swState.target = 'OU'; swState.mode = null; swCtrl.querySelectorAll('[data-m]').forEach(x => x.classList.remove('on')); swState.A = swState.B = 0; draw(); }
         else { window.Path.learn('porte'); swWin(4, 'Deux montages, deux questions : à la suite = <b>ET</b>, côte à côte = <b>OU</b>. Une puce est faite de milliards de portes comme celles-ci.'); }
@@ -245,9 +245,9 @@
       d.innerHTML = `<div class="gbox big">${GL[G.fixed]}</div><i class="led-out ${out ? 'on' : ''}" id="g-out"></i><span class="gout-l">sortie = ${out}</span>`;
       $('g-res').innerHTML = G.fixed === 'NON' ? `NON ${vals.A} = <b>${out}</b>` : `${vals.A} ${GL[G.fixed]} ${vals.B} = <b>${out}</b>`;
       if (acted) {
-        if (G.fixed === 'ET') { TS.bubble(btn, out ? 'Les deux transistors sont ouverts : le courant traverse les deux. Sortie <b>1</b>.' : (vals.A || vals.B) ? 'Un seul transistor ouvert : le courant est bloqué par l\'autre. Sortie <b>0</b>.' : 'Rien d\'ouvert. Sortie 0.', out ? 'good' : ''); if (out) gWin('Sortie allumée : il fallait A <b>et</b> B. Une porte ET répond à « les deux? ».'); }
-        if (G.fixed === 'OU') { if (out) { const k = '' + vals.A + vals.B; if (!seen.has(k)) { seen.add(k); TS.good(); TS.bubble(btn, `${seen.size}/3 : ${vals.A} OU ${vals.B} = 1. ${seen.size < 3 ? 'Encore ' + (3 - seen.size) + '.' : ''}`, 'good'); } } else TS.bubble(btn, 'Aucun chemin ouvert : sortie 0.'); if (seen.size === 3) gWin('Trois façons : A seul, B seul, ou les deux. Une porte OU répond à « au moins un? ».'); }
-        if (G.fixed === 'NON') { TS.bubble(btn, out ? 'A = 0 : le transistor est fermé, le courant va à la lampe. Sortie 1.' : 'A = 1 : le transistor s\'ouvre et <b>détourne</b> le courant loin de la lampe. Sortie 0. Il inverse!', out ? '' : 'good'); if (!out) gWin('NON inverse : 1 devient 0. Avec ET, OU et NON, on peut fabriquer toutes les autres portes.'); }
+        if (G.fixed === 'ET') { TS.bubble(btn, out ? 'Les deux transistors sont passants : le courant traverse les deux. Sortie <b>1</b>.' : (vals.A || vals.B) ? 'Un seul transistor passant : le courant est bloqué par l\'autre. Sortie <b>0</b>.' : 'Aucun transistor passant. Sortie 0.', out ? 'good' : ''); if (out) gWin('Sortie allumée : il fallait A <b>et</b> B. Une porte ET répond à « les deux? ».'); }
+        if (G.fixed === 'OU') { if (out) { const k = '' + vals.A + vals.B; if (!seen.has(k)) { seen.add(k); TS.good(); TS.bubble(btn, `${seen.size}/3 : ${vals.A} OU ${vals.B} = 1. ${seen.size < 3 ? 'Encore ' + (3 - seen.size) + '.' : ''}`, 'good'); } } else TS.bubble(btn, 'Aucun chemin possible : sortie 0.'); if (seen.size === 3) gWin('Trois façons : A seul, B seul, ou les deux. Une porte OU répond à « au moins un? ».'); }
+        if (G.fixed === 'NON') { TS.bubble(btn, out ? 'A = 0 : le transistor est bloqué, le courant va à la lampe. Sortie 1.' : 'A = 1 : le transistor devient passant et <b>détourne</b> le courant loin de la lampe. Sortie 0. Il inverse!', out ? '' : 'good'); if (!out) gWin('NON inverse : 1 devient 0. Avec ET, OU et NON, on peut fabriquer toutes les autres portes.'); }
       }
       return;
     }
@@ -267,7 +267,7 @@
       const out = [].concat(G.calc(vals, slots)), want = [].concat(G.target(vals)), good = bin(out) === bin(want); if (!good) { ok = false; if (!bad) bad = { ...vals }; }
       tab.insertAdjacentHTML('beforeend', `<tr class="${good ? 'good' : 'bad'}">${G.ins.map(k => `<td>${vals[k]}</td>`).join('')}${out.map(x => `<td>${x}</td>`).join('')}<td>${G.add ? bin(out) + ' = ' + (out[0] * 2 + out[1]) : ''} ${good ? '✔' : '✘ attendu ' + bin(want)}</td></tr>`); TS.blip(m % 6); await wait(n === 3 ? 220 : 330); }
     if (ok) { const c = GLVL.cur;
-      const t = c === 3 ? 'Vous avez construit un OU-exclusif avec ET, OU et NON : « au moins un » ET « pas les deux ».' : c === 4 ? 'Bravo! Retenue = ET, Somme = OU-exclusif. C\'est un <b>demi-additionneur</b> : 1 + 1 = 10.' : `Additionneur complet! 1 + 1 + 1 = 11 (trois). ${slots.cout === 'XOR' ? 'OU-exclusif marche aussi ici, car les deux retenues ne valent jamais 1 en même temps.' : 'Mettez-en 64 en chaîne, la retenue passant de l\'un à l\'autre : votre cellulaire additionne ainsi des nombres immenses.'}`;
+      const t = c === 3 ? 'Vous avez construit un OU-exclusif avec ET, OU et NON : « au moins un » ET « pas les deux ».' : c === 4 ? 'Bravo! Retenue = ET, Somme = OU-exclusif. C\'est un <b>demi-additionneur</b> : 1 + 1 = 10.' : `Additionneur complet! 1 + 1 + 1 = 11 (trois). ${slots.cout === 'XOR' ? 'OU-exclusif marche aussi ici, car les deux retenues ne valent jamais 1 en même temps.' : 'Mettez-en 64 en chaîne, la retenue passant de l\'un à l\'autre : c\'est le principe de l\'addition dans votre cellulaire (qui utilise une version plus rapide du même montage).'}`;
       if (c >= 4) window.Path.learn('add', c === 5 ? 'Un additionneur complet additionne 3 bits (A, B et la retenue). En chaîne, ils additionnent n\'importe quels nombres.' : undefined);
       $('gates').dataset.state = ''; gWin(t); }
     else { TS.bad(); TS.flash($('truth'), 'bad'); const c = GLVL.cur;
@@ -290,7 +290,7 @@
     '<b>Votre demi-additionneur</b> : 2 portes (ET et OU-exclusif), une vingtaine de transistors au plus.',
     '<b>Un additionneur 8 bits</b> : 8 blocs comme le vôtre, un peu plus complets, en chaîne. La retenue passe de l\'un à l\'autre. Il additionne des nombres jusqu\'à 255.',
     '<b>Un cœur de processeur</b> : des millions de portes. Additionner, comparer, mémoriser, décider quoi faire ensuite.',
-    '<b>Une puce de cellulaire</b> : plusieurs cœurs (CPU), une partie pour les images (GPU), de la mémoire. Des dizaines de milliards de transistors, sur à peu près la taille d\'un ongle. Chacun est des milliers de fois plus fin qu\'un cheveu.',
+    '<b>Une puce de cellulaire</b> : plusieurs cœurs (CPU), une partie pour les images (GPU), de la mémoire. Jusqu\'à une vingtaine de milliards de transistors (environ 20 milliards dans l\'Apple A18 Pro de 2024), sur environ un centimètre carré, plus petit qu\'un ongle. Chacun est des milliers de fois plus fin qu\'un cheveu.',
     '<b>Sur la carte mère</b>, des pistes de cuivre relient la puce à la batterie, à l\'écran, à l\'antenne. Exactement comme votre circuit imprimé, en plus petit et sur plusieurs couches.'
   ];
   function zoom(n) {
