@@ -199,3 +199,4 @@
   if (!reduce) setInterval(() => { w = w % 6 + 1; d.textContent = 'semaine ' + w; }, 1000);
   else d.textContent = 'des semaines';
 })();
+;(function(){var el=document.getElementById('ab-count');if(!el||!('IntersectionObserver' in window))return;var cards=[].slice.call(document.querySelectorAll('#abondance .lvl')),seen=new Set();var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){seen.add(e.target);io.unobserve(e.target);el.textContent='Abondance : '+seen.size+' / '+cards.length+' inventions vues'+(seen.size===cards.length?' 🎉':'');}})},{threshold:.4});cards.forEach(function(c){io.observe(c)});})();

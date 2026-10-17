@@ -111,3 +111,40 @@ Total : 75 affirmations — 41 correctes, 18 corrigées, 16 nuancées.
 - Nombre de transistors de l'Apple A18 Pro : non publié officiellement par Apple; ~20 milliards selon des analyses de puce.
 - Brouette en Chine : datation (Ier–IIIe siècle) selon les reliefs et textes — formulé « environ 1 800 à 2 000 ans ».
 - Liens Britannica et Postal Museum : ils s'ouvrent dans un navigateur mais bloquent parfois les robots (vérifiés dans Chrome; Postal Museum affiche une page anti-robot au test automatisé).
+
+## Ajouts v13 : L'abondance et les inventions mécaniques (16 oct. 2026)
+
+| # | Affirmation | Verdict | Source |
+|---|---|---|---|
+| 76 | Part des travailleurs agricoles aux É.-U. : 47,4 % (1870), 21,5 % (1930), moins de 5 % (1970) | correct | [USDA ARS – Timeline](https://www.ars.usda.gov/oc/timeline/comp/) |
+| 77 | Agriculture ≈ 1,6 % de l'emploi aux É.-U. en 2017 | correct | [USDA ERS – ERR-302](https://ers.usda.gov/sites/default/files/_laserfiche/publications/103267/ERR-302.pdf) |
+| 78 | Blé au Royaume-Uni : 0,56 t/ha (1275) → 7,28 t/ha (2024), ~13× | correct | [Our World in Data – Wheat yields](https://ourworldindata.org/grapher/wheat-yields) |
+| 79 | Faucille ½ à 1 acre/jour; faux jusqu'à ~3 acres/jour | nuancé | [Steele's Tavern – McCormick (archive)](https://web.archive.org/web/20091212083359/www.vaes.vt.edu/steeles/mccormick/harvest.html) |
+| 80 | Moissonneuse McCormick 1831 (brevet 1834), ~10 acres/jour = 4–5 faux à râteau ou 12–16 faucilles | correct | [Steele's Tavern – McCormick (archive)](https://web.archive.org/web/20091212083359/www.vaes.vt.edu/steeles/mccormick/harvest.html) |
+| 81 | Batteuses mécaniques ~30× plus rapides que le battage à la main | nuancé | [Digital History (Univ. of Houston) – Agricultural technology](https://www.digitalhistory.uh.edu/disp_textbook.cfm?smtID=11&psid=3837) |
+| 82 | É.-U. : ~25 millions de chevaux et mules et 246 083 tracteurs (1920); 7,6 M et 3,25 M (1950) | correct | [USDA NASS – Mechanization](https://www.nass.usda.gov/Publications/Trends_in_U.S._Agriculture/Mechanization/index.php) |
+| 83 | Haber : brevet 1908; ~48 % de l'humanité nourrie grâce à l'azote des engrais (2008) | nuancé | [Erisman et al., Nature Geoscience (2008)](https://www.nature.com/articles/ngeo325) |
+| 84 | Révolution verte : céréales des pays en développement ×3 avec ~30 % de terres en plus | correct | [Pingali, PNAS (2012)](https://www.pnas.org/doi/10.1073/pnas.0912953109) |
+| 85 | Système à trois champs : terres cultivées de ½ à ~⅔ | correct | [Britannica – three-field system](https://www.britannica.com/topic/three-field-system) |
+| 86 | Chadouf : plus ancienne image égyptienne fiable ~1300–1180 av. J.-C. | nuancé | [Britannica – shaduf](https://www.britannica.com/technology/shaduf) |
+| 87 | Collier rembourré courant en Europe au XIIe s.; origine débattue | nuancé | [Britannica – horse collar](https://kids.britannica.com/scholars/article/horse-collar/889) |
+| 88 | Jethro Tull : semoir à cheval vers 1701 | correct | [Britannica – Jethro Tull](https://kids.britannica.com/scholars/article/Jethro-Tull/73727) |
+| 89 | Appert publie sa méthode de conserve en 1810 | correct | [Britannica – Nicolas Appert](https://kids.britannica.com/scholars/article/Nicolas-Appert/8071) |
+| 90 | Greniers de Dhra' (Jordanie), ~11 000 ans, plancher surélevé | correct | [Kuijt & Finlayson, PNAS (2009)](https://www.pnas.org/doi/10.1073/pnas.0812764106) |
+| 91 | Filtre à sable lent de James Simpson, Chelsea, 1829 | correct | [Institution of Civil Engineers](https://www.ice.org.uk/what-is-civil-engineering/infrastructure-projects/london-s-water-supply-and-the-introduction-of-sand-filtration) |
+| 92 | 73 % de la population mondiale : eau potable gérée en toute sécurité (2022) | correct | [OMS – Eau potable](https://www.who.int/news-room/fact-sheets/detail/drinking-water/) |
+| 93 | Traces de feu à Wonderwerk, ~1 million d'années (usage, pas allumage prouvé) | nuancé | [Berna et al., PNAS (2012)](https://www.pnas.org/doi/10.1073/pnas.1117620109) |
+| 94 | Briques séchées : plus de 9 000 ans (Tell Aswad); briques cuites il y a ~6 000–7 000 ans (Mésopotamie, Chine) | corrigé | [Wikipedia – Brick (sources citées)](https://en.wikipedia.org/wiki/Brick) |
+| 95 | Cartwright brevète un métier mécanique (1785); Jacquard (1804), cartes perforées | correct | [Wikipedia – Jacquard machine (sources citées)](https://en.wikipedia.org/wiki/Jacquard_machine) |
+| 96 | Tour : image du tombeau de Pétosiris (~300 av. J.-C.); pivots de Thèbes (VIIe s. av. J.-C.) | nuancé | [Pivots de Thèbes et débuts du tournage (Academia)](https://www.academia.edu/103644944/TWO_PIVOTS_OF_THE_7TH_CENTURY_BCE_FROM_THEBES_EGYPT_AND_THE_BEGINNING_OF_WOODTURNING) |
+| 97 | Vitruve décrit la grue à poulies et roue où l'on marche; ~6 t selon reconstitutions modernes | nuancé | [Vitruve, De architectura X.2 (Perseus)](http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0073%3Abook%3D10%3Achapter%3D2%3Asection%3D7) |
+| 98 | Scierie de Hiérapolis (2e moitié du IIIe s.) : plus ancienne machine manivelle + bielle connue | correct | [Ritti, Grewe & Kessener, JRA (2007)](https://doi.org/10.1017/s1047759400005341) |
+| 99 | Moulins à foulon à cames en Italie dès 962; marteaux de forge mécaniques en France en 1116 | nuancé | [Córdoba de la Llave, Anuario de Estudios Medievales (2011)](https://doi.org/10.3989/aem.2011.v41.i2.364) |
+| 100 | Horloges mécaniques à échappement : fin du XIIIe s.; Dunstable 1283; erreur jusqu'à ~1 h/jour | nuancé | [Britannica – verge escapement](https://www.britannica.com/technology/verge-escapement) |
+| 101 | Théophile (vers 1100) décrit des volants; tour de potier rapide | nuancé | [Wikipedia – Flywheel (sources citées)](https://en.wikipedia.org/wiki/Flywheel) |
+| 102 | Vis attribuée à Archimède (IIIe s. av. J.-C.), décrite par Vitruve | correct | [Wikipedia – Archimedes' screw (sources citées)](https://en.wikipedia.org/wiki/Archimedes%27_screw) |
+| 103 | Moulin à eau vertical décrit par Vitruve (~25 av. J.-C.); plus de 5 600 moulins dans le Domesday Book (1086) | corrigé | [Historic England – Mills](https://historicengland.org.uk/images-books/publications/iha-mills/heag212-mills/) |
+| 104 | Hérodote : treuils pour tendre les câbles du pont de Xerxès (480 av. J.-C.) | nuancé | [Hérodote, Histoires VII.36 (Perseus)](https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0125%3Abook%3D7%3Achapter%3D36) |
+| 105 | Araire au Proche-Orient dès le 6e millénaire av. J.-C. | corrigé | [Wikipedia – Ard (sources citées)](https://en.wikipedia.org/wiki/Ard_(plough)) |
+
+Limites : Britannica, PNAS et Historic England bloquent les vérificateurs automatiques (403); le contenu a été confirmé par recherche. Digital History (Univ. of Houston) était en maintenance (503) le 16 oct. 2026. Le chiffre « 166 personnes nourries par agriculteur » n'a pas été retenu (source secondaire seulement). Le collier d'épaule : aucun multiplicateur de force n'est avancé, faute de source solide.

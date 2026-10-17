@@ -457,3 +457,46 @@ use.lean{transform-origin:50% 100%}
 .sources-sec{max-width:860px;margin:0 auto;padding:40px 20px 60px;font-size:.9rem}
 .sources-sec h2{font-size:1.4rem}.src-list{line-height:1.55;padding-left:22px}.src-list li{margin-bottom:6px}
 .sources-sec summary{cursor:pointer;font-weight:700}
+/* v13 abondance */
+.abond-sec .stalk{stroke:#7a5a1e;stroke-width:1.6}.abond-sec .grain{fill:#e0a92e}.abond-sec .soil{fill:#b98a5a}.abond-sec .soil.alt{fill:#8a6a3a}.abond-sec .pea{fill:#5fae4b}.abond-sec .water-c{fill:#4aa3df}.abond-sec .collar{stroke:#7a3b1e;stroke-width:3}
+.abond-sec .crop.dry .grain{fill:#b9a97e}.abond-sec .crop.dry .stalk{stroke:#a89a7a}
+.abond-sec .crop{transform-box:fill-box;transform-origin:50% 100%;animation:rise 2.4s ease-out infinite alternate}
+.abond-sec .seedfly{animation:drip 1.6s linear infinite}.abond-sec .fall{animation:drip 2s ease-in infinite}
+.abond-sec .b-shad{transform-box:view-box;transform-origin:70px 40px;animation:shad 3s ease-in-out infinite alternate}
+@keyframes shad{from{transform:rotate(-8deg)}to{transform:rotate(10deg)}}
+.abond-sec .bent{transform-box:fill-box;transform-origin:50% 100%;transform:rotate(12deg)}
+.abond-graph{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0}.abond-graph figure{flex:1 1 260px;margin:0;background:#fff8ec;border-radius:14px;padding:12px}
+.abond-graph figcaption{font-weight:700;margin-bottom:8px}.ab-bars{display:flex;align-items:flex-end;gap:10px;height:130px}
+.ab-bars div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.ab-bars div::before{content:"";order:1;width:100%;height:calc(var(--v)*1%);min-height:3px;background:linear-gradient(#e0a92e,#c97a1e);border-radius:6px 6px 0 0}
+.ab-bars b{order:0;font-size:.85em}.ab-bars span{order:2;font-size:.8em}
+.ab-count{font-weight:700;background:#fff3d6;border-radius:999px;padding:6px 14px;display:inline-block}
+@media (prefers-reduced-motion:reduce){.abond-sec .crop,.abond-sec .seedfly,.abond-sec .fall,.abond-sec .b-shad{animation:none}}
+/* v13 appareils complets */
+.device{margin:14px 0 4px;background:#fffaf0;border:2px solid #f0dcb4;border-radius:16px;padding:10px;grid-column:1/-1}
+.device svg{width:100%;height:auto;display:block}.dev-t{font-weight:700;margin-bottom:6px}
+.device .dlbl{font-size:10px;fill:#6b4a1e;opacity:.55;font-weight:600;transition:opacity .3s}
+.device .dp{transition:filter .3s}.device .dp.on{filter:drop-shadow(0 0 5px #ff9f1c) drop-shadow(0 0 2px #ff9f1c)}
+.device .dp.on .dlbl{opacity:1;fill:#c2410c;font-size:11px}
+.dev-step{min-height:2.6em;margin:6px 0 2px;font-size:.95em}.dev-step b{color:#c2410c}
+.dev-ctl{display:flex;gap:10px;align-items:center;justify-content:center}.dev-ctl button{font-size:1em;min-width:44px;min-height:36px;border-radius:10px;border:1px solid #e0c48e;background:#fff;cursor:pointer}
+.device .dv-water{fill:none;stroke:#4aa3df;stroke-width:4}.device .dv-pond{fill:#9fd0f0}.device .flour{fill:#f3ead7;stroke:#8a6a3a}.device .stone{fill:#cfc6b8}.device .hot{fill:#ff6a2b}.device .hole{fill:#fffaf0}
+.dv-spin,.dv-spin2,.dv-tick,.dv-hand,.dv-rock{transform-box:fill-box;transform-origin:center;animation:spin 4s linear infinite}
+.dv-spin2{animation-duration:2s}.dv-rev{animation-direction:reverse}.dv-rock{animation-duration:3s}
+.dv-tick{animation:spin 12s steps(48) infinite}.dv-hand{animation:spin 24s linear infinite}
+.dv-ham{transform-box:view-box;transform-origin:205px 104px;animation:dham 1s ease-in infinite}@keyframes dham{0%,40%{transform:rotate(0)}50%{transform:rotate(-14deg)}60%,100%{transform:rotate(0)}}
+.dv-saw{animation:saw .6s ease-in-out infinite alternate}.dv-saw2{animation:dsaw2 .8s linear infinite}@keyframes dsaw2{to{transform:translateX(16px)}}
+.dv-drip{animation:ddrip 1.6s linear infinite}@keyframes ddrip{50%{opacity:.4}}
+.dv-grow{transform-box:fill-box;transform-origin:50% 100%;animation:rise 2.4s ease-out infinite alternate}
+.dv-lift{animation:dlift 5s ease-in-out infinite}@keyframes dlift{0%,10%{transform:translate(0,40px)}60%,100%{transform:translate(0,-10px)}}
+.dv-fall{animation:dfall 24s linear infinite}@keyframes dfall{to{transform:translateY(10px)}}
+.dv-foliot{transform-box:fill-box;transform-origin:50% 0;animation:dfol 1s steps(2) infinite}@keyframes dfol{from{transform:rotate(-25deg)}to{transform:rotate(25deg)}}
+.dv-bell{transform-box:fill-box;transform-origin:50% 0;animation:dbell 4s ease-in-out infinite}@keyframes dbell{0%,85%{transform:rotate(0)}90%{transform:rotate(14deg)}95%{transform:rotate(-14deg)}}
+.dv-cards{animation:dcards 2s steps(4) infinite}@keyframes dcards{to{transform:translateY(-24px)}}
+.dv-push{animation:saw 1s steps(2) infinite alternate}.dv-lift2{animation:dl2 1s ease-in-out infinite alternate}@keyframes dl2{to{transform:translateY(-10px)}}
+.dv-shuttle{animation:dsh 2s ease-in-out infinite alternate}@keyframes dsh{to{transform:translateX(120px)}}
+.dv-leg,.dv-leg2{transform-box:fill-box;transform-origin:50% 0;animation:dleg .8s ease-in-out infinite alternate}.dv-leg2{animation-direction:alternate-reverse}@keyframes dleg{from{transform:rotate(-14deg)}to{transform:rotate(14deg)}}
+@media (prefers-reduced-motion:reduce){.device [class*="dv-"]{animation:none!important}}
+.device .soil{fill:#b98a5a}.device .soil.alt{fill:#8a6a3a}.device .stalk{stroke:#7a5a1e;stroke-width:1.6}.device .grain{fill:#e0a92e}.device .water-c{fill:#4aa3df}.device .horse{fill:#7a4a2a}
+.dv-pulse{animation:ddrip 1s linear infinite}
+.ab-bars{flex-wrap:nowrap}.ab-bars div{min-width:0}
