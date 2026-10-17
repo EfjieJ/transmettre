@@ -53,7 +53,7 @@
   /* ---------- Contenu des démonstrations ---------- */
   const D = window.TALK_D || {};
   const BADS = ['Pas grave! Chez le forgeron, la première épée est toujours croche.', 'Regarde la bulle : elle te dit quoi changer.', 'On essaie, on se trompe, on recommence. C\'est ça, inventer!'];
-  const GAME_B = { ok: ['Yé! Ça roule!', 'Regarde-moi aller avec six pierres!', 'La roue porte, moi je pousse!'], no: ['Hmm, il manque une pièce…', 'Ça marche pas encore, essaie autre chose!', 'Pas de roue? Je vais devoir tout porter!'] };
+  const GAME_B = { ok: ['Bravo, ça roule!', 'Regarde-moi aller avec six pierres!', 'La roue porte, moi je pousse!'], no: ['Attends, il manque une pièce…', 'Ça marche pas encore, essaie autre chose!', 'Pas de roue? Je vais devoir tout porter!'] };
   const GAME_L = { ok: ['Avec la barre, je la lève tout seul!', 'Hé, j\'ai de la force de géant!'], no: ['Elle bouge pas! Rapproche l\'appui!', 'Trop dur… mon bras est trop court!'] };
   const LS = [
       ['Nettoyer', 'On part d\'une tranche de silicium très pure, polie comme un miroir.'],

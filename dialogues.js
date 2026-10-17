@@ -2,7 +2,7 @@
 window.TALK_D = {
 "La pierre qui roule": {
 "b": [
-"Ouf… mon dos!",
+"Ayoye, mon dos!",
 "Encore un voyage? Pas capable!"
 ],
 "a": [
@@ -49,7 +49,7 @@ window.TALK_D = {
 "La roue": {
 "b": [
 "Ça accroche partout!",
-"Grrr… encore une roche!"
+"Voyons donc, encore une roche!"
 ],
 "a": [
 "Mon père taillait des roues. Viens, je te montre comment poser l'essieu.",
@@ -191,7 +191,7 @@ window.TALK_D = {
 ],
 "a": [
 "Un piston, une étincelle, de l'essence. Le mécanicien m'a tout expliqué, je te l'explique.",
-"Vroum! Plus de foin! Sans ton mécanicien, on serait encore à cheval."
+"Ça part tout seul! Plus de foin! Sans ton mécanicien, on serait encore à cheval."
 ],
 "beats": [
 "Problème : la vapeur, c'est lourd et lent à démarrer.",
@@ -237,7 +237,7 @@ window.TALK_D = {
 ],
 "a": [
 "Je t'apprends le code et l'antenne. Ce que l'opérateur m'a appris, je te l'apprends.",
-"Allô l'Angleterre? Ici Terre-Neuve! Wow, merci!"
+"Allô l'Angleterre? Ici Terre-Neuve! C'est incroyable, merci!"
 ],
 "beats": [
 "Problème : une nouvelle voyage à la vitesse d'un cheval.",
@@ -329,7 +329,7 @@ window.TALK_D = {
 ],
 "a": [
 "Une lame en pointe, c'est mon grand-père qui me l'a appris. Essaie.",
-"Crac! Ouverte en deux! J'aurais jamais trouvé ça seul."
+"Elle s'ouvre en deux! J'aurais jamais trouvé ça seul."
 ],
 "beats": [
 "Problème : fendre une bûche à mains nues.",
@@ -352,7 +352,7 @@ window.TALK_D = {
 ],
 "a": [
 "Tiens le manche par le bout. Le menuisier me l'a appris, je te le passe.",
-"Bang! Il est rentré d'un coup. Merci, maître!"
+"Et voilà, il est rentré d'un coup. Merci, maître!"
 ],
 "beats": [
 "Problème : enfoncer un clou.",
@@ -513,7 +513,7 @@ window.TALK_D = {
 ],
 "a": [
 "Une spirale pis un levier. Mon oncle m'a passé le truc, je te le passe.",
-"Pop! Il est sorti tout d'un coup. Merci du tour!"
+"Ça y est, il est sorti tout d'un coup. Merci du tour!"
 ],
 "beats": [
 "Problème : sortir un bouchon de liège serré.",
