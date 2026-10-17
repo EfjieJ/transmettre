@@ -1286,5 +1286,304 @@
    "La carte suivante arrive : nouvelle ligne du motif."
   ],
   "fact": "Joseph-Marie Jacquard invente son métier en 1804. Plus tard, Charles Babbage veut utiliser des cartes perforées pour sa machine à calculer, et on en utilise encore dans les ordinateurs jusqu'aux années 1970."
+ },
+ "La pile de Volta": {
+  "b": [
+   "L'étincelle est déjà partie.",
+   "Comment étudier quelque chose qui dure une seconde?"
+  ],
+  "a": [
+   "Empile du zinc, du cuivre et du carton salé. Ce que Volta a trouvé, je te le passe.",
+   "Le courant coule sans arrêt! On peut enfin chercher."
+  ],
+  "beats": [
+   "Problème : l'électricité ne dure qu'un éclair.",
+   "Essai : des bouteilles qui gardent une charge. Elles se vident d'un coup.",
+   "Invention : une pile de disques de métal et de carton salé.",
+   "Résultat : un courant continu, pour la première fois."
+  ],
+  "chain": [
+   "Le zinc donne facilement des électrons.",
+   "Le carton salé laisse passer les charges entre les disques.",
+   "Chaque paire zinc-cuivre ajoute un peu de poussée.",
+   "Reliés par un fil, les deux bouts font couler un courant."
+  ],
+  "fact": "Alessandro Volta décrit sa pile en 1800. L'unité de tension, le volt, porte son nom. Sans courant continu, ni l'électroaimant ni le télégraphe n'auraient été possibles."
+ },
+ "Le moteur électrique": {
+  "b": [
+   "Encore tourner la pompe à bras…",
+   "Mon épaule n'en peut plus."
+  ],
+  "a": [
+   "Mets un moteur : le courant le fait tourner. Ce que Faraday a montré, je te le passe.",
+   "La pompe tourne toute seule!"
+  ],
+  "beats": [
+   "Problème : tout ce qui tourne demande des bras ou un animal.",
+   "Essai : une machine à vapeur. Grosse, chère, pas pour la maison.",
+   "Invention : des aimants et des bobines qui se poussent en tournant.",
+   "Résultat : un petit moteur partout où arrive un fil."
+  ],
+  "chain": [
+   "Le courant passe dans une bobine : elle devient un aimant.",
+   "Cet aimant pousse et tire l'aimant voisin.",
+   "Un contact tournant inverse le courant au bon moment.",
+   "La poussée ne s'arrête jamais : l'axe tourne."
+  ],
+  "fact": "En 1821, Michael Faraday fait tourner un fil autour d'un aimant grâce au courant : la première rotation électromagnétique. En 1837, l'Américain Thomas Davenport obtient un brevet pour un moteur électrique."
+ },
+ "L'électroaimant": {
+  "b": [
+   "Ce bloc de fer est trop pesant.",
+   "Pis le crochet glisse tout le temps."
+  ],
+  "a": [
+   "Enroule du fil autour du fer, pis fais passer le courant. Je te le transmets.",
+   "Il colle! Pis il lâche quand je coupe."
+  ],
+  "beats": [
+   "Problème : un aimant ordinaire ne s'éteint pas, et il est faible.",
+   "Essai : de plus gros aimants. Toujours impossibles à lâcher.",
+   "Invention : du fil enroulé autour d'un fer, parcouru par un courant.",
+   "Résultat : un aimant fort, qu'on allume et éteint."
+  ],
+  "chain": [
+   "Le courant tourne dans le fil autour du fer.",
+   "Il crée un champ magnétique.",
+   "Le fer concentre ce champ : il devient un aimant puissant.",
+   "On coupe le courant : l'aimant s'éteint."
+  ],
+  "fact": "En 1825, William Sturgeon présente un électroaimant qui soutient environ 9 livres (4 kg). En 1831, Joseph Henry en construit un pour l'Université Yale qui soutient plus de 2 000 livres, environ une tonne. L'électroaimant est le cœur du télégraphe, de la sonnette et du haut-parleur."
+ },
+ "La dynamo": {
+  "b": [
+   "Les piles sont encore vides.",
+   "On n'éclairera jamais une ville avec ça."
+  ],
+  "a": [
+   "Fais tourner une bobine près d'un aimant : ça donne du courant. Je te le passe.",
+   "La roue tourne, pis la lampe brille, sans pile!"
+  ],
+  "beats": [
+   "Problème : les piles s'épuisent et coûtent cher.",
+   "Essai : de plus grosses piles. Encore plus cher.",
+   "Invention : une bobine qui tourne près d'un aimant.",
+   "Résultat : du courant tant que quelque chose fait tourner."
+  ],
+  "chain": [
+   "Une roue à eau ou une machine à vapeur fait tourner l'axe.",
+   "La bobine passe devant les pôles de l'aimant.",
+   "Le champ qui change pousse les électrons dans le fil.",
+   "Le courant sort par des contacts frottants."
+  ],
+  "fact": "En 1831, Faraday découvre qu'un aimant qui bouge près d'un fil crée un courant : l'induction. En 1871, le Belge Zénobe Gramme brevète une dynamo assez régulière pour l'industrie."
+ },
+ "Le télégraphe et le relais": {
+  "b": [
+   "La lettre va prendre une semaine.",
+   "Pis la nouvelle sera vieille en arrivant."
+  ],
+  "a": [
+   "Tape des points pis des traits : le fil les porte. Pis le relais les relance. Je te le transmets.",
+   "Le message est déjà rendu!"
+  ],
+  "beats": [
+   "Problème : un message voyage à la vitesse d'un cheval.",
+   "Essai : des signaux de fumée, de drapeaux. Il faut se voir.",
+   "Invention : un courant qu'on ouvre et ferme, et un électroaimant au bout.",
+   "Résultat : un message à travers le pays en quelques instants."
+  ],
+  "chain": [
+   "La clé ferme le circuit : le courant part.",
+   "Le fil le porte; il s'affaiblit en route.",
+   "Le relais, un interrupteur commandé par un aimant, relance un courant neuf.",
+   "Au bout, l'électroaimant frappe les points et les traits."
+  ],
+  "fact": "Le 24 mai 1844, Samuel Morse envoie « What hath God wrought? » de Washington à Baltimore. Le relais, qu'on attribue à Joseph Henry (1835), est un interrupteur commandé par l'électricité : on en a mis des milliers dans les premiers ordinateurs, avant les tubes puis les transistors."
+ },
+ "Le téléphone": {
+  "b": [
+   "Je crie, pis elle m'entend pas.",
+   "Elle est à l'autre bout du village."
+  ],
+  "a": [
+   "Parle dans le micro : ta voix devient un courant. Ce que Bell a breveté, je te le passe.",
+   "Je l'entends comme si elle était là!"
+  ],
+  "beats": [
+   "Problème : la voix ne porte pas loin.",
+   "Essai : le télégraphe. Il faut connaître le code.",
+   "Invention : un micro et un écouteur reliés par un fil.",
+   "Résultat : on se parle à distance, à voix normale."
+  ],
+  "chain": [
+   "La voix fait vibrer une membrane.",
+   "La vibration fait varier le courant dans le fil.",
+   "Au bout, un électroaimant suit ces variations.",
+   "Il fait vibrer une autre membrane : on entend la voix."
+  ],
+  "fact": "Alexander Graham Bell obtient son brevet en mars 1876. Bell a vécu à Brantford, en Ontario, et plus tard à Baddeck, en Nouvelle-Écosse."
+ },
+ "L'ampoule": {
+  "b": [
+   "La bougie fume, pis je vois rien.",
+   "Encore de l'huile à acheter."
+  ],
+  "a": [
+   "Fais chauffer un fil très fin dans une ampoule sans air. Je te passe ça.",
+   "Toute la pièce est claire!"
+  ],
+  "beats": [
+   "Problème : bougies et lampes à huile éclairent peu, fument et brûlent.",
+   "Essai : des lampes à arc. Trop fortes, pour les rues seulement.",
+   "Invention : un filament dans une ampoule vide d'air.",
+   "Résultat : une lumière douce et propre dans chaque pièce."
+  ],
+  "chain": [
+   "Le courant traverse un filament très fin.",
+   "Le filament résiste : il chauffe au blanc.",
+   "Sans air, il ne brûle pas.",
+   "Il brille des centaines d'heures."
+  ],
+  "fact": "En 1879, Joseph Swan en Angleterre et Thomas Edison aux États-Unis mettent au point des ampoules à filament de carbone; celle d'Edison brille 13 heures et demie lors d'un essai en octobre. Selon l'économiste William Nordhaus, 1 000 lumens-heures de lumière demandaient environ 5 heures de travail en 1800, avec des bougies, et moins d'une seconde en 1992."
+ },
+ "La centrale électrique": {
+  "b": [
+   "Chaque soir, la rue est noire.",
+   "Pis une machine dans chaque maison, c'est impossible."
+  ],
+  "a": [
+   "Une grosse centrale, pis des fils pour tout le quartier. Je te le transmets.",
+   "Tout le quartier s'allume en même temps!"
+  ],
+  "beats": [
+   "Problème : chaque maison devrait produire son propre courant.",
+   "Essai : une petite dynamo par bâtiment. Cher et bruyant.",
+   "Invention : une centrale qui alimente tout un quartier par des fils.",
+   "Résultat : l'électricité devient un service, comme l'eau."
+  ],
+  "chain": [
+   "Des machines à vapeur font tourner de grosses dynamos.",
+   "Le courant part dans des fils sous la rue.",
+   "Chaque client a un compteur.",
+   "On allume la lumière sans rien produire soi-même."
+  ],
+  "fact": "Le 4 septembre 1882, la centrale de Pearl Street, à New York, commence à alimenter des clients. Un mois plus tard, elle en a 59, avec environ 400 lampes. Aux États-Unis, 8 % des logements avaient l'électricité en 1907, 68 % en 1930 et 79 % en 1940."
+ },
+ "Le transformateur et le courant alternatif": {
+  "b": [
+   "Le courant se perd avant d'arriver au village.",
+   "Faudrait une centrale à chaque coin de rue."
+  ],
+  "a": [
+   "Monte la tension pour le voyage, pis redescends-la pour la maison. Je te le passe.",
+   "La chute éclaire la ville, loin d'ici!"
+  ],
+  "beats": [
+   "Problème : le courant continu se perd sur les longues distances.",
+   "Essai : de plus gros fils. Beaucoup trop de cuivre.",
+   "Invention : le transformateur et le courant alternatif.",
+   "Résultat : une centrale lointaine alimente des villes entières."
+  ],
+  "chain": [
+   "L'alternateur produit un courant qui change de sens sans arrêt.",
+   "Le transformateur monte la tension : moins de courant, moins de pertes.",
+   "La ligne porte l'énergie loin.",
+   "Près des maisons, un autre transformateur la redescend."
+  ],
+  "fact": "En 1885, les ingénieurs hongrois Zipernowsky, Bláthy et Déri brevètent un transformateur pratique. À Niagara, la centrale Adams démarre en 1895 avec des alternateurs Westinghouse inspirés des travaux de Tesla; en novembre 1896, le courant arrive à Buffalo, à environ 30 km. Aujourd'hui, plus de 99 % de l'électricité d'Hydro-Québec vient de l'eau."
+ },
+ "Le tube à vide": {
+  "b": [
+   "Le relais claque, mais il est lent.",
+   "Pis le signal de la radio est trop faible."
+  ],
+  "a": [
+   "Mets un tube : il laisse passer le courant dans un sens, pis il amplifie. Je te le transmets.",
+   "J'entends la musique fort et clair!"
+  ],
+  "beats": [
+   "Problème : les relais mécaniques sont lents, et un signal faible se perd.",
+   "Essai : de meilleurs aimants. Toujours mécanique.",
+   "Invention : une ampoule à vide avec un filament, une plaque, puis une grille.",
+   "Résultat : on amplifie et on commute sans pièce qui bouge."
+  ],
+  "chain": [
+   "Le filament chaud lance des électrons dans le vide.",
+   "La plaque les attire : le courant ne passe que dans un sens.",
+   "Une grille entre les deux laisse passer plus ou moins d'électrons.",
+   "Un petit signal sur la grille commande un gros courant : il est amplifié."
+  ],
+  "fact": "John Ambrose Fleming dépose son brevet de tube à deux électrodes en novembre 1904. Lee de Forest ajoute une grille et brevète la triode en 1908. Des milliers de tubes ont fait marcher la radio, la télévision et les premiers ordinateurs, avant que le transistor les remplace."
+ },
+ "La machine à laver électrique": {
+  "b": [
+   "Encore une journée à frotter sur la planche.",
+   "Mes mains sont rouges pis gercées."
+  ],
+  "a": [
+   "Le moteur brasse le linge à ta place. Je te passe ça.",
+   "Pendant que ça lave, je peux faire autre chose!"
+  ],
+  "beats": [
+   "Problème : la lessive à la main prend une journée par semaine.",
+   "Essai : des laveuses à manivelle. On tourne encore à bras.",
+   "Invention : une cuve brassée par un moteur électrique.",
+   "Résultat : des heures de travail en moins chaque semaine."
+  ],
+  "chain": [
+   "Le moteur fait tourner un agitateur ou un tambour.",
+   "L'eau savonneuse traverse le linge.",
+   "On vide, on rince.",
+   "On essore : le linge sort presque sec."
+  ],
+  "fact": "La laveuse électrique « Thor » est vendue à partir de 1908. Selon une étude américaine de 1945-1946, une brassée de 38 livres demandait environ 4 heures de lavage et 4 heures et demie de repassage à la main; avec l'électricité, environ 41 minutes et 1 heure 45."
+ },
+ "Le réfrigérateur électrique": {
+  "b": [
+   "La glace a encore fondu.",
+   "Pis le lait a tourné."
+  ],
+  "a": [
+   "Le moteur pousse un fluide qui prend la chaleur dedans pis la rejette dehors. Je te le transmets.",
+   "Le lait est frais toute la semaine!"
+  ],
+  "beats": [
+   "Problème : sans froid, la nourriture se gâte vite.",
+   "Essai : la glacière et ses blocs de glace. Ils fondent.",
+   "Invention : un moteur et un fluide qui transporte la chaleur.",
+   "Résultat : du froid toute l'année, sans glace."
+  ],
+  "chain": [
+   "Le compresseur serre le gaz : il chauffe.",
+   "Derrière, le condenseur rejette cette chaleur.",
+   "Un petit passage fait tomber la pression : le fluide devient très froid.",
+   "Dedans, il s'évapore et aspire la chaleur des aliments."
+  ],
+  "fact": "Le « Monitor Top » de General Electric, lancé en 1927, rend le réfrigérateur populaire. Aux États-Unis, environ 8 % des foyers en avaient un au début des années 1930, 44 % à la fin de la décennie."
+ },
+ "La télévision": {
+  "b": [
+   "Le match est fini, pis on n'a rien vu.",
+   "Faudra attendre les photos du journal."
+  ],
+  "a": [
+   "On découpe l'image en lignes, pis on l'envoie. Je te passe ça.",
+   "On le voit dans le salon, en direct!"
+  ],
+  "beats": [
+   "Problème : pour voir, il faut être sur place.",
+   "Essai : les photos dans le journal. Le lendemain.",
+   "Invention : une caméra qui découpe l'image en lignes, et un écran qui les recompose.",
+   "Résultat : des images en direct, dans chaque maison."
+  ],
+  "chain": [
+   "La caméra balaie l'image, ligne par ligne.",
+   "Chaque point clair ou sombre devient un courant plus ou moins fort.",
+   "Le signal voyage par fil ou par les ondes.",
+   "L'écran rallume les points dans le même ordre, si vite que l'œil voit une image."
+  ],
+  "fact": "Le 26 janvier 1926, l'Écossais John Logie Baird montre à Londres des images en mouvement transmises à distance. Les écrans à tube ont ensuite dominé pendant des décennies."
  }
 }

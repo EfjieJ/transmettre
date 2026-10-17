@@ -148,3 +148,32 @@ Total : 75 affirmations — 41 correctes, 18 corrigées, 16 nuancées.
 | 105 | Araire au Proche-Orient dès le 6e millénaire av. J.-C. | corrigé | [Wikipedia – Ard (sources citées)](https://en.wikipedia.org/wiki/Ard_(plough)) |
 
 Limites : Britannica, PNAS et Historic England bloquent les vérificateurs automatiques (403); le contenu a été confirmé par recherche. Digital History (Univ. of Houston) était en maintenance (503) le 16 oct. 2026. Le chiffre « 166 personnes nourries par agriculteur » n'a pas été retenu (source secondaire seulement). Le collier d'épaule : aucun multiplicateur de force n'est avancé, faute de source solide.
+
+## Ajouts v14 : les inventions électriques (16 oct. 2026)
+
+| # | Affirmation | Verdict | Source |
+|---|---|---|---|
+| 106 | Pile de Volta décrite en 1800; le volt porte son nom | correct | [Britannica – Alessandro Volta](https://www.britannica.com/biography/Alessandro-Volta) |
+| 107 | Faraday, 3 sept. 1821 : rotation électromagnétique, ancêtre du moteur | correct | [Royal Institution – The birth of electric motion](https://www.rigb.org/explore-science/explore/blog/birth-electric-motion) |
+| 108 | Davenport : brevet de moteur électrique en 1837 | correct | [Wikipedia – Thomas Davenport (sources citées)](https://en.wikipedia.org/wiki/Thomas_Davenport_(inventor)) |
+| 109 | Sturgeon 1825 : électroaimant soutenant ~9 livres | correct | [Thompson, The Electromagnet (archive.org)](https://archive.org/stream/bub_gb_CLmFTg_j0pwC/bub_gb_CLmFTg_j0pwC_djvu.txt) |
+| 110 | Henry 1831 : aimant de Yale soutenant plus de 2 000 livres (2 063) | correct | [Princeton – Joseph Henry Project (Yale Electromagnet)](https://commons.princeton.edu/josephhenry/joseph-henry/yale-electromagnet/) |
+| 111 | Gramme brevète sa dynamo en 1871 | correct | [Brevet US 120057 (Museu Faraday)](https://museufaraday.ist.utl.pt/HistTecnology/Gramme_US120057.pdf) |
+| 112 | Morse, 24 mai 1844 : « What hath God wrought? », Washington → Baltimore | correct | [Library of Congress](https://www.loc.gov/item/mcc.019/) |
+| 113 | Relais attribué à Henry (1835); relais dans les premiers ordinateurs (Zuse Z2, Z3) | nuancé | [Wikipedia – Relay (sources citées)](https://en.wikipedia.org/wiki/Relay) |
+| 114 | Bell : brevet en mars 1876; Brantford et Baddeck | correct | [Britannica – Alexander Graham Bell](https://www.britannica.com/biography/Alexander-Graham-Bell) |
+| 115 | Edison, oct. 1879 : filament de carbone, 13,5 h; Swan en parallèle | nuancé | [ShareAmerica – Edison invents the light bulb](https://archive-share.america.gov/invention-lit-world-day/index.html) |
+| 116 | Nordhaus : 1 000 lumens-heures ≈ 5,4 h de travail (1800, bougies) → 0,00012 h (1992) | correct | [Our World in Data – Nordhaus (1998)](https://ourworldindata.org/grapher/hours-of-work-per-1000-lumen-hours) |
+| 117 | Pearl Street, 4 sept. 1882; 59 clients et ~400 lampes après un mois | nuancé | [US Census Bureau – History (sept. 2026)](https://www.census.gov/about/history/stories/monthly/2026/september-2026.html) |
+| 118 | Logements électrifiés aux É.-U. : 8 % (1907), 68,2 % (1930), 78,7 % (1940) | correct | [Historical Statistics of the United States, Db234-241](http://hsus.cambridge.org/HSUSWeb/toc/treeTablePathIdDb234-241.html) |
+| 119 | Transformateur ZBD breveté en 1885 (Zipernowsky, Bláthy, Déri) | correct | [Centenary of the Transformer (Periodica Polytechnica)](https://pp.bme.hu/ee/article/download/4637/3742/8395) |
+| 120 | Niagara : centrale Adams 1895 (alternateurs Westinghouse, travaux de Tesla); Buffalo le 16 nov. 1896, ~30 km | correct | [PBS – Tesla: Harnessing Niagara](https://www.pbs.org/tesla/ll/ll_niagara.html) |
+| 121 | Fleming : brevet du tube à deux électrodes, 16 nov. 1904 | correct | [ETHW – Milestones: Fleming Valve, 1904](https://ethw.org/Milestones:Fleming_Valve,_1904) |
+| 122 | De Forest : brevet de 1906 (détecteur à 2 électrodes); triode à grille brevetée en 1908 | corrigé | [IEEE Reach – Lee de Forest Audion](https://reach.ieee.org/primary-sources/lee-de-forest-audion/) |
+| 123 | Laveuse électrique Thor, 1908 | nuancé | [Journal of Social History (2020) – diffusion des laveuses](https://doi.org/10.1093/jsh/shz064) |
+| 124 | Étude REA 1945-46 : 4 h de lavage + 4 h 30 de repassage → 41 min + 1 h 45 | correct | [Adamopoulou, Greenwood & Guner, NBER w32253](https://www.nber.org/papers/w32253) |
+| 125 | GE Monitor Top lancé en 1927 | correct | [Smithsonian – Keeping your (food) cool](https://www.si.edu/object/keeping-your-food-cool-ice-harvesting-electric-refrigeration%3Aposts_b2d3d441a9b668006d86ca6707a1e05e) |
+| 126 | Réfrigérateurs dans ~8 % des foyers américains au début des années 1930, 44 % à la fin | nuancé | [Pacific Standard – The rise of the refrigerator](https://psmag.com/environment/the-rise-of-the-refrigerator-47924/) |
+| 127 | Baird, 26 janv. 1926 : démonstration d'images en mouvement à Londres | correct | [Wikipedia – John Logie Baird (sources citées)](https://en.wikipedia.org/wiki/John_Logie_Baird) |
+
+Corrections pendant la vérification : la triode de de Forest est brevetée en 1908 (le brevet de 1906 couvre un détecteur à deux électrodes); le relais est « attribué » à Henry (1835); Sturgeon : les « 7 onces » sont le poids du fer, pas la charge. Limites : Library of Congress, Smithsonian (si.edu), ShareAmerica et Britannica bloquent les vérificateurs automatiques (403); Historical Statistics of the United States ne répond pas depuis la machine de test; le contenu a été confirmé par recherche.

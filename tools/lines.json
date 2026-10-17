@@ -1120,6 +1120,266 @@
   "id": "avant-9cde9f55"
  },
  {
+  "who": "avant",
+  "text": "L'étincelle est déjà partie.",
+  "id": "avant-a5007eb5"
+ },
+ {
+  "who": "avant",
+  "text": "Comment étudier quelque chose qui dure une seconde?",
+  "id": "avant-19e22393"
+ },
+ {
+  "who": "apres",
+  "text": "Empile du zinc, du cuivre et du carton salé. Ce que Volta a trouvé, je te le passe.",
+  "id": "apres-2417b6f1"
+ },
+ {
+  "who": "avant",
+  "text": "Le courant coule sans arrêt! On peut enfin chercher.",
+  "id": "avant-93fe2460"
+ },
+ {
+  "who": "avant",
+  "text": "Encore tourner la pompe à bras…",
+  "id": "avant-2754fea0"
+ },
+ {
+  "who": "avant",
+  "text": "Mon épaule n'en peut plus.",
+  "id": "avant-2fe144ef"
+ },
+ {
+  "who": "apres",
+  "text": "Mets un moteur : le courant le fait tourner. Ce que Faraday a montré, je te le passe.",
+  "id": "apres-e9e60194"
+ },
+ {
+  "who": "avant",
+  "text": "La pompe tourne toute seule!",
+  "id": "avant-ef8cba1e"
+ },
+ {
+  "who": "avant",
+  "text": "Ce bloc de fer est trop pesant.",
+  "id": "avant-b4265931"
+ },
+ {
+  "who": "avant",
+  "text": "Pis le crochet glisse tout le temps.",
+  "id": "avant-153d1c19"
+ },
+ {
+  "who": "apres",
+  "text": "Enroule du fil autour du fer, pis fais passer le courant. Je te le transmets.",
+  "id": "apres-fcdea37d"
+ },
+ {
+  "who": "avant",
+  "text": "Il colle! Pis il lâche quand je coupe.",
+  "id": "avant-b8e943dd"
+ },
+ {
+  "who": "avant",
+  "text": "Les piles sont encore vides.",
+  "id": "avant-f30e26b5"
+ },
+ {
+  "who": "avant",
+  "text": "On n'éclairera jamais une ville avec ça.",
+  "id": "avant-52911435"
+ },
+ {
+  "who": "apres",
+  "text": "Fais tourner une bobine près d'un aimant : ça donne du courant. Je te le passe.",
+  "id": "apres-6e5551a9"
+ },
+ {
+  "who": "avant",
+  "text": "La roue tourne, pis la lampe brille, sans pile!",
+  "id": "avant-4178544e"
+ },
+ {
+  "who": "avant",
+  "text": "La lettre va prendre une semaine.",
+  "id": "avant-6dc8d63d"
+ },
+ {
+  "who": "avant",
+  "text": "Pis la nouvelle sera vieille en arrivant.",
+  "id": "avant-8855e597"
+ },
+ {
+  "who": "apres",
+  "text": "Tape des points pis des traits : le fil les porte. Pis le relais les relance. Je te le transmets.",
+  "id": "apres-583f6e42"
+ },
+ {
+  "who": "avant",
+  "text": "Le message est déjà rendu!",
+  "id": "avant-ee1e102b"
+ },
+ {
+  "who": "avant",
+  "text": "Je crie, pis elle m'entend pas.",
+  "id": "avant-2c09aff1"
+ },
+ {
+  "who": "avant",
+  "text": "Elle est à l'autre bout du village.",
+  "id": "avant-5e4e4c78"
+ },
+ {
+  "who": "apres",
+  "text": "Parle dans le micro : ta voix devient un courant. Ce que Bell a breveté, je te le passe.",
+  "id": "apres-00e99dc2"
+ },
+ {
+  "who": "avant",
+  "text": "Je l'entends comme si elle était là!",
+  "id": "avant-a7b3a173"
+ },
+ {
+  "who": "avant",
+  "text": "La bougie fume, pis je vois rien.",
+  "id": "avant-0abc6f5a"
+ },
+ {
+  "who": "avant",
+  "text": "Encore de l'huile à acheter.",
+  "id": "avant-fae7fe2e"
+ },
+ {
+  "who": "apres",
+  "text": "Fais chauffer un fil très fin dans une ampoule sans air. Je te passe ça.",
+  "id": "apres-185e868e"
+ },
+ {
+  "who": "avant",
+  "text": "Toute la pièce est claire!",
+  "id": "avant-980970d1"
+ },
+ {
+  "who": "avant",
+  "text": "Chaque soir, la rue est noire.",
+  "id": "avant-9decabd7"
+ },
+ {
+  "who": "avant",
+  "text": "Pis une machine dans chaque maison, c'est impossible.",
+  "id": "avant-8e17e70d"
+ },
+ {
+  "who": "apres",
+  "text": "Une grosse centrale, pis des fils pour tout le quartier. Je te le transmets.",
+  "id": "apres-0dd3ef04"
+ },
+ {
+  "who": "avant",
+  "text": "Tout le quartier s'allume en même temps!",
+  "id": "avant-854eaba9"
+ },
+ {
+  "who": "avant",
+  "text": "Le courant se perd avant d'arriver au village.",
+  "id": "avant-0037d3c5"
+ },
+ {
+  "who": "avant",
+  "text": "Faudrait une centrale à chaque coin de rue.",
+  "id": "avant-ccb1c14a"
+ },
+ {
+  "who": "apres",
+  "text": "Monte la tension pour le voyage, pis redescends-la pour la maison. Je te le passe.",
+  "id": "apres-5a1cf4a2"
+ },
+ {
+  "who": "avant",
+  "text": "La chute éclaire la ville, loin d'ici!",
+  "id": "avant-cd554110"
+ },
+ {
+  "who": "avant",
+  "text": "Le relais claque, mais il est lent.",
+  "id": "avant-3c778c8f"
+ },
+ {
+  "who": "avant",
+  "text": "Pis le signal de la radio est trop faible.",
+  "id": "avant-c67eb649"
+ },
+ {
+  "who": "apres",
+  "text": "Mets un tube : il laisse passer le courant dans un sens, pis il amplifie. Je te le transmets.",
+  "id": "apres-71aa2a2c"
+ },
+ {
+  "who": "avant",
+  "text": "J'entends la musique fort et clair!",
+  "id": "avant-1d1b7d97"
+ },
+ {
+  "who": "avant",
+  "text": "Encore une journée à frotter sur la planche.",
+  "id": "avant-891d43d9"
+ },
+ {
+  "who": "avant",
+  "text": "Mes mains sont rouges pis gercées.",
+  "id": "avant-f6f44647"
+ },
+ {
+  "who": "apres",
+  "text": "Le moteur brasse le linge à ta place. Je te passe ça.",
+  "id": "apres-5f61d3ea"
+ },
+ {
+  "who": "avant",
+  "text": "Pendant que ça lave, je peux faire autre chose!",
+  "id": "avant-3788c65c"
+ },
+ {
+  "who": "avant",
+  "text": "La glace a encore fondu.",
+  "id": "avant-ba73870d"
+ },
+ {
+  "who": "avant",
+  "text": "Pis le lait a tourné.",
+  "id": "avant-68a6c4c4"
+ },
+ {
+  "who": "apres",
+  "text": "Le moteur pousse un fluide qui prend la chaleur dedans pis la rejette dehors. Je te le transmets.",
+  "id": "apres-eeca9384"
+ },
+ {
+  "who": "avant",
+  "text": "Le lait est frais toute la semaine!",
+  "id": "avant-beffe23a"
+ },
+ {
+  "who": "avant",
+  "text": "Le match est fini, pis on n'a rien vu.",
+  "id": "avant-f2960e6d"
+ },
+ {
+  "who": "avant",
+  "text": "Faudra attendre les photos du journal.",
+  "id": "avant-5d586efc"
+ },
+ {
+  "who": "apres",
+  "text": "On découpe l'image en lignes, pis on l'envoie. Je te passe ça.",
+  "id": "apres-0ee2c926"
+ },
+ {
+  "who": "avant",
+  "text": "On le voit dans le salon, en direct!",
+  "id": "avant-c892009a"
+ },
+ {
   "who": "gaston",
   "text": "Allumé, éteint. Comme mon soufflet : ça souffle ou ça souffle pas. Tout part de là!",
   "id": "gaston-d12ad24a"

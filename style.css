@@ -500,3 +500,9 @@ use.lean{transform-origin:50% 100%}
 .device .soil{fill:#b98a5a}.device .soil.alt{fill:#8a6a3a}.device .stalk{stroke:#7a5a1e;stroke-width:1.6}.device .grain{fill:#e0a92e}.device .water-c{fill:#4aa3df}.device .horse{fill:#7a4a2a}
 .dv-pulse{animation:ddrip 1s linear infinite}
 .ab-bars{flex-wrap:nowrap}.ab-bars div{min-width:0}
+/* v14 électricité */
+.dv-flow{fill:none;stroke:#ffb703;stroke-width:3;stroke-dasharray:4 10;stroke-linecap:round;animation:dflow .8s linear infinite}@keyframes dflow{to{stroke-dashoffset:-14}}
+.coil{stroke:#c2410c;stroke-width:1.5}.hotl{stroke:#e85d2a;stroke-width:3;fill:none}.coldl{stroke:#4aa3df;stroke-width:3;fill:none}
+.dv-key{transform-box:fill-box;transform-origin:0 50%;animation:dkey 1.2s steps(2) infinite}@keyframes dkey{to{transform:rotate(10deg)}}
+.dv-tape{animation:dsaw2 2s linear infinite}.dv-on{animation:ddrip 2s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.dv-flow,.dv-key,.dv-tape,.dv-on{animation:none}}
