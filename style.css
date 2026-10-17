@@ -419,3 +419,17 @@ use.lean{transform-origin:50% 100%}
 .guide-x{position:absolute;top:4px;right:6px;border:0;background:none;font-size:1.2rem;cursor:pointer}
 @media (max-width:720px){.voice{right:auto;left:14px}.guide{left:8px;right:8px;max-width:none;bottom:70px}.beat{min-width:70px;font-size:.75rem;padding:5px}.pan .say{font-size:.75rem;top:24px}}
 @media (prefers-reduced-motion:reduce){.pan .say,.guide{transition:none}}
+/* v10 : dialogue hors du dessin */
+.pan .say,.talkhost>.say{display:none}
+.dlg{display:flex;align-items:center;gap:8px;margin:8px 0 2px;position:relative;background:#fff;border:2px solid #222;border-radius:14px;padding:6px 8px;font-size:.88rem;opacity:.35;transition:opacity .25s}
+.dlg.on{opacity:1}.dlg::before{content:"";position:absolute;top:-10px;left:28px;border:8px solid transparent;border-bottom-color:#222;border-top:0}
+.dlg-av{font-size:1.4rem;line-height:1}.dlg-txt{margin:0;flex:1;line-height:1.3}.dlg-txt b{color:var(--accent,#c0562a)}
+.dlg-play{border:1.5px solid #ccc;background:#faf7f2;border-radius:50%;width:30px;height:30px;cursor:pointer;flex:none;font-size:.85rem}
+.guide{position:static;margin:14px auto;max-width:720px;transform:none;display:none;align-items:center;padding:10px 40px 10px 12px;pointer-events:auto;opacity:1;position:relative}
+.guide.on{display:flex}.guide .dlg-play{margin-left:auto}
+@media (max-width:720px){.guide{left:auto;right:auto;bottom:auto;margin:12px 0}}
+@media (prefers-reduced-motion:reduce){.dlg{transition:none}}
+.voice-help{position:fixed;top:56px;right:14px;z-index:41;max-width:300px;background:#fff8e6;border:2px solid #e0b84c;border-radius:12px;padding:8px 28px 8px 10px;font-size:.82rem;margin:0}
+.voice-help button{position:absolute;top:2px;right:6px;border:0;background:none;font-size:1.1rem;cursor:pointer}
+.voice-help[hidden]{display:none}
+@media (max-width:720px){.voice-help{left:8px;right:8px;max-width:none}}

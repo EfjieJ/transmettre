@@ -1,23 +1,43 @@
 /* Personnages qui parlent : bulles BD, voix optionnelle, étapes, « Comment ça marche? », guide forgeron. */
 (() => {
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  /* ---------- Voix (désactivée par défaut, jamais sans clic) ---------- */
-  let voiceOn = false, frVoice = null;
-  const SS = window.speechSynthesis;
-  const pickVoice = () => { if (!SS) return; const v = SS.getVoices(); frVoice = v.find(x => /fr[-_]CA/i.test(x.lang)) || v.find(x => /^fr/i.test(x.lang)) || null; };
-  if (SS) { pickVoice(); SS.onvoiceschanged = pickVoice; }
-  const speak = t => { if (!voiceOn || !SS) return; SS.cancel(); const u = new SpeechSynthesisUtterance(t.replace(/<[^>]+>/g, '')); u.lang = frVoice ? frVoice.lang : 'fr-CA'; if (frVoice) u.voice = frVoice; u.rate = 1.02; SS.speak(u); window.__spoken = (window.__spoken || 0) + 1; };
+  /* ---------- Voix ---------- */
+  const SS = window.speechSynthesis; let voices = [], frVoice = null, ka = null;
+  const pref = (() => { try { return localStorage.getItem('tr-voice'); } catch (e) { return null; } })();
+  let voiceOn = false;
+  const pickVoice = () => { if (!SS) return; voices = SS.getVoices() || []; const fr = voices.filter(x => /^fr/i.test(x.lang)); const rank = x => (/fr[-_]CA/i.test(x.lang) ? 0 : /fr[-_]FR/i.test(x.lang) ? 1 : 2) - (/google/i.test(x.name) ? .5 : 0) - (x.localService ? .2 : 0); frVoice = fr.sort((a, b) => rank(a) - rank(b))[0] || null; };
+  const help = document.createElement('p'); help.className = 'voice-help'; help.hidden = true; help.innerHTML = 'Pas de voix française sur cet appareil? Sur Android : <b>Paramètres › Système › Langues › Synthèse vocale</b>, choisissez <b>Services de reconnaissance vocale de Google</b> et installez le <b>français</b>. <button aria-label="Fermer">×</button>'; help.querySelector('button').onclick = () => help.hidden = true;
+  const checkHelp = () => { if (!SS) return; pickVoice(); if (!frVoice) help.hidden = false; };
+  if (SS) { pickVoice(); SS.addEventListener ? SS.addEventListener('voiceschanged', pickVoice) : (SS.onvoiceschanged = pickVoice); }
+  const WHO = { avant: { n: 'Ti-Jos', a: '🧔', p: .85, r: .95 }, apres: { n: 'Rosalie', a: '👩', p: 1.3, r: 1.05 }, jeu: { n: 'Ti-Jean', a: '🧑', p: 1.1, r: 1.1 }, gaston: { n: 'Gaston', a: '🧔🏻‍🔧', p: .7, r: .92 }, narr: { n: '', a: '', p: 1, r: 1 } };
+  const speak = (t, who = 'narr') => {
+    window.__speakCalls = (window.__speakCalls || []); window.__speakCalls.push(t);
+    if (!voiceOn || !SS) return; if (!frVoice) pickVoice();
+    SS.cancel(); const w = WHO[who] || WHO.narr;
+    const u = new SpeechSynthesisUtterance(String(t).replace(/<[^>]+>/g, ''));
+    u.lang = frVoice ? frVoice.lang : 'fr-CA'; if (frVoice) u.voice = frVoice; u.pitch = w.p; u.rate = w.r;
+    clearInterval(ka); ka = setInterval(() => { if (!SS.speaking) return clearInterval(ka); SS.pause(); SS.resume(); }, 10000);
+    u.onend = () => clearInterval(ka); u.onerror = ev => { clearInterval(ka); if (ev.error !== 'interrupted' && ev.error !== 'canceled') help.hidden = false; }; SS.speak(u); window.__spoken = (window.__spoken || 0) + 1;
+  };
   const vb = document.createElement('button'); vb.id = 'voice'; vb.className = 'mute voice'; vb.setAttribute('aria-pressed', 'false');
   vb.title = SS ? 'Faire parler les personnages à voix haute' : 'Voix non disponible dans ce navigateur';
-  vb.textContent = '🗣️ Voix : non'; if (!SS) vb.disabled = true;
-  vb.addEventListener('click', () => { voiceOn = !voiceOn; vb.setAttribute('aria-pressed', voiceOn); vb.textContent = voiceOn ? '🗣️ Voix : oui' : '🗣️ Voix : non'; if (voiceOn) speak('Allô! Je vais lire les bulles à voix haute.'); else SS && SS.cancel(); });
-  document.body.appendChild(vb);
+  const setVoice = (on, test) => { voiceOn = on; vb.setAttribute('aria-pressed', on); vb.textContent = on ? '🔊 Voix : oui' : '🔇 Voix : non'; try { localStorage.setItem('tr-voice', on ? 'on' : 'off'); } catch (e) {} if (!on && SS) SS.cancel(); if (on && test) speak('Allô! Je vais lire les bulles à voix haute.', 'gaston'); if (on) setTimeout(checkHelp, 2500); };
+  setVoice(false); if (!SS) vb.disabled = true;
+  vb.addEventListener('click', e => { e.stopPropagation(); setVoice(!voiceOn, true); });
+  document.body.appendChild(vb); document.body.appendChild(help);
+  /* premier geste n'importe où : débloque la voix (si pas refusée avant) */
+  const unlock = e => { if (e.target.closest && e.target.closest('#voice')) return; removeEventListener('pointerdown', unlock, true); if (!SS || pref === 'off') return; const u = new SpeechSynthesisUtterance(' '); u.volume = 0; SS.speak(u); setVoice(true, false); };
+  addEventListener('pointerdown', unlock, true);
   window.Talk = { speak, get voiceOn() { return voiceOn; } };
 
-  /* ---------- Bulle BD dans un panneau ---------- */
-  const sayIn = (fig, text, who) => {
-    let b = fig.querySelector('.say'); if (!b) { b = document.createElement('span'); b.className = 'say'; b.setAttribute('aria-live', 'polite'); fig.appendChild(b); }
-    b.classList.remove('on'); void b.offsetWidth; b.innerHTML = (who ? `<i>${who}</i> ` : '') + text; b.classList.add('on'); speak(text);
+  /* ---------- Bande de dialogue (hors du dessin) ---------- */
+  const strip = (host, after) => { let d = host.querySelector(':scope > .dlg'); if (!d) { d = document.createElement('div'); d.className = 'dlg'; d.setAttribute('aria-live', 'polite'); if (after) after.after(d); else host.appendChild(d); } return d; };
+  const sayIn = (fig, text, who = 'jeu') => {
+    const svg = fig.querySelector(':scope > svg'); const d = strip(fig, svg); const w = WHO[who] || WHO.jeu;
+    d.innerHTML = `<span class="dlg-av" aria-hidden="true">${w.a}</span><p class="dlg-txt"><b>${w.n} :</b> ${text}</p><button class="dlg-play" aria-label="Réécouter">🔊</button>`;
+    d.classList.remove('on'); void d.offsetWidth; d.classList.add('on');
+    d.querySelector('.dlg-play').onclick = () => { if (!voiceOn) setVoice(true, false); speak(text, who); };
+    speak(text, who);
   };
 
   /* ---------- Contenu des démonstrations ---------- */
@@ -95,7 +115,7 @@
     const cap = st.querySelector('.beat-cap'); let cur = -1, timer = null;
     const go = i => { cur = i; st.querySelectorAll('.beat').forEach((b, j) => { b.classList.toggle('on', j === i); b.classList.toggle('past', j < i); });
       cap.textContent = d.beats[i]; fb.classList.toggle('focus', i < 2); fa.classList.toggle('focus', i >= 2);
-      const pan = i < 2 ? fb : fa; sayIn(pan, (i < 2 ? d.b : d.a)[i % 2]); };
+      const pan = i < 2 ? fb : fa; sayIn(pan, (i < 2 ? d.b : d.a)[i % 2], i < 2 ? 'avant' : 'apres'); };
     st.addEventListener('click', e => { const b = e.target.closest('.beat'); if (!b) return; stop(); go(+b.dataset.i); });
     const stop = () => { clearInterval(timer); timer = null; };
     const play = () => { if (timer || RM) return; go((cur + 1) % 4); timer = setInterval(() => go((cur + 1) % 4), 3600); };
@@ -108,10 +128,12 @@
 
   /* ---------- Guide : le forgeron ---------- */
   const g = document.createElement('div'); g.className = 'guide'; g.id = 'guide'; g.setAttribute('role', 'status'); g.setAttribute('aria-live', 'polite');
-  g.innerHTML = `<span class="guide-face" aria-hidden="true">🧔🏻‍🔧</span><p class="guide-say"></p><button class="guide-x" aria-label="Fermer">×</button>`;
-  document.body.appendChild(g); let gt = null;
-  g.querySelector('.guide-x').onclick = () => g.classList.remove('on');
-  const guide = (t) => { g.querySelector('.guide-say').innerHTML = `<b>Gaston le forgeron :</b> ${t}`; g.classList.add('on'); speak(t); clearTimeout(gt); gt = setTimeout(() => g.classList.remove('on'), 7000); window.__guide = (window.__guide || 0) + 1; };
+  g.innerHTML = `<span class="guide-face" aria-hidden="true">🧔🏻‍🔧</span><p class="guide-say"></p><button class="dlg-play" aria-label="Réécouter">🔊</button><button class="guide-x" aria-label="Fermer">×</button>`;
+  g.querySelector('.guide-x').onclick = () => g.classList.remove('on'); let gLast = '';
+  g.querySelector('.dlg-play').onclick = () => { if (!voiceOn) setVoice(true, false); speak(gLast, 'gaston'); };
+  /* ancré dans la page, sous le bloc le plus proche du centre de l'écran : ne recouvre jamais rien */
+  const anchor = () => { const el = document.elementFromPoint(innerWidth / 2, innerHeight / 2); const blk = el && el.closest('.game, .litho, .zoom, .card, .sw-game, #swg, #pcbg, #gates, section'); return blk; };
+  const guide = (t) => { gLast = t; g.querySelector('.guide-say').innerHTML = `<b>Gaston le forgeron :</b> ${t}`; const blk = anchor(); if (blk && blk !== g.parentElement) { if (blk.tagName === 'SECTION') blk.appendChild(g); else blk.after(g); } g.classList.add('on'); speak(t, 'gaston'); window.__guide = (window.__guide || 0) + 1; };
   window.Talk.guide = guide;
   const G = {
     onoff: 'Allumé, éteint. Comme mon soufflet : ça souffle ou ça souffle pas. Tout part de là!',
@@ -127,7 +149,7 @@
 
   /* ---------- Personnages des jeux brouette + levier ---------- */
   const watch = (msgId, figSel, lines) => { const m = document.getElementById(msgId); let host = document.querySelector(figSel); if (host && host instanceof SVGElement) host = host.parentElement; if (!m || !host) return; host.classList.add('talkhost');
-    new MutationObserver(() => { const c = m.className, t = m.textContent; const set = /ok|win/.test(c) ? lines.ok : /no|bad/.test(c) ? lines.no : null; if (!set || !t) return; sayIn(host, set[Math.floor(Math.random() * set.length)], '🧑'); }).observe(m, { attributes: true, childList: true, characterData: true, subtree: true }); };
+    new MutationObserver(() => { const c = m.className, t = m.textContent; const set = /ok|win/.test(c) ? lines.ok : /no|bad/.test(c) ? lines.no : null; if (!set || !t) return; sayIn(host, set[Math.floor(Math.random() * set.length)], 'jeu'); }).observe(m, { attributes: true, childList: true, characterData: true, subtree: true }); };
   const bg = document.getElementById('b-msg'); if (bg) watch('b-msg', '#bp', { ok: ['Yé! Ça roule!', 'Regarde-moi aller avec six pierres!', 'La roue porte, moi je pousse!'], no: ['Hmm, il manque une pièce…', 'Ça marche pas encore, essaie autre chose!', 'Pas de roue? Je vais devoir tout porter!'] });
   watch('lv-msg', '#levier-jeu svg#lv', { ok: ['Avec la barre, je la lève tout seul!', 'Hé, j\'ai de la force de géant!'], no: ['Elle bouge pas! Rapproche l\'appui!', 'Trop dur… mon bras est trop court!'] });
   const lvH = document.getElementById('lv'); if (lvH && lvH.parentElement) { lvH.parentElement.classList.add('talkhost'); }
