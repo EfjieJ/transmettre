@@ -23,7 +23,7 @@ h1{font-size:clamp(2.2rem,6vw,3.8rem)}h1 span{color:var(--accent)}
 /* game */
 .game-sec,.grad,.gift,.end{padding:90px 20px;text-align:center}
 .game-sec{background:var(--soft)}
-.how{font-size:.9rem;color:var(--muted);margin-bottom:26px}
+.howit{font-size:.9rem;color:var(--muted);margin-bottom:26px}
 .game{max-width:1000px;margin:0 auto;background:#fff;border-radius:20px;padding:26px;box-shadow:0 6px 30px rgba(0,0,0,.07)}
 .tray{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;min-height:104px;padding:10px;border:2px dashed var(--soft);border-radius:14px;margin-bottom:26px}
 .piece{width:88px;height:82px;border-radius:12px;background:var(--paper);border:2px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;font-size:.82rem;font-weight:700;transition:transform .15s}
@@ -397,3 +397,25 @@ use.lean{transform-origin:50% 100%}
 .light-fig figcaption{font-size:.82rem;color:#b9b0d9;margin-top:8px}
 .light-text{max-width:680px;margin:0 auto;text-align:left;font-size:1.08rem;line-height:1.75}.light-text p{margin-bottom:14px}.light-text b{color:#ffe7a8}
 .light-close{font-family:Georgia,serif;font-style:italic;text-align:center;font-size:1.2rem;color:#ffe7a8}
+/* v9 : bulles BD, étapes, guide */
+.voice{right:120px}
+.pan .say{position:absolute;top:30px;left:50%;transform:translateX(-50%) scale(.6);max-width:85%;background:#fff;color:#222;border:2px solid #222;border-radius:16px;padding:5px 10px;font-size:.84rem;font-weight:700;line-height:1.25;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:3;text-align:center;box-shadow:2px 3px 0 rgba(0,0,0,.15)}
+.pan .say::after{content:"";position:absolute;bottom:-9px;left:40%;border:8px solid transparent;border-top-color:#222;border-bottom:0}
+.pan .say.on{opacity:1;transform:translateX(-50%) scale(1)}
+.talkhost{position:relative}.talkhost>.say{position:absolute;top:8px;left:50%;transform:translateX(-50%);background:#fff;color:#222;border:2px solid #222;border-radius:16px;padding:6px 12px;font-weight:700;font-size:.9rem;opacity:0;transition:opacity .25s;z-index:5;pointer-events:none;max-width:80%;text-align:center}
+.talkhost>.say.on{opacity:1}.say i{font-style:normal}
+.pan.focus{outline:3px solid var(--accent,#e07a3c);outline-offset:2px}
+.beats{grid-column:1/-1;margin-top:10px}.beat-dots{display:flex;gap:6px;flex-wrap:wrap}
+.beat{flex:1 1 0;min-width:90px;border:2px solid #e2d6c8;background:#fff;border-radius:10px;padding:6px 8px;font:inherit;font-size:.82rem;cursor:pointer;display:flex;gap:6px;align-items:center;justify-content:center}
+.beat b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#ece7df;font-size:.75rem}
+.beat.past{border-color:#e9c3aa}.beat.on{border-color:var(--accent,#e07a3c);background:#fbeee6}.beat.on b{background:var(--accent,#e07a3c);color:#fff}
+.beat-cap{margin:8px 2px 0;font-size:.95rem;min-height:1.4em}
+.howit{grid-column:1/-1;margin-top:8px;background:#f7f2ec;border-radius:10px;padding:8px 12px}
+.howit summary{cursor:pointer;font-weight:700}.chain{margin:8px 0 6px 20px;line-height:1.6}.chain li::marker{color:var(--accent,#e07a3c);font-weight:700}
+.fact{font-size:.9rem;margin:6px 0 2px}
+.zoom-more{font-size:.95rem;max-width:640px;margin:6px auto;text-align:center}
+.guide{position:fixed;left:14px;bottom:90px;z-index:45;display:flex;gap:10px;align-items:flex-start;max-width:340px;background:#fff;border:2px solid #222;border-radius:18px;padding:10px 30px 10px 10px;box-shadow:3px 4px 0 rgba(0,0,0,.15);transform:translateY(20px);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+.guide.on{opacity:1;transform:none;pointer-events:auto}.guide-face{font-size:2rem;line-height:1}.guide-say{margin:0;font-size:.9rem}
+.guide-x{position:absolute;top:4px;right:6px;border:0;background:none;font-size:1.2rem;cursor:pointer}
+@media (max-width:720px){.voice{right:auto;left:14px}.guide{left:8px;right:8px;max-width:none;bottom:70px}.beat{min-width:70px;font-size:.75rem;padding:5px}.pan .say{font-size:.75rem;top:24px}}
+@media (prefers-reduced-motion:reduce){.pan .say,.guide{transition:none}}
