@@ -433,3 +433,24 @@ use.lean{transform-origin:50% 100%}
 .voice-help button{position:absolute;top:2px;right:6px;border:0;background:none;font-size:1.1rem;cursor:pointer}
 .voice-help[hidden]{display:none}
 @media (max-width:720px){.voice-help{left:8px;right:8px;max-width:none}}
+/* v11 : nouvelles animations */
+.swing{transform-box:view-box!important;transform-origin:100px 30px;animation:swg 1.2s ease-in infinite}
+@keyframes swg{0%,100%{transform:rotate(-35deg)}45%{transform:rotate(0)}}
+.nail{animation:nail 1.2s steps(1) infinite}@keyframes nail{50%{transform:translateY(4px)}}
+.rise{animation:rise 3s ease-in-out infinite alternate}@keyframes rise{from{transform:translateY(12px)}to{transform:translateY(0)}}
+.zig{animation:zig 2s ease-in-out infinite alternate;transform-origin:center}@keyframes zig{from{transform:rotate(-12deg) translateX(-6px)}to{transform:rotate(12deg) translateX(6px)}}
+.row{transform-box:fill-box;transform-origin:top;animation:rowk 1s ease-in-out infinite alternate}@keyframes rowk{to{transform:rotate(25deg)}}
+.wind{animation:led 1.2s infinite}
+.climb{animation:clb 5s steps(4) infinite}@keyframes clb{to{transform:translate(120px,-60px)}}
+.elev{animation:elv 4s ease-in-out infinite alternate}@keyframes elv{to{transform:translateY(-36px)}}
+.cw{animation:cwk 4s ease-in-out infinite alternate}@keyframes cwk{to{transform:translateY(30px)}}
+.bead{animation:bd 1.6s ease-in-out infinite alternate}@keyframes bd{to{transform:translateX(40px)}}
+.bead2{animation:led .6s infinite}.calc{font-size:8px}
+@media (prefers-reduced-motion:reduce){.swing,.nail,.rise,.zig,.row,.wind,.climb,.elev,.cw,.bead,.bead2{animation:none}}
+.needle{animation:ndl 3s ease-in-out infinite alternate}@keyframes ndl{from{transform:rotate(-30deg)}to{transform:rotate(8deg)}}
+.saw{animation:saw .5s ease-in-out infinite alternate}@keyframes saw{to{transform:translateX(14px)}}
+.b-pump{transform-box:view-box!important;transform-origin:86px 40px;animation:pmp 1.2s ease-in-out infinite alternate}@keyframes pmp{to{transform:rotate(18deg)}}
+.drip{animation:led .6s infinite}.blur{filter:blur(1.4px)}.fish{animation:wfast 2s linear infinite}
+.giver{opacity:.9}.gift-ic{font-size:10px}
+.thread.basics>.lvl{content-visibility:auto;contain-intrinsic-size:auto 640px}
+@media (prefers-reduced-motion:reduce){.needle,.saw,.b-pump,.drip,.fish{animation:none}}

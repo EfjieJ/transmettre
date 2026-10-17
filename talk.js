@@ -10,23 +10,33 @@
   const checkHelp = () => { if (!SS) return; pickVoice(); if (!frVoice) help.hidden = false; };
   if (SS) { pickVoice(); SS.addEventListener ? SS.addEventListener('voiceschanged', pickVoice) : (SS.onvoiceschanged = pickVoice); }
   const WHO = { avant: { n: 'Ti-Jos', a: '🧔', p: .85, r: .95 }, apres: { n: 'Rosalie', a: '👩', p: 1.3, r: 1.05 }, jeu: { n: 'Ti-Jean', a: '🧑', p: 1.1, r: 1.1 }, gaston: { n: 'Gaston', a: '🧔🏻‍🔧', p: .7, r: .92 }, narr: { n: '', a: '', p: 1, r: 1 } };
-  const speak = (t, who = 'narr') => {
-    window.__speakCalls = (window.__speakCalls || []); window.__speakCalls.push(t);
-    if (!voiceOn || !SS) return; if (!frVoice) pickVoice();
-    SS.cancel(); const w = WHO[who] || WHO.narr;
-    const u = new SpeechSynthesisUtterance(String(t).replace(/<[^>]+>/g, ''));
-    u.lang = frVoice ? frVoice.lang : 'fr-CA'; if (frVoice) u.voice = frVoice; u.pitch = w.p; u.rate = w.r;
+  const fnv = t => { let h = 0x811c9dc5; for (const ch of t) { h ^= ch.codePointAt(0); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, '0'); };
+  const clean = t => String(t).replace(/<[^>]+>/g, '').trim();
+  const lineId = (t, who) => (WHO[who] ? who : 'narr') + '-' + fnv(clean(t));
+  let curAudio = null;
+  const synth = (t, who) => { if (!SS) return; if (!frVoice) pickVoice(); SS.cancel(); const w = WHO[who] || WHO.narr;
+    const u = new SpeechSynthesisUtterance(clean(t)); u.lang = frVoice ? frVoice.lang : 'fr-CA'; if (frVoice) u.voice = frVoice; u.pitch = w.p; u.rate = w.r;
     clearInterval(ka); ka = setInterval(() => { if (!SS.speaking) return clearInterval(ka); SS.pause(); SS.resume(); }, 10000);
-    u.onend = () => clearInterval(ka); u.onerror = ev => { clearInterval(ka); if (ev.error !== 'interrupted' && ev.error !== 'canceled') help.hidden = false; }; SS.speak(u); window.__spoken = (window.__spoken || 0) + 1;
+    u.onend = () => clearInterval(ka); u.onerror = ev => { clearInterval(ka); if (ev.error !== 'interrupted' && ev.error !== 'canceled') help.hidden = false; }; SS.speak(u); };
+  const speak = (t, who = 'narr') => {
+    const id = lineId(t, who); window.__speakCalls = (window.__speakCalls || []); window.__speakCalls.push(id);
+    if (!voiceOn) return;
+    if (curAudio) { curAudio.pause(); curAudio = null; } if (SS) SS.cancel();
+    const set = window.AUDIO_IDS; if (set && set.has(id)) {
+      const a = new Audio('audio/' + id + '.mp3'); a.preload = 'auto'; curAudio = a; window.__audioPlays = (window.__audioPlays || []); window.__audioPlays.push(id);
+      a.onerror = () => { if (curAudio === a) synth(t, who); };
+      const p = a.play(); if (p && p.catch) p.catch(e => { if (e && e.name === 'NotAllowedError') return; if (curAudio === a) synth(t, who); });
+    } else synth(t, who);
+    window.__spoken = (window.__spoken || 0) + 1;
   };
   const vb = document.createElement('button'); vb.id = 'voice'; vb.className = 'mute voice'; vb.setAttribute('aria-pressed', 'false');
   vb.title = SS ? 'Faire parler les personnages à voix haute' : 'Voix non disponible dans ce navigateur';
-  const setVoice = (on, test) => { voiceOn = on; vb.setAttribute('aria-pressed', on); vb.textContent = on ? '🔊 Voix : oui' : '🔇 Voix : non'; try { localStorage.setItem('tr-voice', on ? 'on' : 'off'); } catch (e) {} if (!on && SS) SS.cancel(); if (on && test) speak('Allô! Je vais lire les bulles à voix haute.', 'gaston'); if (on) setTimeout(checkHelp, 2500); };
-  setVoice(false); if (!SS) vb.disabled = true;
+  const setVoice = (on, test) => { voiceOn = on; vb.setAttribute('aria-pressed', on); vb.textContent = on ? '🔊 Voix : oui' : '🔇 Voix : non'; try { localStorage.setItem('tr-voice', on ? 'on' : 'off'); } catch (e) {} if (!on && SS) SS.cancel(); if (on && test) speak('Allô! Je vais lire les bulles à voix haute.', 'gaston'); if (on && !window.AUDIO_IDS) setTimeout(checkHelp, 2500); };
+  setVoice(false); 
   vb.addEventListener('click', e => { e.stopPropagation(); setVoice(!voiceOn, true); });
   document.body.appendChild(vb); document.body.appendChild(help);
   /* premier geste n'importe où : débloque la voix (si pas refusée avant) */
-  const unlock = e => { if (e.target.closest && e.target.closest('#voice')) return; removeEventListener('pointerdown', unlock, true); if (!SS || pref === 'off') return; const u = new SpeechSynthesisUtterance(' '); u.volume = 0; SS.speak(u); setVoice(true, false); };
+  const unlock = e => { if (e.target.closest && e.target.closest('#voice')) return; removeEventListener('pointerdown', unlock, true); if (pref === 'off') return; try { const a = new Audio('audio/silence.mp3'); a.volume = 0; a.play().catch(() => {}); } catch (x) {} setVoice(true, false); };
   addEventListener('pointerdown', unlock, true);
   window.Talk = { speak, get voiceOn() { return voiceOn; } };
 
@@ -41,64 +51,19 @@
   };
 
   /* ---------- Contenu des démonstrations ---------- */
-  const D = {
-    "La pierre qui roule": { b: ['Ouf… mon dos!', 'Encore un voyage? Pas capable!'], a: ['Hé, regarde : elle roule toute seule!', 'Le sol la porte, moi je pousse.'],
-      beats: ['Problème : la charge est trop lourde pour le dos.', 'Essai : on la traîne. Ça frotte partout.', 'Invention : une forme ronde touche le sol en un seul point.', 'Résultat : on pousse au lieu de porter.'],
-      chain: ['La main pousse la pierre.', 'La pierre tourne sur elle-même.', 'Un seul petit point touche le sol : presque pas de frottement.', 'Le sol porte le poids, la main n\'a plus qu\'à guider.'],
-      fact: 'Les Égyptiens déplaçaient de gros blocs en mouillant le sable devant les traîneaux : une peinture du tombeau de Djéhoutihotep (vers 1900 av. J.-C.) montre un homme qui verse de l\'eau.' },
-    "Le levier": { b: ['Pousse! Elle bouge pas!', 'On est trois pis rien!'], a: ['Avec la barre, je la lève tout seul!', 'Long bras d\'un bord, appui proche de la pierre.'],
-      beats: ['Problème : la pierre pèse plus que trois personnes peuvent pousser.', 'Essai : on pousse tous ensemble. Elle bouge à peine.', 'Invention : une barre posée sur un appui.', 'Résultat : une seule personne la soulève.'],
-      chain: ['La main appuie au bout long de la barre.', 'La barre pivote sur l\'appui.', 'Le bout court monte, moins loin mais plus fort.', 'La pierre se soulève.'],
-      fact: 'Archimède (IIIe siècle av. J.-C.) a expliqué la loi du levier. On lui prête la phrase : « Donnez-moi un point d\'appui et je soulèverai le monde. »' },
-    "La roue": { b: ['Ça accroche partout!', 'Grrr… encore une roche!'], a: ['Ça roule tout seul!', 'Deux roues, un essieu, pis c\'est parti!'],
-      beats: ['Problème : la charge frotte sur le sol.', 'Essai : on la traîne. Ça bloque sur chaque roche.', 'Invention : des roues sur un axe (l\'essieu).', 'Résultat : on transporte plus lourd, plus loin.'],
-      chain: ['On tire la charrette.', 'L\'essieu fait tourner les roues.', 'La roue roule au lieu de frotter.', 'La charge avance avec peu d\'effort.'],
-      fact: 'La plus vieille roue en bois connue, trouvée près de Ljubljana en Slovénie, a environ 5 000 ans.' },
-    "La poulie": { b: ['Mes bras brûlent!', 'Le seau est ben trop creux!'], a: ['Je tire vers le bas avec mon poids!', 'La roue change la direction de la force.'],
-      beats: ['Problème : remonter l\'eau du puits à bout de bras.', 'Essai : penché, on tire la corde vers le haut. On se fatigue vite.', 'Invention : une roue à gorge au-dessus du puits.', 'Résultat : on tire vers le bas, avec son propre poids.'],
-      chain: ['La main tire la corde vers le bas.', 'La corde tourne autour de la poulie.', 'De l\'autre côté, elle monte.', 'Le seau remonte.'],
-      fact: 'Avec plusieurs poulies (un palan), on divise l\'effort : avec 4 brins qui portent la charge, on tire environ 4 fois moins fort, mais 4 fois plus longtemps.' },
-    "La brouette": { b: ['Encore un panier…', 'Mon dos va lâcher!'], a: ['Trois paniers d\'un coup!', 'La roue porte, moi je guide.'],
-      beats: ['Problème : un seul panier de terre par voyage.', 'Essai : on porte sur le dos. Des dizaines de voyages.', 'Invention : un bac, deux bras et une roue devant.', 'Résultat : la roue porte le poids, les bras guident.'],
-      chain: ['Les bras soulèvent les poignées.', 'Le bac bascule sur la roue (un levier!).', 'La roue porte presque tout le poids.', 'On pousse, et la terre avance.'],
-      fact: 'La brouette à une roue est attestée en Chine il y a environ 1 800 ans; en Europe, elle apparaît vers le XIIe siècle.' },
-    "L'engrenage": { b: ['Tourne… tourne… ça finit pu!', 'On fait ça depuis le matin!'], a: ['La rivière travaille à notre place!', 'Les dents passent le mouvement.'],
-      beats: ['Problème : écraser le grain à la main prend des heures.', 'Essai : deux personnes tournent la meule.', 'Invention : une roue à eau et des roues dentées.', 'Résultat : le moulin travaille seul.'],
-      chain: ['L\'eau pousse les pales de la roue.', 'La roue fait tourner un engrenage.', 'Les dents poussent les dents de la roue suivante.', 'La meule tourne et écrase le grain.'],
-      fact: 'Le mécanisme d\'Anticythère, retrouvé dans une épave grecque, utilise plus de 30 roues dentées pour calculer la position des astres. Il a plus de 2 000 ans.' },
-    "La vis sans fin": { b: ['Lâche pas!', 'Si on lâche, tout retombe!'], a: ['Je tourne, pis ça tient tout seul!', 'La vis bloque le retour.'],
-      beats: ['Problème : retenir une charge suspendue.', 'Essai : deux personnes tiennent la corde.', 'Invention : une manivelle et une vis qui pousse une roue dentée.', 'Résultat : ça monte, et ça ne redescend pas.'],
-      chain: ['La main tourne la manivelle.', 'La vis tourne et pousse une dent à la fois.', 'La roue dentée tourne lentement, avec force.', 'La corde s\'enroule; la vis empêche de reculer.'],
-      fact: 'Une vis sans fin peut réduire la vitesse de 20 à 100 fois (ou plus) en un seul étage, c\'est pourquoi on l\'utilise dans les treuils et les têtes de guitare.' },
-    "La vapeur": { b: ['Hue! Hue!', 'Les chevaux sont brûlés…'], a: ['Le feu pousse à notre place!', 'L\'eau chaude devient vapeur, la vapeur pousse.'],
-      beats: ['Problème : des muscles (humains ou animaux) qui se fatiguent.', 'Essai : plus de chevaux, plus de foin.', 'Invention : chauffer l\'eau; la vapeur pousse un piston.', 'Résultat : une force qui ne se fatigue pas.'],
-      chain: ['Le feu chauffe l\'eau.', 'L\'eau devient vapeur et prend beaucoup plus de place.', 'La vapeur pousse le piston.', 'Le piston fait tourner une roue.'],
-      fact: 'Le mot « watt » vient de James Watt, qui a beaucoup amélioré la machine à vapeur vers 1770. C\'est lui qui a popularisé le « cheval-vapeur ».' },
-    "Le moteur à combustion": { b: ['Faut nourrir les chevaux!', 'On arrivera jamais avant la nuit!'], a: ['Vroum! Plus de foin!', 'Des petites explosions poussent les pistons.'],
-      beats: ['Problème : la vapeur, c\'est lourd et lent à démarrer.', 'Essai : de grosses machines fixes.', 'Invention : brûler le carburant dans le cylindre.', 'Résultat : un moteur petit, qui part tout de suite.'],
-      chain: ['Une étincelle allume le mélange air-essence.', 'Le gaz chaud pousse le piston.', 'Le piston fait tourner le vilebrequin.', 'Les roues tournent.'],
-      fact: 'La première automobile à essence vendue est celle de Carl Benz, brevetée en 1886. Elle roulait à environ 16 km/h.' },
-    "L'électricité": { b: ['On voit rien!', 'Ça fume pis ça tremble.'], a: ['Clic! Toute la pièce s\'allume!', 'Le courant pousse dans le fil.'],
-      beats: ['Problème : la nuit, on y voit à peine.', 'Essai : bougies et lampes à l\'huile, qui fument.', 'Invention : un fil, un interrupteur, une ampoule.', 'Résultat : la lumière en un clic.'],
-      chain: ['Le doigt ferme l\'interrupteur.', 'Le circuit est une boucle fermée.', 'Le courant pousse les électrons dans le fil.', 'Le filament chauffe et brille.'],
-      fact: 'Au Québec, plus de 90 % de l\'électricité vient de l\'hydroélectricité : l\'eau des rivières fait tourner des turbines.' },
-    "La radio": { b: ['Galope, galope!', 'La nouvelle va arriver vieille!'], a: ['Allô la France? Ici le Canada!', 'L\'onde voyage à la vitesse de la lumière.'],
-      beats: ['Problème : une nouvelle voyage à la vitesse d\'un cheval.', 'Essai : des relais de messagers.', 'Invention : une antenne qui pousse des ondes.', 'Résultat : la voix traverse l\'océan en un instant.'],
-      chain: ['Le micro change la voix en courant.', 'L\'antenne fait vibrer le courant très vite.', 'Une onde invisible part dans l\'air.', 'L\'antenne du récepteur la capte et le haut-parleur rejoue la voix.'],
-      fact: 'En 1901, Marconi capte à Signal Hill, à Terre-Neuve, un signal radio envoyé d\'Angleterre : la lettre « S » en morse.' },
-    "Le cellulaire": { b: ['Chère cousine…', 'La réponse? Dans un mois!'], a: ['Envoyé!', 'Reçu! 😄'],
-      beats: ['Problème : une lettre prend des semaines.', 'Essai : le télégraphe, puis le téléphone avec fil.', 'Invention : une radio de poche reliée à des antennes.', 'Résultat : le message arrive presque aussitôt.'],
-      chain: ['Le doigt touche l\'écran : des bits.', 'La puce les change en onde radio.', 'L\'antenne relais les passe au réseau (câbles, fibre).', 'Le cellulaire d\'en face les reçoit et les affiche.'],
-      fact: 'Le premier appel sur un cellulaire portable a été fait par Martin Cooper, de Motorola, à New York, le 3 avril 1973.' },
-    "Les centres de données": { b: ['Il est où, ce dossier-là?', 'Tiroir… tiroir… tiroir…'], a: ['Trouvé en une seconde!', 'Les serveurs cherchent pour moi.'],
-      beats: ['Problème : retrouver une information dans des tonnes de papier.', 'Essai : classer, étiqueter, fouiller.', 'Invention : des ordinateurs reliés, qui gardent tout en bits.', 'Résultat : une réponse en une fraction de seconde.'],
-      chain: ['On tape une question.', 'Elle voyage en lumière dans la fibre optique.', 'Des milliers de serveurs cherchent en même temps.', 'La réponse revient par le même chemin.'],
-      fact: 'Plus de 95 % du trafic internet entre les continents passe par des câbles sous-marins, pas par satellite.' },
-    "Superintelligence et robotisme": { b: ['Encore la même vis…', 'Mille fois par jour!'], a: ['Un café pour vous!', 'Le robot répète, moi je crée.'],
-      beats: ['Problème : des gestes répétés à l\'infini.', 'Essai : diviser le travail sur une chaîne.', 'Invention : un bras robot guidé par des puces.', 'Résultat : la machine répète, l\'humain invente.'],
-      chain: ['Des capteurs voient la pièce.', 'La puce calcule le geste.', 'Des moteurs bougent chaque articulation.', 'La pince prend et dépose.'],
-      fact: 'Le premier robot industriel, Unimate, a commencé à travailler en 1961 dans une usine General Motors au New Jersey.' }
-  };
+  const D = window.TALK_D || {};
+  const BADS = ['Pas grave! Au forgeron, la première épée est toujours croche.', 'Regarde la bulle : elle te dit quoi changer.', 'On essaie, on se trompe, on recommence. C\'est ça, inventer!'];
+  const GAME_B = { ok: ['Yé! Ça roule!', 'Regarde-moi aller avec six pierres!', 'La roue porte, moi je pousse!'], no: ['Hmm, il manque une pièce…', 'Ça marche pas encore, essaie autre chose!', 'Pas de roue? Je vais devoir tout porter!'] };
+  const GAME_L = { ok: ['Avec la barre, je la lève tout seul!', 'Hé, j\'ai de la force de géant!'], no: ['Elle bouge pas! Rapproche l\'appui!', 'Trop dur… mon bras est trop court!'] };
+  const LS = [
+      ['Nettoyer', 'On part d\'une tranche de silicium très pure, polie comme un miroir.'],
+      ['Vernir', 'On étale une mince couche de vernis sensible à la lumière (la « résine »).'],
+      ['Insoler', 'La lumière passe à travers le masque, le pochoir du circuit. Elle touche le vernis seulement où le masque est ouvert.'],
+      ['Développer', 'Un bain enlève le vernis éclairé. Le dessin du circuit apparaît.'],
+      ['Graver', 'On attaque le silicium là où il n\'y a plus de vernis. Puis on enlève le reste du vernis.'],
+      ['Répéter', 'On recommence des dizaines de fois, couche par couche, pour empiler transistors et fils.']];
+  const GX = ['Comme moi au marteau : on frappe, on refroidit, on recommence. Couche après couche.', 'Une seule lumière, pis des dizaines de puces pareilles. Gutenberg serait fier!', 'Tout ça, c\'est ce que tu as bâti : allumé-éteint, bits, portes, addition. Juste beaucoup, beaucoup plus petit.'];
+
 
   /* ---------- Application aux panneaux avant/après ---------- */
   const cards = [...document.querySelectorAll('.ba')];
@@ -115,7 +80,7 @@
     const cap = st.querySelector('.beat-cap'); let cur = -1, timer = null;
     const go = i => { cur = i; st.querySelectorAll('.beat').forEach((b, j) => { b.classList.toggle('on', j === i); b.classList.toggle('past', j < i); });
       cap.textContent = d.beats[i]; fb.classList.toggle('focus', i < 2); fa.classList.toggle('focus', i >= 2);
-      const pan = i < 2 ? fb : fa; sayIn(pan, (i < 2 ? d.b : d.a)[i % 2], i < 2 ? 'avant' : 'apres'); };
+      const pan = i < 2 ? fb : fa; sayIn(pan, (i < 2 ? d.b : d.a)[i % 2], i === 2 ? 'apres' : 'avant'); };
     st.addEventListener('click', e => { const b = e.target.closest('.beat'); if (!b) return; stop(); go(+b.dataset.i); });
     const stop = () => { clearInterval(timer); timer = null; };
     const play = () => { if (timer || RM) return; go((cur + 1) % 4); timer = setInterval(() => go((cur + 1) % 4), 3600); };
@@ -145,24 +110,18 @@
     puce: 'Des milliards de petits interrupteurs gravés avec de la lumière. Mais au fond, c\'est encore allumé-éteint.'
   };
   if (window.Path) { const L = window.Path.learn; window.Path.learn = (id, extra) => { const fresh = !(window.__path || []).includes(id); L(id, extra); if (fresh && G[id]) guide(G[id]); }; }
-  let lastBad = 0; const B = TS.bad; TS.bad = (...a) => { B(...a); if (Date.now() - lastBad > 15000 && document.querySelector('#puce') && scrollY > document.querySelector('#puce').offsetTop - 300) { lastBad = Date.now(); guide(['Pas grave! Au forgeron, la première épée est toujours croche.', 'Regarde la bulle : elle te dit quoi changer.', 'On essaie, on se trompe, on recommence. C\'est ça, inventer!'][Math.floor(Math.random() * 3)]); } };
+  let lastBad = 0; const B = TS.bad; TS.bad = (...a) => { B(...a); if (Date.now() - lastBad > 15000 && document.querySelector('#puce') && scrollY > document.querySelector('#puce').offsetTop - 300) { lastBad = Date.now(); guide(BADS[Math.floor(Math.random() * BADS.length)]); } };
 
   /* ---------- Personnages des jeux brouette + levier ---------- */
   const watch = (msgId, figSel, lines) => { const m = document.getElementById(msgId); let host = document.querySelector(figSel); if (host && host instanceof SVGElement) host = host.parentElement; if (!m || !host) return; host.classList.add('talkhost');
     new MutationObserver(() => { const c = m.className, t = m.textContent; const set = /ok|win/.test(c) ? lines.ok : /no|bad/.test(c) ? lines.no : null; if (!set || !t) return; sayIn(host, set[Math.floor(Math.random() * set.length)], 'jeu'); }).observe(m, { attributes: true, childList: true, characterData: true, subtree: true }); };
-  const bg = document.getElementById('b-msg'); if (bg) watch('b-msg', '#bp', { ok: ['Yé! Ça roule!', 'Regarde-moi aller avec six pierres!', 'La roue porte, moi je pousse!'], no: ['Hmm, il manque une pièce…', 'Ça marche pas encore, essaie autre chose!', 'Pas de roue? Je vais devoir tout porter!'] });
-  watch('lv-msg', '#levier-jeu svg#lv', { ok: ['Avec la barre, je la lève tout seul!', 'Hé, j\'ai de la force de géant!'], no: ['Elle bouge pas! Rapproche l\'appui!', 'Trop dur… mon bras est trop court!'] });
+  const bg = document.getElementById('b-msg'); if (bg) watch('b-msg', '#bp', GAME_B);
+  watch('lv-msg', '#levier-jeu svg#lv', GAME_L);
   const lvH = document.getElementById('lv'); if (lvH && lvH.parentElement) { lvH.parentElement.classList.add('talkhost'); }
 
   /* ---------- Photolithographie : étapes ---------- */
   const litho = document.querySelector('.litho');
-  if (litho) { const LS = [
-      ['Nettoyer', 'On part d\'une tranche de silicium très pure, polie comme un miroir.'],
-      ['Vernir', 'On étale une mince couche de vernis sensible à la lumière (la « résine »).'],
-      ['Insoler', 'La lumière passe à travers le masque, le pochoir du circuit. Elle touche le vernis seulement où le masque est ouvert.'],
-      ['Développer', 'Un bain enlève le vernis éclairé. Le dessin du circuit apparaît.'],
-      ['Graver', 'On attaque le silicium là où il n\'y a plus de vernis. Puis on enlève le reste du vernis.'],
-      ['Répéter', 'On recommence des dizaines de fois, couche par couche, pour empiler transistors et fils.']];
+  if (litho) {
     const box = document.createElement('div'); box.className = 'beats litho-steps';
     box.innerHTML = `<div class="beat-dots">${LS.map((s, i) => `<button class="beat" data-i="${i}"><b>${i + 1}</b>${s[0]}</button>`).join('')}</div><p class="beat-cap" aria-live="polite">Touchez une étape pour voir comment on fabrique une puce.</p>`;
     const how = document.createElement('details'); how.className = 'howit';
@@ -186,4 +145,10 @@
     const r = document.getElementById('zoom-r'); let said = -1;
     r.addEventListener('input', () => { const n = +r.value; p.textContent = ZX[n]; if (n === 4 && said !== 4) guide('Tout ça, c\'est ce que tu as bâti : allumé-éteint, bits, portes, addition. Juste beaucoup, beaucoup plus petit.'); said = n; });
   }
+  /* liste de toutes les répliques (pour générer l'audio) */
+  window.Talk.lines = () => { const out = []; const add = (who, t) => out.push({ who, text: clean(t), id: lineId(t, who) });
+    Object.values(D).forEach(d => { d.b.forEach(t => add('avant', t)); add('apres', d.a[0]); add('avant', d.a[1]); });
+    Object.values(G).forEach(t => add('gaston', t)); BADS.forEach(t => add('gaston', t)); GX.forEach(t => add('gaston', t.replace(/\\'/g, "'")));
+    [...GAME_B.ok, ...GAME_B.no, ...GAME_L.ok, ...GAME_L.no].forEach(t => add('jeu', t)); LS.forEach(x => add('narr', x[1]));
+    add('gaston', 'Allô! Je vais lire les bulles à voix haute.'); const seen = new Set(); return out.filter(o => !seen.has(o.id) && seen.add(o.id)); };
 })();
