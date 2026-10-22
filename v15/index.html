@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Transmettre : la mécanique cachée dans tes appareils</title>
+<meta name="description" content="Des jeux d'assemblage pour voir que la technologie d'aujourd'hui, c'est la mécanique du levier, de la roue et de l'engrenage, cachée dans une boîte.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Ccircle cx=%228%22 cy=%228%22 r=%226%22 fill=%22none%22 stroke=%22%23c4521c%22 stroke-width=%223%22 stroke-dasharray=%222 1.2%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6a86a"/><stop offset="0.35" stop-color="#b98447"/><stop offset="0.5" stop-color="#c99658"/><stop offset="0.7" stop-color="#a8743a"/><stop offset="1" stop-color="#8f5f2c"/></linearGradient>
+<linearGradient id="gWoodD" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a6a36"/><stop offset="0.5" stop-color="#7d5229"/><stop offset="1" stop-color="#5e3c1c"/></linearGradient>
+<linearGradient id="gSteel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f6f8"/><stop offset="0.45" stop-color="#b3bac2"/><stop offset="1" stop-color="#666d75"/></linearGradient>
+<linearGradient id="gSteelV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7b828a"/><stop offset="0.45" stop-color="#eef0f2"/><stop offset="1" stop-color="#7d848c"/></linearGradient>
+<linearGradient id="gBrass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fdeaa8"/><stop offset="0.45" stop-color="#d8aa3c"/><stop offset="1" stop-color="#8a6116"/></linearGradient>
+<linearGradient id="gSkin" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f7d6c1"/><stop offset="1" stop-color="#dba183"/></linearGradient>
+<linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ef6a44"/><stop offset="1" stop-color="#a62e16"/></linearGradient>
+<linearGradient id="gAlu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f8fa"/><stop offset="0.6" stop-color="#d3d7dc"/><stop offset="1" stop-color="#aab0b7"/></linearGradient>
+<linearGradient id="gAluD" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a7aeb6"/><stop offset="1" stop-color="#5b626a"/></linearGradient>
+<linearGradient id="gPcb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f8f4d"/><stop offset="1" stop-color="#16502a"/></linearGradient>
+<linearGradient id="gCopper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c08c"/><stop offset="0.5" stop-color="#c1743a"/><stop offset="1" stop-color="#7a3d12"/></linearGradient>
+<linearGradient id="gScreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a2846"/><stop offset="0.6" stop-color="#2a4f86"/><stop offset="1" stop-color="#3a6bb0"/></linearGradient>
+<linearGradient id="gPlB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#575c63"/><stop offset="0.25" stop-color="#33373c"/><stop offset="1" stop-color="#121416"/></linearGradient>
+<linearGradient id="gPlW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d4d8dd"/></linearGradient>
+<linearGradient id="gPlR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f37a4c"/><stop offset="0.6" stop-color="#cf4a1e"/><stop offset="1" stop-color="#9c3110"/></linearGradient>
+<linearGradient id="gRubber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a4a"/><stop offset="1" stop-color="#111"/></linearGradient>
+<linearGradient id="gRubberT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d2e0cf"/><stop offset="1" stop-color="#7f967c"/></linearGradient>
+<linearGradient id="gTire" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3a3a"/><stop offset="1" stop-color="#0d0d0d"/></linearGradient>
+<linearGradient id="gBottle" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="rgba(190,225,250,.85)"/><stop offset="0.5" stop-color="rgba(140,195,235,.7)"/><stop offset="1" stop-color="rgba(90,150,200,.8)"/></linearGradient>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgba(255,255,255,.85)"/><stop offset="1" stop-color="rgba(170,205,230,.6)"/></linearGradient>
+<radialGradient id="gPlatter" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#cfd4db"/><stop offset="1" stop-color="#8c939d"/></radialGradient>
+<radialGradient id="gMovement" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#f0e3b8"/><stop offset="0.7" stop-color="#cdb373"/><stop offset="1" stop-color="#a68a45"/></radialGradient>
+<linearGradient id="gGrass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#93c873"/><stop offset="1" stop-color="#4a8136"/></linearGradient>
+<linearGradient id="gGlassD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9cbcd8"/><stop offset="1" stop-color="#2f4964"/></linearGradient>
+<radialGradient id="gTireS" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#4a4a4a"/><stop offset="0.6" stop-color="#222"/><stop offset="0.85" stop-color="#111"/><stop offset="1" stop-color="#333"/></radialGradient>
+<linearGradient id="gTub" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef1f4"/><stop offset="1" stop-color="#b6bec7"/></linearGradient>
+<linearGradient id="gCardboard" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcb47e"/><stop offset="1" stop-color="#a97d48"/></linearGradient>
+<linearGradient id="gSilicon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9aa0b6"/><stop offset="0.5" stop-color="#6a7088"/><stop offset="1" stop-color="#454a60"/></linearGradient>
+<radialGradient id="gGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff7b8" stop-opacity="1"/><stop offset="0.4" stop-color="#ffd84a" stop-opacity="0.6"/><stop offset="1" stop-color="#ffd84a" stop-opacity="0"/></radialGradient>
+<linearGradient id="gChip" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a5a5a"/><stop offset="1" stop-color="#1e1e1e"/></linearGradient>
+<linearGradient id="gWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6efe4"/><stop offset="1" stop-color="#eadcc6"/></linearGradient>
+<linearGradient id="gFloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c08d55"/><stop offset="1" stop-color="#8b5e30"/></linearGradient>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe0f7"/><stop offset="1" stop-color="#eaf6ff"/></linearGradient>
+<filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="2" stdDeviation="1.6" flood-color="#000" flood-opacity=".28"/></filter>
+</defs></svg>
+<button id="mute" class="voice snd" type="button" aria-pressed="false" aria-label="Couper les sons">🔔 Sons : oui</button>
+<button id="voice" class="voice" type="button" aria-pressed="false">🔇 Voix : non</button>
+<p class="score" aria-live="polite">Jeux réussis : <b class="won-count">0</b> / <span class="won-total"></span></p>
+
+<header class="hero">
+ <div class="wrap">
+  <p class="kicker">Transmettre</p>
+  <h1>Ce n'est pas de la magie.<br><span>C'est une chose qui appuie sur une autre.</span></h1>
+  <div class="two">
+   <p><b>Ton téléphone, ton auto, un robot d'usine :</b> ce sont des prolongements de tes bras et de tes mains. Dedans, la même idée qu'un levier : une chose appuie sur une autre, qui appuie sur une autre, jusqu'au résultat.</p>
+   <p><b>Acheter une chose toute faite, c'est acheter la roue sans apprendre à la faire.</b> Le vrai trésor, c'est le savoir qu'on se passe. Celui qui comprend peut réparer, refaire, et montrer à quelqu'un d'autre.</p>
+  </div>
+  <p class="trail"><a href="#niv1">levier</a><i>→</i><a href="#niv2">roue</a><i>→</i><a href="#niv3">engrenage</a><i>→</i><a href="#niv4">machine</a><i>→</i><a href="#niv5">puce</a></p>
+  <a class="btn" href="#principe">Commencer avec tes mains</a>
+ </div>
+</header>
+
+<section id="principe" class="level first">
+ <div class="wrap">
+  <p class="kicker">Avant tout</p>
+  <h2>Monte la chaîne toi-même</h2>
+  <p class="lead">Pas d'explication pour l'instant. Juste des pièces et ton doigt.</p>
+  <div class="games" data-level="0"></div>
+ </div>
+</section>
+
+<section id="autour" class="level look">
+ <div class="wrap">
+  <p class="kicker">Regarde autour de toi</p>
+  <h2>Où est-elle cachée, cette chaîne?</h2>
+  <p class="lead">Une pièce ordinaire. Touche ce qui te semble « magique ».</p>
+  <div id="room" class="room"></div>
+  <p class="room-cap" id="room-cap" aria-live="polite">Touche un objet pour voir dedans.</p>
+  <p class="room-count">Objets regardés : <b id="room-found">0</b> / <span id="room-total"></span></p>
+ </div>
+</section>
+
+<section class="level" id="niv1">
+ <div class="wrap">
+  <p class="kicker">Niveau 1 sur 5</p>
+  <h2>Le levier</h2>
+  <div class="principle"><svg viewBox="0 0 240 130" class="on pr-svg" aria-hidden="true"><rect x="0" y="104" width="240" height="16" fill="url(#gWood)"/><path d="M120 104 l-16 -26 h32z" fill="url(#gSteel)" stroke="#555" transform="rotate(180 120 91)"/><g class="a-teeter" style="transform-origin:120px 76px"><rect x="20" y="70" width="200" height="12" rx="3" fill="url(#gWood)" stroke="#6b4a24"/><rect x="186" y="44" width="28" height="26" rx="3" fill="url(#gSteel)" stroke="#555"/></g><path d="M34 40 v24" stroke="#c4521c" stroke-width="5"/><path d="M26 56 l8 12 l8 -12z" fill="#c4521c"/></svg><div><p class="pr-txt">Une barre rigide qui bascule sur un point d'appui. Appuie loin du pivot : peu d'effort d'un bord, beaucoup de force de l'autre. Archimède en a écrit la loi il y a plus de 2 200 ans.</p><p class="pr-today">Partout où ton doigt ou ta main appuie, il y a un levier.</p></div></div>
+  <div class="games" data-level="1"></div>
+ </div>
+</section>
+<section class="level" id="niv2">
+ <div class="wrap">
+  <p class="kicker">Niveau 2 sur 5</p>
+  <h2>La roue</h2>
+  <div class="principle"><svg viewBox="0 0 240 130" class="on pr-svg" aria-hidden="true"><rect x="0" y="108" width="240" height="12" fill="url(#gWood)"/><g transform="translate(120 66)"><g class="a-spin"><circle r="42" fill="url(#gWood)" stroke="#6b4a24" stroke-width="3"/><rect x="-36" y="-3" width="72" height="6" fill="url(#gWoodD)" transform="rotate(0)"/><rect x="-36" y="-3" width="72" height="6" fill="url(#gWoodD)" transform="rotate(45)"/><rect x="-36" y="-3" width="72" height="6" fill="url(#gWoodD)" transform="rotate(90)"/><rect x="-36" y="-3" width="72" height="6" fill="url(#gWoodD)" transform="rotate(135)"/></g><circle r="8" fill="url(#gSteel)" stroke="#555"/></g></svg><div><p class="pr-txt">Une roue tourne autour d'un axe : au lieu de frotter, elle roule. La plus vieille roue de bois connue, trouvée dans les marais de Ljubljana, a environ 5 150 ans.</p><p class="pr-today">Aujourd'hui, des roues tournent des milliers de fois par minute dans tes appareils.</p></div></div>
+  <div class="games" data-level="2"></div>
+ </div>
+</section>
+<section class="level" id="niv3">
+ <div class="wrap">
+  <p class="kicker">Niveau 3 sur 5</p>
+  <h2>L'engrenage</h2>
+  <div class="principle"><svg viewBox="0 0 240 130" class="on pr-svg" aria-hidden="true"><g class="js-gears"></g></svg><div><p class="pr-txt">Des roues à dents qui s'emboîtent. Une petite fait tourner une grande : moins vite, mais plus fort. La machine d'Anticythère, il y a plus de 2 000 ans, en contenait déjà au moins 30.</p><p class="pr-today">On change la vitesse et la force sans rien perdre en route, ou presque.</p></div></div>
+  <div class="games" data-level="3"></div>
+ </div>
+</section>
+<section class="level" id="niv4">
+ <div class="wrap">
+  <p class="kicker">Niveau 4 sur 5</p>
+  <h2>La machine</h2>
+  <div class="principle"><svg viewBox="0 0 240 130" class="on pr-svg" aria-hidden="true"><rect x="10" y="40" width="46" height="60" rx="4" fill="url(#gPlB)"/><rect x="20" y="34" width="26" height="8" fill="url(#gCopper)"/><path d="M56 70 h24" stroke="#b87333" stroke-width="4"/><rect x="80" y="52" width="50" height="40" rx="10" fill="url(#gSteel)" stroke="#555"/><g class="js-gears2"></g><g transform="translate(206 92)"><g class="a-spin"><circle r="24" fill="url(#gTireS)"/><circle r="11" fill="url(#gAlu)"/></g></g></svg><div><p class="pr-txt">Une machine, c'est une chaîne : une source d'énergie, puis des leviers, des roues et des engrenages qui se poussent dans l'ordre. Depuis la vapeur, puis l'électricité, la force ne vient plus seulement de nos bras.</p><p class="pr-today">Ce que fait une machine, c'est ce que faisaient nos bras. En plus fort, plus vite, plus longtemps.</p></div></div>
+  <div class="games" data-level="4"></div>
+ </div>
+</section>
+<section class="level" id="niv5">
+ <div class="wrap">
+  <p class="kicker">Niveau 5 sur 5</p>
+  <h2>La puce</h2>
+  <div class="principle"><svg viewBox="0 0 240 130" class="on pr-svg" aria-hidden="true"><rect x="70" y="20" width="100" height="100" rx="6" fill="url(#gChip)"/><rect x="78" y="8" width="6" height="12" fill="url(#gSteelV)"/><rect x="78" y="120" width="6" height="12" fill="url(#gSteelV)"/><rect x="90" y="8" width="6" height="12" fill="url(#gSteelV)"/><rect x="90" y="120" width="6" height="12" fill="url(#gSteelV)"/><rect x="102" y="8" width="6" height="12" fill="url(#gSteelV)"/><rect x="102" y="120" width="6" height="12" fill="url(#gSteelV)"/><rect x="114" y="8" width="6" height="12" fill="url(#gSteelV)"/><rect x="114" y="120" width="6" height="12" fill="url(#gSteelV)"/><rect x="126" y="8" width="6" height="12" fill="url(#gSteelV)"/><rect x="126" y="120" width="6" height="12" fill="url(#gSteelV)"/><rect x="138" y="8" width="6" height="12" fill="url(#gSteelV)"/><rect x="138" y="120" width="6" height="12" fill="url(#gSteelV)"/><rect x="150" y="8" width="6" height="12" fill="url(#gSteelV)"/><rect x="150" y="120" width="6" height="12" fill="url(#gSteelV)"/><rect x="162" y="8" width="6" height="12" fill="url(#gSteelV)"/><rect x="162" y="120" width="6" height="12" fill="url(#gSteelV)"/><rect x="90" y="40" width="60" height="60" fill="url(#gSilicon)"/><rect class="a-blink" style="animation-delay:0.0s" x="94" y="44" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.7s" x="103" y="44" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.4s" x="112" y="44" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.1s" x="121" y="44" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.8s" x="130" y="44" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.5s" x="139" y="44" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.2s" x="94" y="53" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.9s" x="103" y="53" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.6s" x="112" y="53" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.3s" x="121" y="53" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.0s" x="130" y="53" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.7s" x="139" y="53" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.4s" x="94" y="62" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.1s" x="103" y="62" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.8s" x="112" y="62" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.5s" x="121" y="62" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.2s" x="130" y="62" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.9s" x="139" y="62" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.6s" x="94" y="71" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.3s" x="103" y="71" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.0s" x="112" y="71" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.7s" x="121" y="71" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.4s" x="130" y="71" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.1s" x="139" y="71" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.8s" x="94" y="80" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.5s" x="103" y="80" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.2s" x="112" y="80" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.9s" x="121" y="80" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.6s" x="130" y="80" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.3s" x="139" y="80" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.0s" x="94" y="89" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.7s" x="103" y="89" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.4s" x="112" y="89" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.1s" x="121" y="89" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.8s" x="130" y="89" width="6" height="6" fill="#ffd166" opacity=".2"/><rect class="a-blink" style="animation-delay:0.5s" x="139" y="89" width="6" height="6" fill="#ffd166" opacity=".2"/></svg><div><p class="pr-txt">Un transistor, c'est un levier électrique : une petite tension sur la grille ouvre ou ferme un grand passage de courant. Aucune pièce ne bouge, mais c'est la même idée : un petit effort qui en commande un grand.</p><p class="pr-today">Une puce contient des milliards de ces leviers, qui se commandent l'un l'autre en chaîne.</p></div></div>
+  <div class="games" data-level="5"></div>
+ </div>
+</section>
+
+<section id="roue" class="level contrast">
+ <div class="wrap">
+  <p class="kicker">Vendre la roue, ou apprendre à la faire</p>
+  <h2>Deux façons de donner une chose</h2>
+  <div class="cols">
+   <div class="col shut"><h3>La boîte fermée</h3>
+    <svg viewBox="0 0 240 120" aria-hidden="true"><rect x="40" y="20" width="160" height="90" rx="8" fill="url(#gPlB)"/><rect x="90" y="50" width="60" height="22" rx="3" fill="#fff"/><text x="120" y="65" text-anchor="middle" font-size="10" fill="#333">NE PAS OUVRIR</text><circle cx="52" cy="32" r="5" fill="url(#gSteel)"/><path d="M49 32 l3 -3 l3 3 l-3 3z" fill="#333"/><circle cx="188" cy="32" r="5" fill="url(#gSteel)"/><path d="M185 32 l3 -3 l3 3 l-3 3z" fill="#333"/><circle cx="52" cy="98" r="5" fill="url(#gSteel)"/><path d="M49 98 l3 -3 l3 3 l-3 3z" fill="#333"/><circle cx="188" cy="98" r="5" fill="url(#gSteel)"/><path d="M185 98 l3 -3 l3 3 l-3 3z" fill="#333"/></svg>
+    <ul><li>De la colle et des vis spéciales.</li><li>Une pièce brise? On jette et on rachète.</li><li>Celui qui vend garde le savoir. Toi, tu dépends de lui.</li><li>Chaque génération repart de zéro devant la boîte.</li></ul></div>
+   <div class="col open"><h3>La boîte ouverte</h3>
+    <svg viewBox="0 0 240 120" class="on" aria-hidden="true"><rect x="40" y="40" width="160" height="70" rx="8" fill="url(#gAlu)" stroke="#999"/><path d="M40 40 l20 -30 h160 l-20 30z" fill="url(#gAluD)" opacity=".7"/><g class="js-gears3"></g></svg>
+    <ul><li>Des vis ordinaires, un plan, des mots simples.</li><li>Une pièce brise? Tu la changes.</li><li>Celui qui comprend peut améliorer la chose.</li><li>Le savoir passe de main en main : il grandit au lieu de se perdre.</li></ul></div>
+  </div>
+  <aside class="fact"><b>Vrai de vrai :</b> au Québec, une loi adoptée à l'unanimité en octobre 2023 interdit l'obsolescence programmée. Depuis le 5 octobre 2025, toute technique qui rend la réparation plus difficile est interdite (sauf pour la sécurité ou pour respecter une loi), et les pièces de rechange garanties doivent pouvoir s'installer avec des outils courants. <a href="https://www.opc.gouv.qc.ca/commercant/pratique-commerce/garanties/disponibilite/outils-garantie-disponibilite" target="_blank" rel="noopener">Source : Office de la protection du consommateur</a></aside>
+  <p class="end">Tu as monté <b class="won-count">0</b> appareils sur <span class="won-total"></span>. Maintenant, la meilleure chose à faire : <b>montre-le à quelqu'un.</b></p>
+ </div>
+</section>
+
+<section id="sources" class="level src">
+ <div class="wrap">
+  <h2>Sources</h2>
+  <p>Chaque fait du site a été vérifié; la liste complète, avec les corrections, est dans <a href="verification.md">verification.md</a>. Les dessins sont simplifiés pour qu'on voie la chaîne : les proportions sont réalistes, mais on a enlevé des pièces (fils, vis, valves) pour que ça reste lisible.</p>
+  <ul class="srclist"></ul>
+ </div>
+</section>
+
+<footer><div class="wrap"><p>Transmettre : fait pour être compris, réparé et passé à quelqu'un d'autre. Aucun traceur, aucune dépendance. <a href="#top" onclick="scrollTo(0,0);return false">Haut de page ↑</a></p></div></footer>
+
+<script src="sound.js"></script>
+<script src="audio/index.js"></script>
+<script src="voice.js"></script>
+<script src="parts.js"></script>
+<script src="data1.js"></script>
+<script src="data2.js"></script>
+<script src="app.js"></script>
+<script src="scene.js"></script>
+<script src="extras.js"></script>
+<script>(()=>{const m=document.getElementById('mute');m.onclick=()=>{const off=m.getAttribute('aria-pressed')!=='true';m.setAttribute('aria-pressed',off);m.textContent=off?'🔕 Sons : non':'🔔 Sons : oui';m.setAttribute('aria-label',off?'Remettre les sons':'Couper les sons')}})();</script>
+</body>
+</html>
