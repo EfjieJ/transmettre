@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0d0b1a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Ccircle cx=%228%22 cy=%228%22 r=%225%22 fill=%22%23ffd166%22/%3E%3C/svg%3E">
-<title>Transmettre : la particule d'admiration</title>
-<meta name="description" content="Touche une particule. Admire-la. Regarde ce qu'elle pousse.">
+<title>Transmettre : le grand oui, la roue et le regard</title>
+<meta name="description" content="D'après deux contes de François : Le Grand Oui et la Roue, La roue et le regard.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:#0d0b1a;color:#f6efe2;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent}
@@ -34,10 +34,20 @@ footer a{color:#f6efe2}
 @keyframes blink{50%{opacity:.2}}
 .spark{fill:#ffe9a8;filter:url(#bl)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+#merci{display:none;margin-top:12px;background:#ffd166;color:#1d1b18;border:none;border-radius:30px;padding:12px 34px;font:inherit;font-weight:800;font-size:1.15rem;min-height:48px;cursor:pointer}
+body[data-step="18"]:not([data-thanked]) #merci{display:inline-block}
+.fade{animation:fade 9s linear forwards}
+@keyframes fade{to{opacity:.08;filter:grayscale(1)}}
+.kept{opacity:1!important;animation:none!important;filter:none!important}
+.puff{animation:puff 2s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes puff{0%{opacity:0;transform:translateY(0) scale(.6)}40%{opacity:.8}100%{opacity:0;transform:translateY(-40px) scale(1.4)}}
+.roll{animation:roll 4s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes roll{from{transform:translate(-40px,-20px) rotate(0)}to{transform:translate(60px,30px) rotate(360deg)}}
+footer{font-size:.7rem}
 </style>
 </head>
 <body>
-<div id="app" role="button" tabindex="0" aria-label="Touche pour admirer et continuer">
+<div id="app" role="button" tabindex="0" aria-label="Touche pour continuer">
   <div id="trail" aria-hidden="true"></div>
   <svg id="stage" viewBox="0 0 400 300" aria-hidden="true">
     <defs>
@@ -45,14 +55,17 @@ footer a{color:#f6efe2}
       <linearGradient id="met" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3f5f8"/><stop offset="1" stop-color="#8a929c"/></linearGradient>
       <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe9a8"/><stop offset="1" stop-color="#b8862b"/></linearGradient>
       <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9a866"/><stop offset="1" stop-color="#8f5f2c"/></linearGradient>
+      <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b9b3a8"/><stop offset="1" stop-color="#6f6a62"/></linearGradient>
+      <linearGradient id="leaf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd16a"/><stop offset="1" stop-color="#3d7d2e"/></linearGradient>
       <filter id="bl"><feGaussianBlur stdDeviation="2"/></filter>
     </defs>
     <g id="items"></g>
     <g id="fx"></g>
   </svg>
   <p id="say" aria-live="polite"></p>
+  <button id="merci" type="button">Merci</button>
   <p id="hint"></p>
-  <footer onclick="event.stopPropagation()">« Particule d'admiration » : une image, une idée de François, pas de la physique. Les vraies particules (électrons, quarks…) ne sont pas faites d'admiration.<br>Anciennes versions : <a href="v15/">v15 (jeux d'assemblage)</a> · <a href="v14/">v14 (inventions)</a></footer>
+  <footer onclick="event.stopPropagation()">D'après deux contes de François : <a href="https://efjiej.github.io/eden-yours/conte-grand-oui-roue.html?lang=fr" target="_blank" rel="noopener">Le Grand Oui et la Roue</a> · <a href="https://efjiej.github.io/eden-yours/conte-roue-regard.html?lang=fr" target="_blank" rel="noopener">La roue et le regard</a><br>« Particule d'admiration » : une image, pas de la physique. Les vraies particules (électrons, quarks…) ne sont pas faites d'admiration.<br>Anciennes versions : <a href="v16/">v16</a> · <a href="v15/">v15</a> · <a href="v14/">v14</a></footer>
 </div>
 <button id="mute" type="button" aria-pressed="false">🔔</button>
 <script>
@@ -62,47 +75,63 @@ const $ = id => document.getElementById(id);
 const items = $('items'), fx = $('fx'), say = $('say'), hint = $('hint'), trail = $('trail');
 const gear = (cx, cy, r, n, cls, fill) => { let d = ''; for (let i = 0; i < n * 2; i++) { const a = i * Math.PI / n, R = i % 2 ? r : r + r * .18; d += (i ? 'L' : 'M') + (cx + R * Math.cos(a)).toFixed(1) + ' ' + (cy + R * Math.sin(a)).toFixed(1); } return `<g class="${cls}"><path d="${d}Z" fill="url(#${fill})" stroke="#6b4a1a"/><circle cx="${cx}" cy="${cy}" r="${r * .25}" fill="#3a3a3a"/></g>`; };
 const particle = (x, y, r = 10, cls = 'glow') => `<g class="${cls}"><circle cx="${x}" cy="${y}" r="${r * 2.4}" fill="url(#pg)"/><circle cx="${x}" cy="${y}" r="${r * .55}" fill="#fff"/></g>`;
+const HAND = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-30 60 v-70 q-2 -14 10 -14 q10 0 10 14 v-50 q0 -12 10 -12 q10 0 10 12 v40 q0 -12 10 -12 q10 0 10 12 v20 q0 -10 10 -10 q10 0 10 12 v50 q0 30 -30 30 h-30 q-30 0 -40 -22z" fill="#f2c9a8" stroke="#a8745a" stroke-width="2"/></g>`;
 const person = (x, c) => `<g><circle cx="${x}" cy="150" r="18" fill="${c}"/><path d="M${x - 26} 240 q0 -62 26 -62 q26 0 26 62z" fill="${c}"/></g>`;
-// [nom court, phrase, dessin, position de la particule qui pousse]
+const TREE = '<rect x="190" y="170" width="20" height="80" fill="url(#wood)"/><circle cx="200" cy="130" r="60" fill="url(#leaf)"/><circle cx="160" cy="155" r="35" fill="url(#leaf)"/><circle cx="240" cy="155" r="35" fill="url(#leaf)"/><rect x="120" y="248" width="160" height="6" rx="3" fill="#3d2a17"/>';
 const S = [
-  ['particule', 'Une particule d\'admiration. Admire-la.', particle(200, 150, 16), [200, 150]],
-  ['poussée', 'Ton admiration, c\'est la première poussée.', particle(150, 150, 12) + particle(250, 150, 12), [250, 150]],
-  ['main', 'Des poussées, ensemble, font une main.', '<path d="M170 240 v-70 q-2 -14 10 -14 q10 0 10 14 v-50 q0 -12 10 -12 q10 0 10 12 v40 q0 -12 10 -12 q10 0 10 12 v20 q0 -10 10 -10 q10 0 10 12 v50 q0 30 -30 30 h-30 q-30 0 -40 -22z" fill="#f2c9a8" stroke="#a8745a" stroke-width="2"/>', [200, 110]],
-  ['levier', 'La main appuie sur un levier.', '<path d="M200 230 l-16 26 h32z" fill="url(#met)"/><g class="tilt" style="transform-origin:200px 228px"><rect x="70" y="220" width="260" height="12" rx="4" fill="url(#wood)"/><rect x="296" y="196" width="28" height="24" rx="3" fill="url(#met)"/></g>', [90, 220]],
-  ['roue', 'Le levier fait tourner une roue.', '<g class="spin"><circle cx="200" cy="150" r="70" fill="none" stroke="url(#wood)" stroke-width="12"/>' + [0, 45, 90, 135].map(t => `<rect x="134" y="146" width="132" height="8" fill="#9a6a36" transform="rotate(${t} 200 150)"/>`).join('') + '</g><circle cx="200" cy="150" r="10" fill="url(#met)"/>', [200, 80]],
-  ['engrenage', 'La roue pousse une autre roue, dent par dent.', gear(165, 150, 55, 18, 'spin', 'gold') + gear(260, 150, 30, 10, 'spinr', 'met'), [225, 150]],
-  ['machine', 'Plein de roues ensemble : une machine.', '<rect x="90" y="100" width="220" height="140" rx="12" fill="#3a3f48" stroke="#8a929c"/>' + gear(150, 170, 34, 12, 'spin', 'gold') + gear(208, 170, 18, 7, 'spinr', 'met') + gear(258, 150, 26, 9, 'spin', 'gold') + '<rect x="110" y="82" width="40" height="18" fill="#555"/>', [120, 100]],
-  ['puce', 'Des milliards de petits leviers électriques : une puce.', '<rect x="135" y="85" width="130" height="130" rx="8" fill="#222"/>' + Array.from({ length: 7 }, (_, i) => `<rect x="${147 + i * 17}" y="70" width="6" height="15" fill="#c0c6cf"/><rect x="${147 + i * 17}" y="215" width="6" height="15" fill="#c0c6cf"/>`).join('') + '<rect x="160" y="110" width="80" height="80" fill="#4b5068"/>' + Array.from({ length: 16 }, (_, i) => `<rect class="blink" style="animation-delay:${(i * 3 % 7) / 7}s" x="${166 + (i % 4) * 18}" y="${116 + Math.floor(i / 4) * 18}" width="12" height="12" fill="#ffd166"/>`).join(''), [200, 150]],
-  ['téléphone', 'Une puce, une pile, un écran : ton téléphone.', '<rect x="150" y="40" width="100" height="210" rx="18" fill="#111" stroke="#555" stroke-width="3"/><rect x="158" y="54" width="84" height="182" rx="10" fill="#2a4f86"/>' + particle(200, 145, 8), [200, 145]],
-  ['transmettre', 'Tu admires, tu montres à quelqu\'un. Il admire à son tour.', person(110, '#e0a458') + person(290, '#7fb3d5') + '<path d="M140 190 Q200 150 260 190" fill="none" stroke="#ffe38a" stroke-width="3" stroke-dasharray="6 6"/>' + particle(200, 168, 9), [200, 168]],
-  ['oubli', 'Ce que personne n\'admire, personne ne le passe : ça s\'oublie.', '<g opacity=".35">' + gear(110, 90, 22, 8, '', 'met') + '<rect x="270" y="70" width="50" height="40" rx="6" fill="#777"/></g>', [200, 150]],
-  ['ce qui dure', 'Ce qui dure, c\'est ce qu\'on a admiré, et qu\'on a passé.', particle(200, 150, 20), [200, 150]]
+  ['particule', 'Une particule d\'admiration. Touche-la.', particle(200, 150, 16), [200, 150]],
+  ['grand oui', 'Avant même la première main, un grand oui qui décida.', '<circle cx="200" cy="150" r="95" fill="url(#pg)" opacity=".8"/><text x="200" y="166" text-anchor="middle" font-size="48" font-weight="800" fill="#3a2a00" font-family="Georgia,serif">oui</text>', [200, 150]],
+  ['matière', 'La matière n\'est rien d\'autre qu\'un potentiel.', '<path d="M130 220 q-20 -60 40 -80 q40 -30 80 0 q50 20 30 80 q-30 30 -80 20 q-50 10 -70 -20z" fill="url(#stone)"/>', [200, 180]],
+  ['main', 'C\'est la main qui lui donne une forme.', '<path d="M120 240 q0 -50 40 -60 h80 q40 10 40 60z" fill="url(#stone)"/>' + HAND(250, 110, .8), [200, 200]],
+  ['poussée', 'Il la poussa du bout du doigt, et elle continua toute seule.', '<path d="M40 150 L360 260" stroke="#6b5a40" stroke-width="6"/><g class="roll"><circle cx="160" cy="165" r="24" fill="url(#stone)"/></g>' + HAND(100, 50, .6), [140, 150]],
+  ['roue', 'La roue naquit : c\'était lui qui avait dit oui.', '<g class="spin"><circle cx="200" cy="150" r="70" fill="none" stroke="url(#wood)" stroke-width="14"/>' + [0, 45, 90, 135].map(t => `<rect x="134" y="146" width="132" height="8" fill="#9a6a36" transform="rotate(${t} 200 150)"/>`).join('') + '</g><circle cx="200" cy="150" r="10" fill="url(#met)"/>', [200, 80]],
+  ['levier', 'Le bâton planté dans la terre fit le premier levier.', '<rect x="0" y="240" width="400" height="10" fill="#3d2a17"/><path d="M200 240 l-16 -22 h32z" fill="url(#stone)"/><g class="tilt" style="transform-origin:200px 218px"><rect x="70" y="210" width="260" height="10" rx="4" fill="url(#wood)"/><circle cx="310" cy="190" r="22" fill="url(#stone)"/></g>', [90, 210]],
+  ['écriture', 'Une pensée ne mourait plus avec celui qui l\'avait eue.', '<rect x="120" y="70" width="160" height="170" rx="14" fill="#b98a5a" stroke="#7a5a3a" stroke-width="3"/>' + Array.from({ length: 6 }, (_, i) => `<path d="M140 ${100 + i * 24} h${60 + (i * 37) % 60}" stroke="#5a3d22" stroke-width="4" stroke-dasharray="3 5 9 4"/>`).join(''), [200, 150]],
+  ['science', 'Le regard qui mesure, qui vérifie, qui prévoit.', '<circle cx="200" cy="160" r="80" fill="none" stroke="#ffe38a" stroke-width="2" stroke-dasharray="4 4"/><path d="M200 60 L160 210 M200 60 L250 220" stroke="url(#met)" stroke-width="6" stroke-linecap="round"/><circle cx="200" cy="60" r="8" fill="url(#met)"/>', [200, 60]],
+  ['imprimerie', 'Ce qui était rare devint partageable.', '<rect x="110" y="70" width="180" height="40" fill="url(#wood)"/><rect x="190" y="110" width="20" height="60" fill="url(#met)"/><rect x="130" y="170" width="140" height="20" fill="#3a3a3a"/>' + [0, 1, 2].map(i => `<rect x="${80 + i * 90}" y="${215 - i * 4}" width="70" height="44" fill="#f6efe2" stroke="#999" transform="rotate(${-6 + i * 6} ${115 + i * 90} 237)"/>`).join(''), [200, 180]],
+  ['vapeur', 'Puis vint la vapeur : la main ouvrit la valve.', '<rect x="60" y="160" width="280" height="24" fill="url(#met)"/><circle cx="200" cy="140" r="26" fill="none" stroke="#b3122c" stroke-width="7"/><rect x="196" y="140" width="8" height="22" fill="#b3122c"/>' + [0, 1, 2].map(i => `<circle class="puff" style="animation-delay:${i * .6}s" cx="${310 + i * 6}" cy="140" r="16" fill="#e8e8e8" opacity=".7"/>`).join('') + HAND(150, 90, .5), [200, 140]],
+  ['électricité', 'Puis l\'électricité : la main ferma le circuit.', '<path d="M80 110 H320 V220 H80 Z" fill="none" stroke="#b87333" stroke-width="5"/><rect x="60" y="140" width="40" height="60" rx="4" fill="#333"/><circle cx="320" cy="110" r="30" fill="url(#pg)"/><circle cx="320" cy="110" r="14" fill="#fff8d0" stroke="#999"/><path d="M190 220 l30 -2" stroke="#b87333" stroke-width="6"/>' + HAND(210, 120, .5), [205, 220]],
+  ['circuits', 'Les mêmes signes que l\'écriture, mais en cuivre et en silicium.', '<rect x="80" y="70" width="240" height="170" rx="10" fill="#1f6a3a"/>' + Array.from({ length: 8 }, (_, i) => `<path d="M${95 + i * 28} 80 v${40 + (i * 23) % 60} h${i % 2 ? 20 : -14} v${60 - (i * 13) % 30}" stroke="#d9a04a" stroke-width="3" fill="none"/>`).join(''), [200, 150]],
+  ['puces', 'L\'information circulait, elle calculait : les puces naquirent.', '<rect x="135" y="85" width="130" height="130" rx="8" fill="#222"/>' + Array.from({ length: 7 }, (_, i) => `<rect x="${147 + i * 17}" y="70" width="6" height="15" fill="#c0c6cf"/><rect x="${147 + i * 17}" y="215" width="6" height="15" fill="#c0c6cf"/>`).join('') + '<rect x="160" y="110" width="80" height="80" fill="#4b5068"/>' + Array.from({ length: 16 }, (_, i) => `<rect class="blink" style="animation-delay:${(i * 3 % 7) / 7}s" x="${166 + (i % 4) * 18}" y="${116 + Math.floor(i / 4) * 18}" width="12" height="12" fill="#ffd166"/>`).join(''), [200, 150]],
+  ['internet', 'Un réseau qui reliait les mains en même temps.', (() => { const P = [[80, 90], [200, 60], [320, 100], [110, 220], [230, 180], [330, 230], [170, 140]]; const L = [[0, 1], [1, 2], [0, 6], [6, 4], [4, 2], [3, 6], [4, 5], [3, 4], [1, 6], [2, 5]]; return L.map(([a, b]) => `<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}" stroke="#7fb3d5" stroke-width="2"/>`).join('') + P.map(([x, y]) => particle(x, y, 6)).join(''); })(), [200, 60]],
+  ['IA et robots', 'La machine exécute. L\'être crée.', '<rect x="60" y="232" width="120" height="18" fill="#555"/><path d="M120 232 L150 150 L240 130" fill="none" stroke="#e85a3a" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>' + gear(150, 150, 12, 8, 'spin', 'met') + '<path d="M240 130 l12 22 M240 130 l-4 24" stroke="#999" stroke-width="5"/>' + person(320, '#e0a458'), [320, 150]],
+  ['respect', 'Le respect : reconnaître ce que l\'autre avait créé.', person(110, '#e0a458') + person(290, '#7fb3d5') + '<path d="M140 190 Q200 150 260 190" fill="none" stroke="#ffe38a" stroke-width="3" stroke-dasharray="6 6"/>' + particle(200, 168, 9), [200, 168]],
+  ['responsabilité', 'Ce qu\'on crée, on le tient. On ne le jette pas.', HAND(200, 130, .9) + '<path d="M200 70 q-4 -30 -30 -36 q22 0 30 20 q8 -24 32 -26 q-26 10 -32 42z" fill="url(#leaf)"/>', [200, 70]],
+  ['regard', 'Un arbre qu\'un autre a planté. Regarde-le.', TREE, [200, 130]],
+  ['rien ne sombre', 'Tant qu\'il y a un regard qui continue, rien ne sombre.', '<g class="kept">' + TREE + '</g>' + particle(200, 60, 12), [200, 60]]
 ];
-let step = -1, ac = null, muted = false;
+const TREE_STEP = 18;
+let step = -1, ac = null, muted = false, thanked = false;
 const tone = (f, d = .9, v = .09, delay = 0) => { if (muted) return; const A = window.AudioContext || window.webkitAudioContext; if (!A) return; ac = ac || new A(); if (ac.state === 'suspended') ac.resume(); const t = ac.currentTime + .02 + delay, o = ac.createOscillator(), g = ac.createGain(); o.type = 'sine'; o.frequency.value = f; g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(v, t + .03); g.gain.exponentialRampToValueAtTime(.0001, t + d); o.connect(g).connect(ac.destination); o.start(t); o.stop(t + d + .05); window.__tones = (window.__tones || 0) + 1; };
-const NOTES = [523.25, 587.33, 659.25, 698.46, 783.99, 880, 987.77, 1046.5, 1174.66, 1318.5, 440, 1567.98];
-const chime = i => { tone(NOTES[i % NOTES.length]); tone(NOTES[i % NOTES.length] * 1.5, .6, .04, .08); };
+const NOTES = [523.25, 587.33, 659.25, 698.46, 783.99, 880, 987.77, 1046.5];
+const chime = i => { const f = NOTES[i % NOTES.length] * (i >= 8 ? (i >= 16 ? 1 : .5) * 1.0 : 1); tone(f); tone(f * 1.5, .6, .04, .08); };
 const push = (x, y) => { if (RM) return; const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('r', 6); c.setAttribute('class', 'spark'); fx.appendChild(c); const t0 = performance.now(); const f = n => { const k = Math.min(1, (n - t0) / 700); c.setAttribute('cx', 200 + (x - 200) * k); c.setAttribute('cy', 300 - (300 - y) * k - Math.sin(k * Math.PI) * 40); c.setAttribute('opacity', 1 - k * .6); k < 1 ? requestAnimationFrame(f) : c.remove(); }; requestAnimationFrame(f); };
+const line = t => { say.style.opacity = 0; setTimeout(() => { say.textContent = t; say.style.opacity = 1; }, RM ? 0 : 200); };
 function go() {
-  if (step >= S.length - 1) { step = -1; items.innerHTML = ''; trail.innerHTML = ''; }
+  if (step === TREE_STEP && !thanked) { hint.textContent = 'Dis-lui merci.'; return; }
+  if (step >= S.length - 1) { step = -1; thanked = false; delete document.body.dataset.thanked; items.innerHTML = ''; trail.innerHTML = ''; }
   step++;
-  const [name, line, svg, at] = S[step];
-  [...items.children].forEach(g => g.classList.add(step === 10 ? 'lost' : 'dim'));
-  if (step === 11) items.innerHTML = '';
+  const [name, text, svg, at] = S[step];
+  [...items.children].forEach(g => g.classList.add('dim'));
+  if (step >= TREE_STEP) items.innerHTML = '';
   const g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); g.setAttribute('class', 'item'); g.innerHTML = svg; items.appendChild(g);
   [...items.children].slice(0, -2).forEach(o => o.remove());
-  requestAnimationFrame(() => requestAnimationFrame(() => g.classList.add('on')));
+  requestAnimationFrame(() => requestAnimationFrame(() => { g.classList.add('on'); if (step === TREE_STEP) g.classList.add('fade'); }));
   if (step > 0 || window.__gest) { push(at[0], at[1]); chime(step); }
-  say.style.opacity = 0; setTimeout(() => { say.textContent = line; say.style.opacity = 1; }, RM ? 0 : 200);
+  line(text);
   const t = document.createElement('span'); t.textContent = name; trail.appendChild(t);
-  hint.textContent = step === 0 ? 'Touche-la.' : step === S.length - 1 ? 'Touche pour recommencer.' : '';
+  hint.textContent = step === 0 ? 'Touche.' : step === TREE_STEP ? 'Il s\'efface… sauf si quelqu\'un le regarde.' : step === S.length - 1 ? 'Touche pour recommencer.' : '';
   document.body.dataset.step = step;
 }
-const app = $('app');
-let down = 0;
+$('merci').addEventListener('click', e => { e.stopPropagation(); if (step !== TREE_STEP || thanked) return; thanked = true; window.__gest = 1;
+  const g = items.lastElementChild; g.classList.remove('fade'); g.classList.add('kept'); tone(659.25, 1.4, .1); tone(987.77, 1.2, .05, .12); tone(1318.5, 1.2, .04, .24);
+  line('Et l\'arbre resta, parce qu\'on avait cessé de le laisser disparaître.'); hint.textContent = 'Touche pour continuer.'; document.body.dataset.thanked = 1; });
+$('merci').addEventListener('pointerup', e => e.stopPropagation());
+$('merci').addEventListener('pointerdown', e => e.stopPropagation());
+const app = $('app'); let down = 0;
 app.addEventListener('pointerdown', e => { if (e.target.closest('a,button')) return; down = 1; });
 app.addEventListener('pointerup', e => { if (!down || e.target.closest('a,button')) return; down = 0; window.__gest = 1; go(); });
-app.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+app.addEventListener('keydown', e => { if (e.target === app && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); go(); } });
 $('mute').addEventListener('click', e => { muted = !muted; e.currentTarget.textContent = muted ? '🔕' : '🔔'; e.currentTarget.setAttribute('aria-pressed', muted); e.currentTarget.setAttribute('aria-label', muted ? 'Remettre le son' : 'Couper le son'); });
 $('mute').setAttribute('aria-label', 'Couper le son');
 go();
